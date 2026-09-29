@@ -30,6 +30,9 @@ import {
   ChevronDown,
   Sparkles,
   RefreshCw,
+  LayoutList,
+  Table,
+  MessageSquare,
 } from "lucide-react";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
@@ -127,6 +130,7 @@ export default function AdminDashboard({
     return () => clearInterval(timer);
   }, [router]);
 
+  const [viewMode, setViewMode] = useState<"feed" | "table">("feed");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<string>("ALL");
   const [selectedPropertyType, setSelectedPropertyType] = useState<string>("ALL");
@@ -501,23 +505,54 @@ export default function AdminDashboard({
                 <span>Live Feed Active (Newest on Top)</span>
               </span>
             </div>
-            {isPending && (
-              <span className="text-xs text-[#3154A5] font-medium animate-pulse">
-                Saving updates to database...
-              </span>
-            )}
+
+            <div className="flex items-center gap-3">
+              {/* View Switcher: Feed (All Responses at Once) vs Table */}
+              <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl">
+                <button
+                  onClick={() => setViewMode("feed")}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+                    viewMode === "feed"
+                      ? "bg-white text-[#3154A5] shadow-xs"
+                      : "text-slate-600 hover:text-slate-900"
+                  }`}
+                  title="See all customer responses fully expanded on screen at once"
+                >
+                  <LayoutList className="w-3.5 h-3.5" />
+                  <span>All Responses Feed</span>
+                </button>
+                <button
+                  onClick={() => setViewMode("table")}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+                    viewMode === "table"
+                      ? "bg-white text-[#3154A5] shadow-xs"
+                      : "text-slate-600 hover:text-slate-900"
+                  }`}
+                  title="Compact table view"
+                >
+                  <Table className="w-3.5 h-3.5" />
+                  <span>Table View</span>
+                </button>
+              </div>
+
+              {isPending && (
+                <span className="text-xs text-[#3154A5] font-medium animate-pulse">
+                  Saving updates...
+                </span>
+              )}
+            </div>
           </div>
 
           {filteredInquiries.length === 0 ? (
             <div className="py-20 text-center px-4">
               <FileSpreadsheet className="w-12 h-12 text-slate-300 mx-auto mb-3" />
               <h3 className="text-base font-semibold text-slate-800">
-                No Inquiries Found
+                No Customer Inquiries Yet
               </h3>
               <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1 font-light">
                 {searchQuery || selectedStatus !== "ALL" || selectedPropertyType !== "ALL"
                   ? "Try clearing filters to view all stored contact submissions."
-                  : "When prospective homeowners complete the consultation form on /contact, their details will stream here instantly."}
+                  : "When prospective homeowners complete the consultation form on /contact, all their responses will appear right here automatically."}
               </p>
               {(searchQuery || selectedStatus !== "ALL" || selectedPropertyType !== "ALL") && (
                 <button
@@ -532,7 +567,166 @@ export default function AdminDashboard({
                 </button>
               )}
             </div>
+          ) : viewMode === "feed" ? (
+            /* All Customer Responses Expanded Feed (See all at once without modals) */
+            <div className="p-4 sm:p-6 space-y-4 bg-slate-50/60 divide-y divide-slate-100">
+              {filteredInquiries.map((inquiry, index) => {
+                const statusObj = STATUS_CONFIG[inquiry.status] || STATUS_CONFIG.NEW;
+                const dateObj = new Date(inquiry.createdAt);
+                const formattedDate = dateObj.toLocaleDateString("en-IN", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                });
+                const formattedTime = dateObj.toLocaleTimeString("en-IN", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                });
+
+                return (
+                  <div
+                    key={inquiry.id}
+                    className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden pt-5"
+                  >
+                    {/* Header Strip: Response Number, Customer Name, Status, Date, Actions */}
+                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                      <div className="flex items-center gap-3">
+                        <span className="w-8 h-8 rounded-full bg-blue-50 border border-blue-200 text-[#3154A5] text-xs font-bold flex items-center justify-center flex-shrink-0">
+                          #{filteredInquiries.length - index}
+                        </span>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <h3 className="text-lg sm:text-xl font-serif font-bold text-slate-900">
+                              {inquiry.fullName}
+                            </h3>
+                            <span className="text-[11px] font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">
+                              BSI-THN-{inquiry.id.slice(0, 6).toUpperCase()}
+                            </span>
+                          </div>
+                          <span className="text-xs text-slate-500 font-light">
+                            Submitted on {formattedDate} at {formattedTime} (IST)
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-3">
+                        {/* Live Status Selector */}
+                        <div className="relative inline-block">
+                          <select
+                            value={inquiry.status}
+                            onChange={(e) => handleStatusChange(inquiry.id, e.target.value)}
+                            className={`appearance-none text-xs font-semibold py-1.5 pl-3 pr-7 rounded-full border cursor-pointer ${statusObj.badge}`}
+                          >
+                            <option value="NEW">New Inquiry</option>
+                            <option value="CONTACTED">Contacted</option>
+                            <option value="ESTIMATE_SENT">Estimate Sent</option>
+                            <option value="WON">Deal Won</option>
+                            <option value="CLOSED">Archived / Closed</option>
+                          </select>
+                          <ChevronDown className="w-3 h-3 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none opacity-60" />
+                        </div>
+
+                        {/* Delete Button */}
+                        <button
+                          onClick={() => setDeleteConfirmationId(inquiry.id)}
+                          className="p-2 rounded-lg text-slate-400 hover:text-red-700 hover:bg-red-50 border border-slate-200 transition-colors cursor-pointer"
+                          title="Delete inquiry permanently"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Direct Contact Links */}
+                    <div className="py-2.5 flex flex-wrap items-center gap-3 text-xs bg-slate-50/70 -mx-5 sm:-mx-6 px-5 sm:px-6 my-2.5 border-y border-slate-100">
+                      <span className="font-semibold text-slate-600">Quick Connect:</span>
+                      <a
+                        href={`tel:${inquiry.phone}`}
+                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white border border-slate-200 hover:border-blue-400 text-slate-800 font-bold hover:text-[#3154A5] transition-colors shadow-2xs"
+                      >
+                        <Phone className="w-3.5 h-3.5 text-[#3154A5]" />
+                        <span>{inquiry.phone}</span>
+                      </a>
+                      <a
+                        href={`https://wa.me/${inquiry.phone.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
+                          `Hello ${inquiry.fullName}, this is Sunil Pandey from Blue Space Interiors regarding your inquiry.`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-700 font-bold hover:bg-emerald-100 transition-colors shadow-2xs"
+                      >
+                        <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                        <span>WhatsApp Client</span>
+                      </a>
+                      <a
+                        href={`mailto:${inquiry.email}`}
+                        className="inline-flex items-center gap-1.5 text-slate-600 hover:text-[#3154A5] hover:underline"
+                      >
+                        <Mail className="w-3.5 h-3.5 text-slate-400" />
+                        <span>{inquiry.email}</span>
+                      </a>
+                    </div>
+
+                    {/* 4 Key Details Cards */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 text-xs">
+                      <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200">
+                        <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-0.5">
+                          Thane Locality
+                        </span>
+                        <div className="font-semibold text-slate-800 flex items-start gap-1 mt-0.5">
+                          <MapPin className="w-3.5 h-3.5 text-[#3154A5] flex-shrink-0 mt-0.5" />
+                          <span>{inquiry.locationArea}</span>
+                        </div>
+                      </div>
+
+                      <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200">
+                        <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-0.5">
+                          Configuration &amp; Property
+                        </span>
+                        <div className="font-semibold text-slate-900 mt-0.5">
+                          {inquiry.configuration} • {inquiry.propertyType}
+                        </div>
+                      </div>
+
+                      <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200">
+                        <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-0.5">
+                          Turnkey Budget
+                        </span>
+                        <div className="font-bold text-[#3154A5] text-sm mt-0.5">
+                          ₹{inquiry.budgetRange}
+                        </div>
+                      </div>
+
+                      <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200">
+                        <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-0.5">
+                          Timeline / Possession
+                        </span>
+                        <div className="font-semibold text-slate-800 flex items-center gap-1 mt-0.5">
+                          <Clock className="w-3.5 h-3.5 text-purple-600 flex-shrink-0" />
+                          <span>{inquiry.preferredTimeline}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Full Unclipped Message */}
+                    {inquiry.message ? (
+                      <div className="mt-3 p-3.5 rounded-xl bg-blue-50/40 border border-blue-200 text-xs text-slate-800 leading-relaxed">
+                        <strong className="font-semibold text-[#3154A5] block mb-1">
+                          Client Requirements &amp; Notes:
+                        </strong>
+                        <p className="italic font-light">&ldquo;{inquiry.message}&rdquo;</p>
+                      </div>
+                    ) : (
+                      <div className="mt-2 text-[11px] text-slate-400 italic">
+                        No additional custom notes entered.
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           ) : (
+            /* Table View */
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>

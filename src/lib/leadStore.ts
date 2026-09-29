@@ -27,7 +27,12 @@ export interface InquiryRecord {
 
 // Check if a cloud PostgreSQL connection string is configured
 function getPostgresClient(): NeonQueryFunction<false, false> | null {
-  const url = process.env.POSTGRES_URL || process.env.DATABASE_URL;
+  const url =
+    process.env.POSTGRES_URL ||
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_PRISMA_URL ||
+    process.env.POSTGRES_URL_NON_POOLING;
+
   if (url && (url.startsWith("postgres://") || url.startsWith("postgresql://"))) {
     try {
       return neon(url);
