@@ -1,0 +1,47 @@
+[
+  {
+    "id": "2384e7ff-3f99-49e6-bf7d-d18995116805",
+    "fullName": "Mr. Rajesh Sharma",
+    "email": "rajesh.sharma@example.com",
+    "phone": "9820123456",
+    "propertyType": "Apartment",
+    "locationArea": "Raymond Ten X, Pokhran Rd 2",
+    "configuration": "3 BHK Luxury",
+    "budgetRange": "25L-40L",
+    "preferredTimeline": "Immediate (< 30 Days)",
+    "message": "Need turnkey execution",
+    "status": "NEW",
+    "createdAt": "2026-09-29T21:45:41.470Z",
+    "updatedAt": "2026-09-29T21:45:41.470Z"
+  },
+  {
+    "id": "e762690f-484b-47dc-8c57-958c88dd4552",
+    "fullName": "Test Client",
+    "email": "test@example.com",
+    "phone": "9876543210",
+    "propertyType": "Apartment",
+    "locationArea": "Hiranandani Estate",
+    "configuration": "3 BHK",
+    "budgetRange": "25L-40L",
+    "preferredTimeline": "Immediate",
+    "message": "Testing submission",
+    "status": "NEW",
+    "createdAt": "2026-09-29T21:45:20.821Z",
+    "updatedAt": "2026-09-29T21:45:20.821Z"
+  },
+  {
+    "id": "4cf367f5-04ff-48b9-843e-f3024c0ea6bb",
+    "fullName": "Test Client",
+    "email": "test@example.com",
+    "phone": "9876543210",
+    "propertyType": "Apartment",
+    "locationArea": "Hiranandani Estate",
+    "configuration": "3 BHK",
+    "budgetRange": "25L-40L",
+    "preferredTimeline": "Immediate",
+    "message": "Testing submission",
+    "status": "NEW",
+    "createdAt": "2026-09-29T21:45:20.833Z",
+    "updatedAt": "2026-09-29T21:45:20.833Z"
+  }
+]
