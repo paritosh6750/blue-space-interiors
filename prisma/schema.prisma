@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Fact Table: Visitor Sessions & Footfall (for Power BI analytics)
+model VisitorSession {
+  id          String     @id @default(uuid())
+  sessionId   String     @unique
+  pageVisited String     @default("/")
+  referrer    String?
+  userAgent   String?
+  createdAt   DateTime   @default(now())
+  pageViews   PageView[]
+
+  @@index([createdAt])
+}
+
+// Fact Table: Individual Real Pageviews
+model PageView {
+  id             String          @id @default(uuid())
+  sessionId      String
+  path           String          @default("/")
+  referrer       String?
+  userAgent      String?
+  createdAt      DateTime        @default(now())
+  visitorSession VisitorSession? @relation(fields: [sessionId], references: [sessionId], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([createdAt])
+}
+
+// Aggregated Quick-Counter for instant footer render
+model SiteMetrics {
+  id           Int      @id @default(1)
+  totalVisits  Int      @default(0)
+  uniqueVisits Int      @default(0)
+  lastUpdated  DateTime @updatedAt
+}
+
+// Fact Table: High-Ticket Client Inquiries & Leads (Power BI Lead Funnel)
+model LeadInquiry {
+  id                String   @id @default(uuid())
+  fullName          String
+  email             String
+  phone             String
+  propertyType      String   // Apartment, Penthouse, Duplex, Villa, Commercial Office
+  locationArea      String   // Hiranandani Estate, Pokhran Rd, Majiwada, Ghodbunder Rd, etc.
+  configuration     String   // 2 BHK, 3 BHK, 4 BHK, 5+ BHK / Penthouse
+  budgetRange       String   // 15L-25L, 25L-40L, 40L-70L, 70L+
+  preferredTimeline String   // Immediate, 1-2 Months, 3+ Months
+  message           String?
+  status            String   @default("NEW") // NEW, CONTACTED, ESTIMATE_SENT, WON, CLOSED
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+// Dimension Table: Core Team Members
+model TeamMember {
+  id         String   @id @default(uuid())
+  name       String
+  role       String
+  specialty  String
+  experience String
+  bio        String
+  avatarUrl  String
+  order      Int      @default(0)
+  createdAt  DateTime @default(now())
+}
+
+// Dimension Table: Portfolio Projects
+model Project {
+  id             String   @id @default(uuid())
+  title          String
+  slug           String   @unique
+  category       String   // Luxury Residential, Penthouse, Turnkey Fitout
+  locality       String   // e.g. Hiranandani Estate, Thane West
+  scope          String   // End-to-end Turnkey, 3D Design & Execution
+  sqft           Int
+  completionDate DateTime
+  heroImage      String
+  highlights     String   // JSON string of bullet points
+  featured       Boolean  @default(false)
+  createdAt      DateTime @default(now())
+}
