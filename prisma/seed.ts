@@ -174,38 +174,8 @@ async function main() {
     await prisma.project.create({ data: project });
   }
 
-  // 4. Sample Power BI-ready Leads
-  const initialLeads = [
-    {
-      fullName: "Vikramaditya Deshmukh",
-      email: "v.deshmukh@capgemini.com",
-      phone: "+91 98201 44512",
-      propertyType: "Penthouse",
-      locationArea: "Hiranandani Estate, Thane West",
-      configuration: "4 BHK",
-      budgetRange: "40L-70L",
-      preferredTimeline: "Immediate",
-      message: "Looking for full turnkey handover for our upcoming duplex handover at Rodas Enclave. Emphasis on acoustic soundproofing, German kitchen, and modern minimalism.",
-      status: "ESTIMATE_SENT",
-    },
-    {
-      fullName: "Dr. Rohini Sawant",
-      email: "dr.rohini@jupiterhospital.com",
-      phone: "+91 98192 88341",
-      propertyType: "Apartment",
-      locationArea: "Pokhran Road No. 2, Thane West",
-      configuration: "3 BHK",
-      budgetRange: "25L-40L",
-      preferredTimeline: "1-2 Months",
-      message: "Need German modular kitchen, Italian flooring diamond polishing, and custom master bedroom suite with walk-in wardrobe.",
-      status: "CONTACTED",
-    },
-  ];
-
+  // 4. Ensure inquiries table is clean (no dummy data - customer submissions only)
   await prisma.leadInquiry.deleteMany({});
-  for (const lead of initialLeads) {
-    await prisma.leadInquiry.create({ data: lead });
-  }
 
   console.log("Database seeded with authentic Thane data successfully!");
 }

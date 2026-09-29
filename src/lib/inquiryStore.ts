@@ -42,6 +42,8 @@ export function saveToFallbackStore(inquiry: FallbackInquiryRecord) {
       }
     }
 
+    // Deduplicate if already present
+    records = records.filter((r) => r.id !== inquiry.id);
     records.unshift(inquiry);
     fs.writeFileSync(storePath, JSON.stringify(records, null, 2), "utf-8");
   } catch (err) {
@@ -60,4 +62,36 @@ export function readFallbackStore(): FallbackInquiryRecord[] {
     console.warn("Could not read fallback inquiries file:", err);
   }
   return [];
+}
+
+export function deleteFromFallbackStore(id: string) {
+  try {
+    const storePath = getFallbackStorePath();
+    if (fs.existsSync(storePath)) {
+      const raw = fs.readFileSync(storePath, "utf-8");
+      const records: FallbackInquiryRecord[] = JSON.parse(raw);
+      const filtered = records.filter((r) => r.id !== id);
+      fs.writeFileSync(storePath, JSON.stringify(filtered, null, 2), "utf-8");
+    }
+  } catch (err) {
+    console.warn("Could not delete from fallback store:", err);
+  }
+}
+
+export function updateFallbackStatus(id: string, newStatus: string) {
+  try {
+    const storePath = getFallbackStorePath();
+    if (fs.existsSync(storePath)) {
+      const raw = fs.readFileSync(storePath, "utf-8");
+      const records: FallbackInquiryRecord[] = JSON.parse(raw);
+      const record = records.find((r) => r.id === id);
+      if (record) {
+        record.status = newStatus;
+        record.updatedAt = new Date().toISOString();
+        fs.writeFileSync(storePath, JSON.stringify(records, null, 2), "utf-8");
+      }
+    }
+  } catch (err) {
+    console.warn("Could not update status in fallback store:", err);
+  }
 }

@@ -1,12 +1,12 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import {
   verifyCredentials,
   setAdminSession,
   clearAdminSession,
   isAuthenticated,
 } from "@/lib/adminAuth";
+import { deleteInquiryById, updateInquiryStatusById } from "@/lib/leadStore";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -42,12 +42,9 @@ export async function updateInquiryStatusAction(id: string, newStatus: string) {
   }
 
   try {
-    const updated = await prisma.leadInquiry.update({
-      where: { id },
-      data: { status: newStatus },
-    });
+    await updateInquiryStatusById(id, newStatus);
     revalidatePath("/admin");
-    return { success: true, inquiry: updated };
+    return { success: true };
   } catch (error) {
     console.error("Error updating inquiry status:", error);
     return { success: false, error: "Failed to update status." };
@@ -61,9 +58,7 @@ export async function deleteInquiryAction(id: string) {
   }
 
   try {
-    await prisma.leadInquiry.delete({
-      where: { id },
-    });
+    await deleteInquiryById(id);
     revalidatePath("/admin");
     return { success: true };
   } catch (error) {
