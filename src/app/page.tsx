@@ -18,14 +18,12 @@ import {
   Mail,
 } from "lucide-react";
 
+import { getSafeFeaturedProjects } from "@/lib/fallbackData";
+
 export const revalidate = 0; // Fresh SSR data
 
 export default async function HomePage() {
-  const featuredProjects = await prisma.project.findMany({
-    where: { featured: true },
-    take: 3,
-    orderBy: { completionDate: "desc" },
-  });
+  const featuredProjects = await getSafeFeaturedProjects();
 
   // Local Business & FAQ Schema.org JSON-LD for Thane SEO
   const localBusinessJsonLd = {

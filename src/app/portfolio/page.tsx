@@ -30,10 +30,10 @@ export const metadata: Metadata = {
   ],
 };
 
+import { getSafeAllProjects } from "@/lib/fallbackData";
+
 export default async function PortfolioPage() {
-  const projects = await prisma.project.findMany({
-    orderBy: { completionDate: "desc" },
-  });
+  const projects = await getSafeAllProjects();
 
   return (
     <div className="bg-[#fbfaf7] text-slate-900 min-h-screen">

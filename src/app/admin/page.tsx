@@ -22,10 +22,30 @@ export default async function AdminPortalPage() {
     redirect("/admin/login");
   }
 
-  // Fetch all leads from SQLite
-  const rawInquiries = await prisma.leadInquiry.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  // Fetch all leads from SQLite safely
+  let rawInquiries: Array<{
+    id: string;
+    fullName: string;
+    email: string;
+    phone: string;
+    propertyType: string;
+    locationArea: string;
+    configuration: string;
+    budgetRange: string;
+    preferredTimeline: string;
+    message: string | null;
+    status: string;
+    createdAt: Date;
+    updatedAt: Date;
+  }> = [];
+
+  try {
+    rawInquiries = await prisma.leadInquiry.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+  } catch (err) {
+    console.warn("Could not query leadInquiry from DB:", err);
+  }
 
   const inquiries = rawInquiries.map((inquiry) => ({
     ...inquiry,

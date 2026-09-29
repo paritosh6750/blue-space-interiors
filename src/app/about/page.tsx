@@ -30,10 +30,10 @@ export const metadata: Metadata = {
   ],
 };
 
+import { getSafeTeamMembers } from "@/lib/fallbackData";
+
 export default async function AboutPage() {
-  const teamMembers = await prisma.teamMember.findMany({
-    orderBy: { order: "asc" },
-  });
+  const teamMembers = await getSafeTeamMembers();
 
   return (
     <div className="bg-[#fbfaf7] text-slate-900 min-h-screen">
