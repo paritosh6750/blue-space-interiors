@@ -419,14 +419,15 @@ export default function AdminDashboard({
 
           <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm col-span-2 lg:col-span-1">
             <div className="flex items-center justify-between text-slate-500 mb-2">
-              <span className="text-xs font-semibold uppercase tracking-wider">Site Footfall</span>
-              <Building className="w-4 h-4 text-[#3154A5]" />
+              <span className="text-xs font-semibold uppercase tracking-wider">Unique Homeowners</span>
+              <Users className="w-4 h-4 text-[#3154A5]" />
             </div>
-            <div className="text-2xl sm:text-3xl font-serif font-bold text-slate-900">
+            <div className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 font-mono">
               {metrics.uniqueVisits.toLocaleString()}
             </div>
-            <p className="text-[11px] text-slate-500 mt-1 font-light">
-              {metrics.totalVisits.toLocaleString()} Total Pageviews
+            <p className="text-[11px] text-slate-500 mt-1 font-medium flex items-center gap-1">
+              <Eye className="w-3.5 h-3.5 text-slate-400" />
+              <span>{metrics.totalVisits.toLocaleString()} Total Pageviews</span>
             </p>
           </div>
         </div>
