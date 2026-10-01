@@ -374,7 +374,7 @@ export default function AdminDashboard({
               {totalLeads}
             </div>
             <p className="text-[11px] text-slate-500 mt-1 font-light">
-              Captured across Thane &amp; Pan India
+              Captured across Pan India
             </p>
           </div>
 
@@ -671,7 +671,7 @@ export default function AdminDashboard({
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 text-xs">
                       <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200">
                         <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-0.5">
-                          Thane Locality
+                          Project Location
                         </span>
                         <div className="font-semibold text-slate-800 flex items-start gap-1 mt-0.5">
                           <MapPin className="w-3.5 h-3.5 text-[#3154A5] flex-shrink-0 mt-0.5" />

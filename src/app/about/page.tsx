@@ -17,16 +17,17 @@ import {
 export const revalidate = 0; // Fresh SSR data
 
 export const metadata: Metadata = {
-  title: "About Us | Blue Space Interiors | Premier Interior Designers in Thane",
+  title: "About Us | Blue Space Interiors | Premier Architectural & Turnkey Studio",
   description:
-    "Learn about Blue Space Interiors, founded by Sir J.J. College of Architecture and VJTI alumni. Direct turnkey execution, 45-day guaranteed handover, and 10-year warranty in Thane.",
+    "Learn about Blue Space Interiors, founded by Sir J.J. College of Architecture and VJTI alumni. Single-window turnkey execution with 45-day guaranteed handover, zero cost escalations, and PAN India reach. Studio HQ at The Capital Tree, Thane (West).",
   keywords: [
-    "interior designers in Thane",
-    "interior designer in Thane",
-    "turnkey interior designer Thane",
-    "Abhishek Pandey architect Thane",
+    "luxury turnkey interior designers",
+    "architectural interior design firm",
+    "turnkey interior design studio India",
+    "Abhishek Pandey architect",
     "Sanskruti Suryavanshi interior designer",
-    "luxury interior design firm Thane West",
+    "luxury residential interiors PAN India",
+    "Blue Space Interiors",
   ],
 };
 
@@ -46,12 +47,12 @@ export default async function AboutPage() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 max-w-4xl mx-auto leading-tight">
-            Architectural Mastery with the Top{" "}
-            <span className="brand-gradient-text">Interior Designers in Thane</span>
+            Architectural Mastery with Premier{" "}
+            <span className="brand-gradient-text">Luxury Interior Designers</span>
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-light leading-relaxed">
-            Founded by alumni of Sir J.J. College of Architecture and VJTI Mumbai, Blue Space Interiors brings structural integrity, German factory engineering, and uncompromising turnkey accountability to Thane&apos;s luxury residences.
+            Founded by alumni of Sir J.J. College of Architecture and VJTI Mumbai, Blue Space Interiors brings structural integrity, German factory engineering, and uncompromising turnkey accountability to luxury residences across India.
           </p>
         </div>
       </section>
@@ -64,14 +65,14 @@ export default async function AboutPage() {
               Our Origin & Purpose
             </span>
             <h2 className="mt-2 text-3xl font-serif font-bold text-slate-900">
-              Why We Built a Direct Turnkey Firm in Thane West
+              Why We Built a Direct Architectural Turnkey Studio
             </h2>
             <div className="mt-6 space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed font-light">
               <p>
-                In 2018, as large venture-funded aggregators entered the Mumbai Metropolitan Region with mass-market modular furniture catalogs, we witnessed high-net-worth homeowners in Thane facing acute frustration. Homeowners purchasing premium 3 BHK, 4 BHK, and penthouses in Hiranandani Estate and Pokhran Road were being assigned junior freelance coordinators and particle-board cabinetry that sagged under Mumbai&apos;s coastal humidity.
+                In 2018, as large venture-funded aggregators entered the market with mass-market modular furniture catalogs, we witnessed high-net-worth homeowners facing acute frustration. Homeowners purchasing premium 3 BHK, 4 BHK, penthouses, and private villas were being assigned junior freelance coordinators and particle-board cabinetry that sagged under coastal humidity.
               </p>
               <p>
-                Blue Space Interiors was established as a direct architectural countermeasure. Led by Council of Architecture-registered Architect Abhishek Pandey (COA: CA/2012/54892) and Civil Engineer Panya Bangari (VJTI), we built our own 18,000 sq.ft. cleanroom pre-fabrication plant in the Thane-Bhiwandi manufacturing corridor.
+                Blue Space Interiors was established as a direct architectural countermeasure. Led by Council of Architecture-registered Architect Abhishek Pandey (COA: CA/2012/54892) and Civil Engineer Panya Bangari (VJTI), we built our own 18,000 sq.ft. cleanroom pre-fabrication plant in the Thane manufacturing corridor to deliver turnkey excellence across India.
               </p>
               <p>
                 By pre-fabricating 85% of modular cabinetry off-site using calibrated Century Club Prime BWP Marine Plywood and genuine Austrian Blum fittings, we eliminated on-site noise, dust, and contractor delays. This architectural precision enables our legally bound 45-day key handover and 10-year direct warranty.
@@ -102,14 +103,14 @@ export default async function AboutPage() {
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl">
               <img
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-                alt="Blue Space Interiors Studio in Thane"
+                alt="Blue Space Interiors Studio & Architecture Desk"
                 className="w-full h-[480px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-lg">
                 <div className="flex items-center gap-2 text-xs text-[#3154A5] font-bold uppercase tracking-wider">
                   <Factory className="w-4 h-4 text-[#3154A5]" />
-                  <span>Thane-Bhiwandi Precision Manufacturing Plant</span>
+                  <span>Precision Offsite Manufacturing Facility</span>
                 </div>
                 <p className="text-xs text-slate-600 mt-1.5 font-light">
                   Equipped with German Homag CNC beam saws, PUR zero-joint edge banders, and specialized dust-free PU spray booths.
@@ -129,14 +130,14 @@ export default async function AboutPage() {
               Core Leadership & Architectural Directors
             </span>
             <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
-              The Specialized Minds Shaping Thane’s Finest Homes
+              The Specialized Minds Shaping High-End Residences
             </h2>
             <p className="mt-3 text-slate-600 text-sm font-light">
               Unlike platforms where your project is handed to outsourced subcontractors, our core leaders personally govern every stage of design and execution.
             </p>
           </div>
 
-          {/* Dynamic Grid from SQLite */}
+          {/* Dynamic Grid */}
           <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member) => (
               <div
@@ -180,7 +181,7 @@ export default async function AboutPage() {
                       <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
                       Active Project Lead
                     </span>
-                    <span className="text-[#3154A5] font-bold">Thane Studio</span>
+                    <span className="text-[#3154A5] font-bold">Studio Headquarters</span>
                   </div>
                 </div>
               </div>

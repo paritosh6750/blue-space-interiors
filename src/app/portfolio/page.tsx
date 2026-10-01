@@ -17,16 +17,16 @@ import {
 export const revalidate = 0; // Fresh SSR data
 
 export const metadata: Metadata = {
-  title: "Portfolio | Blue Space Interiors | Premier Interior Designers in Thane",
+  title: "Portfolio | Blue Space Interiors | Premier Luxury Turnkey Residences",
   description:
-    "Explore luxury residential interior design case studies across Thane West: Hiranandani Estate, Pokhran Road, Raymond Ten X, and Majiwada. 100% turnkey execution in 45 days.",
+    "Explore luxury residential interior design case studies delivered across India: penthouses, duplexes, 3 BHK, and 4 BHK residences. 100% turnkey execution in 45 days.",
   keywords: [
-    "interior designer in Thane",
-    "interior designers in Thane",
-    "turnkey interior designer Thane",
-    "Hiranandani Estate interior design projects",
-    "Raymond Ten X interior designers",
-    "luxury apartment portfolio Thane",
+    "luxury residential portfolio",
+    "turnkey interior design projects",
+    "luxury penthouse interiors",
+    "villa interior architecture",
+    "45 day handover interiors",
+    "Blue Space Interiors",
   ],
 };
 
@@ -46,11 +46,11 @@ export default async function PortfolioPage() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 max-w-4xl mx-auto leading-tight">
-            Curated Residences by Leading <span className="brand-gradient-text">Interior Designers in Thane</span>
+            Curated Residences by Premier <span className="brand-gradient-text">Luxury Interior Architects</span>
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-light leading-relaxed">
-            Witness how architectural precision, German joinery, and natural stone combine into timeless residences across Thane’s most iconic societies.
+            Witness how architectural precision, German joinery, and natural stone combine into timeless residences across iconic gated societies and private estates.
           </p>
 
           {/* 5-Pillar Core Excellence Bar */}
@@ -163,7 +163,7 @@ export default async function PortfolioPage() {
                     </h2>
 
                     <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                      A complete architectural overhaul designed and executed within our 45-day turnkey SLA. All modular cabinetry was manufactured off-site in our Thane-Bhiwandi facility using 100% Century Club Prime BWP Marine Plywood and Austrian Blum hardware.
+                      A complete architectural overhaul designed and executed within our 45-day turnkey SLA. All modular cabinetry was manufactured off-site in our precision prefabrication plant using 100% Century Club Prime BWP Marine Plywood and Austrian Blum hardware.
                     </p>
 
                     <div className="mt-6">
@@ -214,10 +214,10 @@ export default async function PortfolioPage() {
       <section className="py-16 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-blue-50/70 border-t border-blue-200 text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900">
-            Have a Flat or Penthouse Possession Coming Up in Thane?
+            Have an Upcoming Residential Possession or Renovation?
           </h2>
           <p className="mt-3 text-slate-600 text-sm font-light">
-            Bring your builder layout to Principal Architect Abhishek Pandey for a turnkey spatial audit and 3D concept before taking possession.
+            Bring your builder layout to Principal Architect Abhishek Pandey for a turnkey spatial audit and 3D concept before commencing your fitout.
           </p>
           <div className="mt-8 flex justify-center">
             <Link

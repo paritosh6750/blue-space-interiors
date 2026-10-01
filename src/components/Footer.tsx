@@ -86,7 +86,7 @@ export default async function Footer() {
               <BrandLogo variant="horizontal" size="lg" />
             </Link>
             <p className="text-slate-600 text-xs sm:text-sm mt-4 leading-relaxed pr-6 font-light">
-              Thane&apos;s premier turnkey architectural and interior firm for high-ticket residences and penthouses.
+              Premier turnkey architectural and interior design firm executing luxury residences, villas, and penthouses across India.
               Founded by Sir J.J. College of Architecture and VJTI alumni, we eliminate contractor fragmentation
               through direct factory execution, delivering bespoke living environments with a strict 45-day key handover.
             </p>
@@ -121,12 +121,12 @@ export default async function Footer() {
             <ul className="mt-4 space-y-2.5 text-xs text-slate-600">
               <li>
                 <Link href="/" className="hover:text-[#3154A5] transition-colors">
-                  Home (Turnkey Thane)
+                  Home (Turnkey Architecture)
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="hover:text-[#3154A5] transition-colors">
-                  About Us & Leadership
+                  About Us &amp; Leadership
                 </Link>
               </li>
               <li>
@@ -136,12 +136,12 @@ export default async function Footer() {
               </li>
               <li>
                 <Link href="/portfolio" className="hover:text-[#3154A5] transition-colors">
-                  Curated Thane Portfolio
+                  Curated Portfolio
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-[#3154A5] transition-colors">
-                  Consultation & 3D Estimation
+                  Consultation &amp; 3D Estimation
                 </Link>
               </li>
               <li className="pt-2 border-t border-slate-200">
@@ -156,35 +156,35 @@ export default async function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Prime Thane Societies Served */}
+          {/* Column 3: Prime Metros & Enclaves Served */}
           <div>
             <h4 className="text-slate-900 font-serif text-sm font-bold tracking-wider uppercase border-b border-blue-200 pb-2">
-              Thane Enclaves Served
+              National Reach &amp; Enclaves
             </h4>
             <ul className="mt-4 space-y-2 text-xs text-slate-600">
               <li className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Hiranandani Estate & Meadows</span>
+                <span>Mumbai MMR &amp; Thane Corridors</span>
               </li>
               <li className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Raymond Ten X & Park Avenue</span>
+                <span>Pune &amp; PCMC Luxury Enclaves</span>
               </li>
               <li className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Pokhran Road No. 1 & 2 Enclaves</span>
+                <span>Bengaluru Tech Enclaves</span>
               </li>
               <li className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Lodha Amara & Sterling, Kolshet</span>
+                <span>Delhi NCR Luxury Residences</span>
               </li>
               <li className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Sheth Avalon & Majiwada Junction</span>
+                <span>Hyderabad High-Rise Towers</span>
               </li>
               <li className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Vasant Vihar & Upvan Lake</span>
+                <span>Major Metros (PAN India Scope)</span>
               </li>
             </ul>
           </div>
@@ -192,7 +192,7 @@ export default async function Footer() {
           {/* Column 4: Contact & Studio Info */}
           <div>
             <h4 className="text-slate-900 font-serif text-sm font-bold tracking-wider uppercase border-b border-blue-200 pb-2">
-              Experience Studio
+              Studio Headquarters
             </h4>
             <div className="mt-4 space-y-3 text-xs text-slate-600 font-light">
               <div className="flex items-start gap-2">
@@ -231,7 +231,7 @@ export default async function Footer() {
         {/* Legal Copyright Bar */}
         <div className="mt-12 pt-8 border-t border-slate-200 text-[11px] text-slate-500 text-center">
           <p>
-            © {new Date().getFullYear()} Blue Space Interiors LLP. All Rights Reserved. Reg. Architectural & Turnkey Interior Studio, Thane West.
+            © {new Date().getFullYear()} Blue Space Interiors LLP. All Rights Reserved. Reg. Architectural &amp; Turnkey Interior Studio, Headquartered in Thane West.
           </p>
         </div>
       </div>

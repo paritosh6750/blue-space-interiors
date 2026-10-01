@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Admin Login | Blue Space Interiors",
-  description: "Secure administrator login for Blue Space Interiors Thane studio.",
+  description: "Secure administrator login for Blue Space Interiors studio systems.",
   robots: {
     index: false,
     follow: false,

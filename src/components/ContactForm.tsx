@@ -17,7 +17,7 @@ export default function ContactForm() {
     email: "",
     phone: "",
     propertyType: "Apartment",
-    locationArea: "Hiranandani Estate, Ghodbunder Rd",
+    locationArea: "Mumbai MMR (Thane, Hiranandani, Bandra, Powai)",
     configuration: "3 BHK Luxury",
     budgetRange: "25L-40L",
     preferredTimeline: "Immediate (< 30 Days)",
@@ -45,7 +45,7 @@ export default function ContactForm() {
           email: "",
           phone: "",
           propertyType: "Apartment",
-          locationArea: "Hiranandani Estate, Ghodbunder Rd",
+          locationArea: "Mumbai MMR (Thane, Hiranandani, Bandra, Powai)",
           configuration: "3 BHK Luxury",
           budgetRange: "25L-40L",
           preferredTimeline: "Immediate (< 30 Days)",
@@ -87,7 +87,7 @@ export default function ContactForm() {
           <p className="text-xs text-slate-700 mt-2 max-w-md mx-auto leading-relaxed font-light">
             Thank you. Your consultation reference token is{" "}
             <span className="font-mono text-[#3154A5] font-bold">
-              BSI-THN-{responseState.inquiryId?.slice(0, 6).toUpperCase()}
+              BSI-{responseState.inquiryId?.slice(0, 6).toUpperCase()}
             </span>
             . Contact Person Mr. Sunil Pandey will call you shortly to arrange your 3D presentation.
           </p>
@@ -98,7 +98,7 @@ export default function ContactForm() {
           <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href={`https://wa.me/917738318383?text=${encodeURIComponent(
-                `Hello Mr. Sunil Pandey, I have submitted an interior inquiry on Blue Space Interiors website (Ref: BSI-THN-${responseState.inquiryId?.slice(0, 6).toUpperCase() || "NEW"}). Looking forward to discussing my project.`
+                `Hello Mr. Sunil Pandey, I have submitted an interior inquiry on Blue Space Interiors website (Ref: BSI-${responseState.inquiryId?.slice(0, 6).toUpperCase() || "NEW"}). Looking forward to discussing my project.`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -176,11 +176,11 @@ export default function ContactForm() {
             />
           </div>
 
-          {/* Property Locality in Thane & Configuration */}
+          {/* Project City / Region & Configuration */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                Thane Locality / Society *
+                Project City &amp; Locality *
               </label>
               <select
                 value={formData.locationArea}
@@ -189,14 +189,12 @@ export default function ContactForm() {
                 }
                 className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:bg-white focus:outline-none focus:border-[#3154A5] focus:ring-1 focus:ring-[#3154A5] transition-all"
               >
-                <option value="Hiranandani Estate, Ghodbunder Rd">Hiranandani Estate (Rodas / Meadows / Walk)</option>
-                <option value="Raymond Ten X / Park Avenue, Pokhran Rd 2">Raymond Ten X / Park Avenue, Pokhran Rd 2</option>
-                <option value="Pokhran Road No. 1 / Vasant Vihar">Pokhran Road No. 1 / Vasant Vihar Enclave</option>
-                <option value="Lodha Amara / Sterling, Kolshet Road">Lodha Amara / Sterling, Kolshet Road</option>
-                <option value="Sheth Avalon / Zenia, Majiwada Junction">Sheth Avalon / Zenia, Majiwada Junction</option>
-                <option value="Rustomjee Urbania / Azziano, Majiwada">Rustomjee Urbania / Azziano, Majiwada</option>
-                <option value="Panch Pakhadi / Teen Hath Naka">Panch Pakhadi / Teen Hath Naka</option>
-                <option value="Other Premium Thane West Residence">Other Premium Thane West Residence</option>
+                <option value="Mumbai MMR (Thane, Hiranandani, Bandra, Powai)">Mumbai MMR (Thane, Hiranandani, Bandra, Worli, Powai)</option>
+                <option value="Pune / PCMC (Baner, Koregaon Park, Kalyani Nagar)">Pune / PCMC (Baner, Koregaon Park, Kalyani Nagar)</option>
+                <option value="Bengaluru (Indiranagar, Koramangala, Whitefield)">Bengaluru (Indiranagar, Koramangala, Whitefield)</option>
+                <option value="Delhi NCR (Gurgaon, South Delhi, Noida)">Delhi NCR (Gurgaon, South Delhi, Noida)</option>
+                <option value="Hyderabad (Jubilee Hills, Gachibowli, HITEC City)">Hyderabad (Jubilee Hills, Gachibowli, HITEC City)</option>
+                <option value="Other Metropolitan City (PAN India Execution)">Other Metropolitan City (PAN India Execution)</option>
               </select>
             </div>
 
@@ -295,7 +293,7 @@ export default function ContactForm() {
           <div className="pt-2 flex items-center justify-center gap-2 text-xs text-slate-600">
             <span>Prefer instant WhatsApp?</span>
             <a
-              href="https://wa.me/917738318383?text=Hello%20Mr.%20Sunil%20Pandey%2C%20I%20am%20interested%20in%20turnkey%20interior%20design%20services%20for%20my%20property%20in%20Thane."
+              href="https://wa.me/917738318383?text=Hello%20Mr.%20Sunil%20Pandey%2C%20I%20am%20interested%20in%20turnkey%20interior%20design%20services%20with%20Blue%20Space%20Interiors."
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-700 font-semibold hover:underline inline-flex items-center gap-1"

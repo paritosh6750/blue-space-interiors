@@ -25,14 +25,14 @@ export const revalidate = 0; // Fresh SSR data
 export default async function HomePage() {
   const featuredProjects = await getSafeFeaturedProjects();
 
-  // Local Business & FAQ Schema.org JSON-LD for Thane SEO
+  // Schema.org JSON-LD for Luxury Turnkey Architectural & Interior Studio
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     "name": "Blue Space Interiors",
-    "alternateName": "Blue Space Turnkey Interior Designer Thane",
+    "alternateName": "Blue Space Turnkey Luxury Interior Designers",
     "description":
-      "Blue Space Interiors is Thane's premier turnkey architectural and interior design studio. Specializing in bespoke 3 BHK, 4 BHK, and penthouse residences across Hiranandani Estate, Pokhran Road, Majiwada, and Kolshet Road. Guaranteed 45-day handover and 10-year warranty.",
+      "Blue Space Interiors is a premier architectural and turnkey interior design studio delivering bespoke residential transformations across India. Specializing in high-end penthouses, 3 BHK, 4 BHK, and luxury villas. Guaranteed 45-day handover, zero cost escalations, and 10-year warranty. Studio headquarters at The Capital Tree, Thane (West).",
     "url": "https://bluespaceinteriors.com",
     "telephone": "+917738318383",
     "email": "bluespaceinteriors1@gmail.com",
@@ -59,14 +59,13 @@ export default async function HomePage() {
       },
     ],
     "areaServed": [
+      { "@type": "Country", "name": "India" },
+      { "@type": "AdministrativeArea", "name": "Mumbai Metropolitan Region" },
       { "@type": "AdministrativeArea", "name": "Thane" },
-      { "@type": "AdministrativeArea", "name": "Thane West" },
-      { "@type": "AdministrativeArea", "name": "Hiranandani Estate" },
-      { "@type": "AdministrativeArea", "name": "Pokhran Road No. 1 and 2" },
-      { "@type": "AdministrativeArea", "name": "Majiwada Junction" },
-      { "@type": "AdministrativeArea", "name": "Kolshet Road" },
-      { "@type": "AdministrativeArea", "name": "Ghodbunder Road" },
-      { "@type": "AdministrativeArea", "name": "Vasant Vihar" },
+      { "@type": "AdministrativeArea", "name": "Pune" },
+      { "@type": "AdministrativeArea", "name": "Bengaluru" },
+      { "@type": "AdministrativeArea", "name": "Delhi NCR" },
+      { "@type": "AdministrativeArea", "name": "Hyderabad" },
     ],
     "sameAs": [
       "https://www.instagram.com/blue_space_interiors?stkn=d215ZWN2cTdqN3Fk",
@@ -74,7 +73,7 @@ export default async function HomePage() {
       "https://www.threads.com/@blue_space_interiors?xmt=AQG0IGwV1GoBLDtI18XKZJ9Y2wucsVIJLH9P3JFgGawIpf0"
     ],
     "keywords":
-      "interior designer in Thane, interior designers in Thane, turnkey interior designer Thane, luxury interior designers Thane West, Hiranandani Estate turnkey interiors",
+      "luxury turnkey interior designers, turnkey interior design studio India, architectural interior designers PAN India, luxury penthouses and villa interiors, Blue Space Interiors",
   };
 
   const faqJsonLd = {
@@ -83,18 +82,18 @@ export default async function HomePage() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How does Blue Space Interiors guarantee a 45-day turnkey handover in Thane?",
+        "name": "How does Blue Space Interiors guarantee a 45-day turnkey handover?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Unlike aggregators who rely on on-site manual carpentry, Blue Space Interiors manufactures 85% of modular cabinetry, wardrobes, and kitchen casework offsite in our precision CNC facility in the Thane-Bhiwandi corridor. While civil, tiling, and false ceiling works happen at your flat, carpentry is pre-finished with German PUR edge-banding. On-site installation takes only 10 to 14 days, allowing us to legally commit to a 45-day key handover with a ₹2,500/day penalty guarantee.",
+          "text": "Unlike aggregators who rely on on-site manual carpentry, Blue Space Interiors manufactures 85% of modular cabinetry, wardrobes, and kitchen casework offsite in our precision CNC prefabrication facility. While civil, tiling, and false ceiling works happen at your residence, cabinetry is pre-finished with German PUR edge-banding. On-site installation takes only 10 to 14 days, allowing us to legally commit to a 45-day key handover with a ₹2,500/day penalty guarantee.",
         },
       },
       {
         "@type": "Question",
-        "name": "What is the typical turnkey interior cost per square foot in Thane for a 3 BHK or 4 BHK?",
+        "name": "What is the typical turnkey interior cost per square foot for a 3 BHK or 4 BHK?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Turnkey interior execution in Thane typically ranges between ₹1,800 to ₹3,500 per sq.ft. depending on material specifications. A premium 3 BHK (1,400–1,800 sq.ft.) in societies like Raymond Ten X or Lodha Amara averages ₹28L to ₹42L for complete turnkey scope including modular kitchen, wardrobes, false ceilings, lighting, and civil works. A luxury 4 BHK or penthouse in Hiranandani Estate with Italian marble and Daikin VRV HVAC averages ₹50L to ₹80L.",
+          "text": "Turnkey interior execution typically ranges between ₹1,800 to ₹3,500 per sq.ft. depending on material specifications. A premium 3 BHK (1,400–1,800 sq.ft.) averages ₹28L to ₹42L for complete turnkey scope including modular kitchen, wardrobes, false ceilings, lighting, and civil works. A luxury 4 BHK or penthouse with Italian marble and Daikin VRV HVAC averages ₹50L to ₹85L+.",
         },
       },
       {
@@ -107,10 +106,10 @@ export default async function HomePage() {
       },
       {
         "@type": "Question",
-        "name": "Do you assist with Thane society NOCs and working hour permissions?",
+        "name": "Do you assist with gated society NOCs and working hour permissions?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Gated communities in Thane such as Hiranandani Estate, Raymond Ten X, and Sheth Avalon have strict interior work rules (10 AM to 6 PM, zero drilling during lunch hours, goods elevator protection). Our dedicated liaison team manages society drawings, debris disposal NOCs, floor protection sheets, and security gate passes autonomously.",
+          "text": "Yes. Premium gated communities across India have strict interior work rules (10 AM to 6 PM, zero drilling during lunch hours, goods elevator protection). Our dedicated liaison team manages society drawings, debris disposal NOCs, floor protection sheets, and security gate passes autonomously.",
         },
       },
     ],
@@ -133,7 +132,7 @@ export default async function HomePage() {
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85"
-            alt="Premier Turnkey Interior Designer in Thane - Blue Space Interiors"
+            alt="Luxury Turnkey Interior Design & Architecture - Blue Space Interiors PAN India"
             className="w-full h-full object-cover opacity-15"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#fbfaf7] via-[#fbfaf7]/80 to-transparent" />
@@ -142,18 +141,18 @@ export default async function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#3154A5] text-xs font-bold tracking-wider uppercase mb-8 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-[#3154A5]" />
-            <span>Thane&apos;s Highest-Rated Architectural Turnkey Firm</span>
+            <span>Bespoke Architectural Interiors • PAN India Turnkey Execution</span>
           </div>
 
           {/* Primary Target Keyword in H1 */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-slate-900 tracking-tight leading-[1.12] max-w-5xl mx-auto">
-            The Premier <span className="brand-gradient-text">Interior Designer in Thane</span> for Luxury Residences
+            Premier <span className="brand-gradient-text">Luxury Turnkey Interior Design</span> &amp; Architecture
           </h1>
 
           <p className="mt-6 text-base sm:text-xl text-slate-700 max-w-3xl mx-auto font-light leading-relaxed">
             Eliminate fragmented contractors, budget creep, and agonizing possession delays. We design and execute 
-            architectural-grade turnkey transformations for premium 3 BHK, 4 BHK, and penthouse homes across 
-            Hiranandani Estate, Pokhran Road, and Majiwada with a strictly enforced{" "}
+            architectural-grade turnkey transformations for premium 3 BHK, 4 BHK, penthouses, and private residences 
+            across India with a strictly enforced{" "}
             <strong className="text-slate-900 font-semibold">45-day handover guarantee</strong>.
           </p>
 
@@ -184,7 +183,7 @@ export default async function HomePage() {
               href="/portfolio"
               className="px-8 py-4 rounded-xl text-xs sm:text-sm font-semibold tracking-wider text-slate-800 bg-white border border-slate-300 hover:border-[#3154A5] shadow-sm transition-all"
             >
-              Explore Thane Projects
+              Explore Featured Residences
             </Link>
           </div>
 
@@ -242,7 +241,7 @@ export default async function HomePage() {
             </span>
             {/* Target Keyword in H2 */}
             <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
-              Why Discerning Homeowners Choose Our <span className="brand-gradient-text">Turnkey Interior Designer Thane</span> Model
+              Why Discerning Homeowners Choose Our <span className="brand-gradient-text">Direct Turnkey Architecture</span> Model
             </h2>
             <p className="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-light">
               Aggregator companies like Livspace, Bonito Designs, and HomeLane operate on an outsourced broker model. They charge 30–40% platform margins while sub-contracting your expensive apartment to temporary third-party vendors. Blue Space Interiors delivers direct architectural engineering with in-house accountability.
@@ -280,7 +279,7 @@ export default async function HomePage() {
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>In-House Factory Precision:</strong> 18,000 sq.ft. cleanroom pre-fabrication in Thane corridor eliminates on-site dust.</span>
+                    <span><strong>In-House Factory Precision:</strong> 18,000 sq.ft. cleanroom pre-fabrication plant eliminates on-site dust and ensures German edge-banding precision.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
@@ -318,7 +317,7 @@ export default async function HomePage() {
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>Catalog Constraints:</strong> Modular box sizes that fail to seamlessly accommodate Thane high-rise beam drops.</span>
+                    <span><strong>Catalog Constraints:</strong> Rigid box dimensions that fail to accommodate unique structural beam drops, pillars, and ceiling ducting.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
@@ -338,7 +337,7 @@ export default async function HomePage() {
                 <h3 className="text-xl font-serif font-bold text-slate-800">
                   Local Freelance Carpenters
                 </h3>
-                <p className="text-xs text-slate-500 mt-1">Fragmented Local Labor & Sub-vendors</p>
+                <p className="text-xs text-slate-500 mt-1">Fragmented Local Labor &amp; Sub-vendors</p>
 
                 <ul className="mt-6 space-y-4 text-xs sm:text-sm text-slate-600">
                   <li className="flex items-start gap-2.5">
@@ -351,7 +350,7 @@ export default async function HomePage() {
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>Prolonged Dust & Noise:</strong> Manual sawing in flat creates friction with Thane society management.</span>
+                    <span><strong>Prolonged Dust &amp; Noise:</strong> Manual cutting inside residences creates friction with gated society rules and delays move-in dates.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
@@ -378,17 +377,17 @@ export default async function HomePage() {
               </span>
               {/* Target Keyword in H2 */}
               <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
-                Completed Residences by Top <span className="brand-gradient-text">Interior Designers in Thane</span>
+                Completed Residences by Premier <span className="brand-gradient-text">Luxury Interior Architects</span>
               </h2>
               <p className="mt-2 text-slate-600 text-sm max-w-xl font-light">
-                Explore real completed apartments in Hiranandani Estate, Raymond Ten X, and Majiwada, delivered within 45 days.
+                Explore real completed penthouses, duplexes, and luxury residences delivered within our 45-day turnkey protocol.
               </p>
             </div>
             <Link
               href="/portfolio"
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#3154A5] hover:text-slate-900 transition-colors"
             >
-              <span>View All Thane Projects</span>
+              <span>View All Completed Residences</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -447,10 +446,10 @@ export default async function HomePage() {
               Transparent Budgeting
             </span>
             <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
-              Turnkey Interior Cost Benchmark for Thane Homes
+              Turnkey Interior Cost Benchmark for Luxury Residences
             </h2>
             <p className="mt-3 text-slate-600 text-sm font-light">
-              We eliminate hidden charges through guaranteed itemized BOQs. Here is the realistic cost breakdown for Thane gated societies.
+              We eliminate hidden charges through guaranteed itemized BOQs. Here is the realistic turnkey cost breakdown for high-end gated residences.
             </p>
           </div>
 
@@ -496,7 +495,7 @@ export default async function HomePage() {
 
             <div className="p-8 rounded-3xl bg-white border-2 border-[#3154A5] shadow-xl relative flex flex-col justify-between">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#3154A5] text-white px-3.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">
-                Thane Executive Standard
+                Most Selected Standard
               </div>
               <div>
                 <span className="text-xs font-bold text-[#3154A5] uppercase tracking-wider">
@@ -582,42 +581,42 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Target Localities in Thane */}
+      {/* Flagship Gated Developments & National Execution */}
       <section className="py-20 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
-              Thane Society Specialists
+              Flagship Developments
             </span>
             <h2 className="mt-2 text-2xl sm:text-3xl font-serif font-bold text-slate-900">
-              Expertise Across Thane’s Top Gated Developments
+              Specialized Expertise in High-Rise Enclaves &amp; Pan-India Communities
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-slate-600 font-light">
-              We manage all society NOC documentation, freight elevator bookings, and zero-noise timing protocols.
+              From leading gated communities in Mumbai MMR to bespoke residences across India, we autonomously manage society NOC documentation, freight elevator bookings, and zero-noise timing protocols.
             </p>
           </div>
 
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               {
-                society: "Hiranandani Estate",
-                location: "Ghodbunder Road",
+                society: "Hiranandani Communities",
+                location: "Ghodbunder & Powai",
                 deliveries: "52+ Completed Residences",
               },
               {
-                society: "Raymond Ten X",
-                location: "Pokhran Road No. 2",
+                society: "Raymond Ten X & Environs",
+                location: "Pokhran Road Corridors",
                 deliveries: "38+ Turnkey Fitouts",
               },
               {
-                society: "Sheth Avalon",
-                location: "Majiwada Junction",
+                society: "Sheth Avalon & Enclaves",
+                location: "High-Rise Residential Towers",
                 deliveries: "24+ Luxury Penthouses",
               },
               {
-                society: "Lodha Amara",
-                location: "Kolshet Road",
-                deliveries: "44+ Bespoke Apartments",
+                society: "Lodha & Prestige Communities",
+                location: "Major Metro Corridors",
+                deliveries: "44+ Bespoke Residences",
               },
             ].map((loc, i) => (
               <div
@@ -644,7 +643,7 @@ export default async function HomePage() {
               Client Testimonials
             </span>
             <h2 className="mt-2 text-3xl font-serif font-bold text-slate-900">
-              Endorsed by Thane&apos;s Senior Executives & Doctors
+              Endorsed by Discerning C-Suite Executives, Doctors &amp; Leaders
             </h2>
           </div>
 
@@ -663,7 +662,7 @@ export default async function HomePage() {
                 title: "Consultant Radiologists, Jupiter Hospital",
                 residence: "3 BHK Residence, Raymond Ten X Habitat, Pokhran Rd 2",
                 quote:
-                  "We previously lost months of peace with an aggregator who gave an initial low estimate and then billed 30% extra under variation clauses. Blue Space gave us a locked BOQ, adhered to society rules, and delivered top-tier acoustic ceilings and walk-in closets. Truly Thane's best turnkey team.",
+                  "We previously lost months of peace with an aggregator who gave an initial low estimate and then billed 30% extra under variation clauses. Blue Space gave us a locked BOQ, adhered to society rules, and delivered top-tier acoustic ceilings and walk-in closets. Truly the most dependable turnkey interior architecture team.",
                 rating: 5,
               },
               {
@@ -710,26 +709,26 @@ export default async function HomePage() {
               Frequently Answered Questions
             </span>
             <h2 className="mt-2 text-3xl font-serif font-bold text-slate-900">
-              Questions About Hiring an <span className="brand-gradient-text">Interior Designer in Thane</span>
+              Frequently Asked Questions About <span className="brand-gradient-text">Turnkey Interior Design</span>
             </h2>
           </div>
 
           <div className="space-y-6">
             <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
               <h3 className="text-base font-serif font-semibold text-slate-900">
-                How does Blue Space Interiors guarantee a 45-day turnkey handover in Thane?
+                How does Blue Space Interiors guarantee a 45-day turnkey handover?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Unlike aggregators who rely on on-site manual carpentry, Blue Space Interiors manufactures 85% of modular cabinetry, wardrobes, and kitchen casework offsite in our precision CNC facility in the Thane-Bhiwandi corridor. While civil, tiling, and false ceiling works happen at your flat, carpentry is pre-finished with German PUR edge-banding. On-site installation takes only 10 to 14 days, allowing us to legally commit to a 45-day key handover with a ₹2,500/day penalty guarantee.
+                Unlike aggregators who rely on on-site manual carpentry, Blue Space Interiors manufactures 85% of modular cabinetry, wardrobes, and kitchen casework offsite in our precision CNC facility. While civil, tiling, and false ceiling works happen at your residence, cabinetry is pre-finished with German PUR edge-banding. On-site installation takes only 10 to 14 days, allowing us to legally commit to a 45-day key handover with a ₹2,500/day penalty guarantee.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
               <h3 className="text-base font-serif font-semibold text-slate-900">
-                What is the typical turnkey interior cost per square foot in Thane?
+                What is the typical turnkey interior cost per square foot for a 3 BHK or 4 BHK?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Turnkey interior execution in Thane typically ranges between ₹1,800 to ₹3,500 per sq.ft. depending on material specifications. A premium 3 BHK (1,400–1,800 sq.ft.) in societies like Raymond Ten X or Lodha Amara averages ₹28L to ₹42L for complete turnkey scope including modular kitchen, wardrobes, false ceilings, lighting, and civil works. A luxury 4 BHK or penthouse in Hiranandani Estate with Italian marble and Daikin VRV HVAC averages ₹50L to ₹80L.
+                Turnkey interior execution typically ranges between ₹1,800 to ₹3,500 per sq.ft. depending on material specifications. A premium 3 BHK (1,400–1,800 sq.ft.) averages ₹28L to ₹42L for complete turnkey scope including modular kitchen, wardrobes, false ceilings, lighting, and civil works. A luxury 4 BHK or penthouse with Italian marble and Daikin VRV HVAC averages ₹50L to ₹85L+.
               </p>
             </div>
 
@@ -744,10 +743,10 @@ export default async function HomePage() {
 
             <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
               <h3 className="text-base font-serif font-semibold text-slate-900">
-                Do you assist with Thane society NOCs and working hour permissions?
+                Do you assist with gated society NOCs and working hour permissions?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Yes. Gated communities in Thane such as Hiranandani Estate, Raymond Ten X, and Sheth Avalon have strict interior work rules (10 AM to 6 PM, zero drilling during lunch hours, goods elevator protection). Our dedicated liaison team manages society drawings, debris disposal NOCs, floor protection sheets, and security gate passes autonomously.
+                Yes. Premium gated communities have strict interior work rules (10 AM to 6 PM, zero drilling during lunch hours, goods elevator protection). Our dedicated liaison team manages society drawings, debris disposal NOCs, floor protection sheets, and security gate passes autonomously across all our project sites.
               </p>
             </div>
           </div>
@@ -758,10 +757,10 @@ export default async function HomePage() {
       <section className="py-20 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-blue-50/70 border-t border-blue-200 text-center">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-slate-900">
-            Transform Your Thane Flat into an Architectural Masterpiece
+            Transform Your Residence into an Architectural Masterpiece
           </h2>
           <p className="mt-4 text-slate-700 text-sm sm:text-base max-w-2xl mx-auto font-light">
-            Schedule a private consultation at our Pokhran Road studio or request a property evaluation. Receive a customized 3D spatial layout and fixed-item BOQ within 4 business hours.
+            Schedule a private consultation at our studio headquarters in The Capital Tree, Thane (West) or request a virtual property review from anywhere in India. Receive a customized 3D spatial layout and fixed-item BOQ within 4 business hours.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -776,7 +775,7 @@ export default async function HomePage() {
               className="px-8 py-4 rounded-xl text-xs sm:text-sm font-semibold tracking-wider text-slate-800 bg-white border border-slate-300 flex items-center gap-2 hover:border-[#3154A5] shadow-sm transition-all"
             >
               <PhoneCall className="w-4 h-4 text-[#3154A5]" />
-              <span>Direct Studio Desk: +91 77383 18383</span>
+              <span>Studio Desk: +91 77383 18383</span>
             </a>
           </div>
         </div>

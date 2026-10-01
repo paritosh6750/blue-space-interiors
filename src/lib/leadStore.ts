@@ -208,7 +208,7 @@ export async function createInquiry(data: {
     email: data.email,
     phone: data.phone,
     propertyType: data.propertyType || "Apartment",
-    locationArea: data.locationArea || "Thane West",
+    locationArea: data.locationArea || "Not Specified",
     configuration: data.configuration || "3 BHK",
     budgetRange: data.budgetRange || "25L-40L",
     preferredTimeline: data.preferredTimeline || "Immediate",

@@ -5,7 +5,7 @@ export const SOCIAL_LINKS = {
     name: "Instagram",
     handle: "@blue_space_interiors",
     url: "https://www.instagram.com/blue_space_interiors?stkn=d215ZWN2cTdqN3Fk",
-    description: "Real Site Walkthroughs & Completed Thane Residences",
+    description: "Real Site Walkthroughs & Completed Residences",
   },
   facebook: {
     name: "Facebook",

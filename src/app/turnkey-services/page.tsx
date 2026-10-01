@@ -14,16 +14,16 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Turnkey Interior Designer Thane | Complete Turnkey Execution Solutions",
+  title: "Turnkey Interior Design & Execution | Blue Space Interiors | PAN India",
   description:
-    "End-to-end turnkey interior solutions in Thane. Guaranteed 45-day key handover, zero cost escalations, 100% BWP Marine Plywood, and direct architectural execution.",
+    "End-to-end luxury turnkey interior solutions across India. Guaranteed 45-day key handover, zero cost escalations, 100% BWP Marine Plywood, and direct architectural execution. Studio HQ in Thane (West).",
   keywords: [
-    "turnkey interior designer Thane",
-    "interior designer in Thane",
-    "interior designers in Thane",
-    "turnkey residential interiors Thane",
-    "turnkey contractors Thane West",
-    "full home turnkey interiors Hiranandani",
+    "turnkey interior design India",
+    "luxury turnkey residential interiors",
+    "architectural turnkey execution",
+    "45 day handover guarantee",
+    "Blue Space Interiors",
+    "zero cost escalation interiors",
   ],
 };
 
@@ -34,11 +34,11 @@ export default function TurnkeyServicesPage() {
       title: "Laser Spatial Audit & Lifestyle Profiling",
       duration: "Days 1–3",
       description:
-        "Principal Architect Abhishek Pandey personally inspects your Thane residence (in Hiranandani Estate, Raymond Ten X, Pokhran Road, or Majiwada). We deploy Leica 3D laser meters to capture exact slab-to-beam clearances, conduit positions, and window sun paths.",
+        "Principal Architect Abhishek Pandey personally inspects your residence or coordinates a high-precision spatial audit. We deploy Leica 3D laser meters to capture exact slab-to-beam clearances, conduit positions, and window sun paths.",
       highlights: [
         "Sub-millimeter laser floor mapping",
         "Concealed electrical conduit & plumbing line tracing",
-        "Acoustic noise audit from Thane road corridors",
+        "Comprehensive acoustic and ambient light audit",
       ],
     },
     {
@@ -58,7 +58,7 @@ export default function TurnkeyServicesPage() {
       title: "Factory CNC Pre-Fabrication in Cleanroom Plant",
       duration: "Days 11–28",
       description:
-        "While wet civil work (tiling, gypsum framing, core cutting) starts quietly on site under society timing rules, all modular casework, wardrobes, and kitchen carcasses are cut on German Homag CNC beam saws at our Thane-Bhiwandi manufacturing plant.",
+        "While wet civil work (tiling, gypsum framing, core cutting) starts quietly on site under society timing rules, all modular casework, wardrobes, and kitchen carcasses are cut on German Homag CNC beam saws at our precision prefabrication plant.",
       highlights: [
         "100% Century Club Prime BWP Marine Plywood calibration",
         "PUR zero-joint edge banding resistant to 140°C heat & steam",
@@ -102,7 +102,7 @@ export default function TurnkeyServicesPage() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 max-w-4xl mx-auto leading-tight">
-            The Definitive <span className="brand-gradient-text">Turnkey Interior Designer Thane</span> Solution
+            The Definitive <span className="brand-gradient-text">Turnkey Interior Design</span> &amp; Execution Solution
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-light leading-relaxed">
@@ -164,7 +164,7 @@ export default function TurnkeyServicesPage() {
             Our 5-Stage Precision Execution Roadmap
           </h2>
           <p className="mt-2 text-slate-600 text-sm font-light">
-            How we eliminate contractor delays and deliver high-ticket Thane residences on schedule.
+            How we eliminate contractor delays and deliver high-ticket residences on schedule.
           </p>
         </div>
 
@@ -214,7 +214,7 @@ export default function TurnkeyServicesPage() {
               Comparative Analysis
             </span>
             <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
-              Why Senior Executives in Thane Select Our Turnkey Model
+              Why Discerning Homeowners Select Our Turnkey Model
             </h2>
             <p className="mt-2 text-slate-600 text-sm font-light">
               Clear accountability vs. the hidden risks of aggregator platforms and fragmented local contractors.
@@ -295,7 +295,7 @@ export default function TurnkeyServicesPage() {
             Curated Offerings
           </span>
           <h2 className="mt-2 text-3xl font-serif font-bold text-slate-900">
-            Tailored Turnkey Scopes for Thane Properties
+            Tailored Turnkey Scopes for Modern Residences
           </h2>
         </div>
 
@@ -309,16 +309,16 @@ export default function TurnkeyServicesPage() {
                 The Executive Turnkey
               </h3>
               <p className="text-xs text-slate-600 mt-2 font-light">
-                Engineered for homes in Raymond Ten X, Lodha Amara, and Rosa Manhattan (1,200–1,600 sq.ft.).
+                Engineered for premium 3 BHK residences and luxury apartments (1,200–1,600 sq.ft.).
               </p>
               <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Full home modular carpentry & Saint-Gobain gypsum ceilings
+                  Full home modular carpentry &amp; Saint-Gobain gypsum ceilings
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  German acrylic modular kitchen with quartz counter & Blum Aventos
+                  German acrylic modular kitchen with quartz counter &amp; Blum Aventos
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
@@ -344,13 +344,13 @@ export default function TurnkeyServicesPage() {
             </div>
             <div>
               <span className="text-xs font-bold text-[#3154A5] uppercase tracking-wider">
-                For 4 BHK & Penthouses
+                For 4 BHK &amp; Penthouses
               </span>
               <h3 className="text-xl font-serif font-bold text-slate-900 mt-1">
                 The Penthouse Signature
               </h3>
               <p className="text-xs text-slate-600 mt-2 font-light">
-                Customized for Hiranandani Estate, Sheth Avalon, and Pokhran Road duplexes (2,200–4,000+ sq.ft.).
+                Customized for expansive 4 BHK homes, sky villas, and duplex penthouses (2,200–4,000+ sq.ft.).
               </p>
               <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
                 <li className="flex items-center gap-2">
@@ -427,7 +427,7 @@ export default function TurnkeyServicesPage() {
       <section className="py-16 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-blue-50/70 border-t border-blue-200 text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900">
-            Secure Your 45-Day Possession Handover in Thane
+            Secure Your 45-Day Turnkey Possession Handover
           </h2>
           <p className="mt-3 text-slate-600 text-sm font-light">
             Contact Principal Architect Abhishek Pandey today to review your possession schedule and lock your turnkey execution window.

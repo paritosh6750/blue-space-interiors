@@ -16,17 +16,15 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Blue Space Interiors | Premier Interior Designer in Thane",
+  title: "Contact Us | Blue Space Interiors | Premier Luxury Turnkey Studio",
   description:
-    "Schedule a direct consultation with Contact Person Mr. Sunil Pandey at our studio at 1507 on 15th The Capital Tree, Pokhran Road No. 2, Thane (West) 400601. Cell: +91 77383 18383. Email: bluespaceinteriors1@gmail.com.",
+    "Schedule a direct consultation with Contact Person Mr. Sunil Pandey at our studio headquarters at 1507 on 15th, The Capital Tree, Pokhran Road No. 2, Thane (West) 400601, or book a virtual session from anywhere in India. Cell: +91 77383 18383.",
   keywords: [
-    "interior designer in Thane",
-    "turnkey interior designer Thane",
-    "interior designers in Thane",
-    "contact interior designer Thane",
-    "The Capital Tree Pokhran Road Thane",
+    "contact turnkey interior designer",
+    "luxury interior design consultation",
+    "Blue Space Interiors contact",
     "Sunil Pandey Blue Space Interiors",
-    "Thane West interior design studio",
+    "turnkey interior studio PAN India",
   ],
 };
 
@@ -38,16 +36,16 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#3154A5] text-xs font-bold tracking-wider uppercase mb-4 shadow-sm">
             <Compass className="w-3.5 h-3.5 text-[#3154A5]" />
-            <span>Thane Experience Studio & Architecture Desk</span>
+            <span>Studio Headquarters &amp; Architecture Desk</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 max-w-4xl mx-auto leading-tight">
-            Schedule a Private Consultation with an{" "}
-            <span className="brand-gradient-text">Interior Designer in Thane</span>
+            Schedule a Private Consultation with Our{" "}
+            <span className="brand-gradient-text">Principal Architects</span>
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-light leading-relaxed">
-            Begin your journey toward an exquisite, stress-free turnkey home. Meet our leadership team and Contact Person Mr. Sunil Pandey at our studio at The Capital Tree on Pokhran Road No. 2, or arrange an on-site property evaluation.
+            Begin your journey toward an exquisite, stress-free turnkey home. Meet our leadership team and Contact Person Mr. Sunil Pandey at our studio headquarters at The Capital Tree on Pokhran Road No. 2, or arrange a virtual property evaluation from anywhere in India.
           </p>
         </div>
       </section>
@@ -68,7 +66,7 @@ export default function ContactPage() {
                 Studio Location
               </span>
               <h3 className="text-2xl font-serif font-bold text-slate-900 mt-1">
-                Blue Space Interiors Studio
+                Studio Headquarters
               </h3>
 
               <div className="mt-6 space-y-4 text-xs sm:text-sm text-slate-700 font-light">
@@ -197,7 +195,7 @@ export default function ContactPage() {
             <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-50/60 to-white border border-blue-200 shadow-sm">
               <h4 className="text-lg font-serif font-bold text-slate-900 flex items-center gap-2">
                 <Navigation className="w-4 h-4 text-[#3154A5]" />
-                Reaching Our Thane Studio
+                Visiting Our Studio Headquarters
               </h4>
               <ul className="mt-4 space-y-3 text-xs sm:text-sm text-slate-700 font-light">
                 <li className="flex items-start gap-2.5">
