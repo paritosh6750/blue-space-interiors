@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85",
+        url: "/projects/project-1-sanjay-sahoo-angul-villa.jpg",
         width: 1200,
         height: 630,
         alt: "Turnkey Interior Design & Contracting - Blue Space Interiors PAN India",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     title: "Blue Space Interiors | Turnkey Interior Design & Contracting PAN India",
     description:
       "Turnkey interior design and contracting for residential, commercial, and corporate properties across India. 120-day guaranteed handover.",
-    images: ["https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"],
+    images: ["/projects/project-1-sanjay-sahoo-angul-villa.jpg"],
   },
   robots: {
     index: true,

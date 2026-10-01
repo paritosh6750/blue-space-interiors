@@ -101,7 +101,7 @@ export default function AboutPage() {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+                src="/projects/project-1-sanjay-sahoo-angul-villa.jpg"
                 alt="Blue Space Interiors Turnkey Contracting Leadership"
                 className="w-full h-[460px] object-cover"
               />
