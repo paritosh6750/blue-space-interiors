@@ -97,7 +97,7 @@ export default function RootLayout({
     <html lang="en" className={`${sans.variable} ${serif.variable} scroll-smooth`}>
       <body className="min-h-screen bg-[#fbfaf7] text-slate-900 flex flex-col font-sans selection:bg-[#3154a5] selection:text-white">
         <Navbar />
-        <main className="flex-grow pt-28">{children}</main>
+        <main className="flex-grow pt-20">{children}</main>
         <Footer />
       </body>
     </html>

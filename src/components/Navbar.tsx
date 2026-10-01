@@ -3,16 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, ArrowRight, ShieldCheck, Award, Building, Mail, MapPin, Lock, Briefcase } from "lucide-react";
+import { Menu, X, Phone, ArrowRight, ShieldCheck, Lock } from "lucide-react";
 import BrandLogo from "@/components/BrandLogo";
 import SocialLinks from "@/components/SocialLinks";
-import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
+import { BRAND_CONFIG } from "@/lib/constants";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const yearsOfExcellence = getYearsOfExcellence();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,56 +31,6 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* Top Credentials Ribbon */}
-      <div className="bg-[#3154A5] text-white text-[11px] sm:text-xs py-1.5 px-4 font-medium tracking-wide border-b border-blue-900/30">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-          <div className="flex items-center gap-2.5 sm:gap-4 flex-wrap">
-            <span className="flex items-center gap-1.5">
-              <Award className="w-3.5 h-3.5 text-blue-200" />
-              <span>{yearsOfExcellence} of Excellence</span>
-            </span>
-            <span className="text-blue-200/60 hidden sm:inline">•</span>
-            <span className="flex items-center gap-1.5">
-              <Building className="w-3.5 h-3.5 text-blue-200" />
-              <span>150+ Projects</span>
-            </span>
-            <span className="text-blue-200/60 hidden md:inline">•</span>
-            <span className="hidden md:flex items-center gap-1.5">
-              <Briefcase className="w-3.5 h-3.5 text-blue-200" />
-              <span>Turnkey Design &amp; Contracting (120-Day Handover)</span>
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3 sm:gap-4 ml-auto text-[11px]">
-            <a
-              href={`tel:${BRAND_CONFIG.phoneRaw}`}
-              className="flex items-center gap-1.5 text-white hover:text-blue-100 transition-colors font-medium"
-            >
-              <MapPin className="w-3.5 h-3.5 text-blue-200" />
-              <span className="opacity-90">PAN India:</span>
-              <span className="font-bold underline decoration-blue-300">{BRAND_CONFIG.phoneDisplay}</span>
-            </a>
-            <span className="text-blue-200/60 hidden sm:inline">|</span>
-            <a
-              href={`mailto:${BRAND_CONFIG.email}`}
-              className="hidden sm:flex items-center gap-1.5 text-white hover:text-blue-100 transition-colors"
-            >
-              <Mail className="w-3.5 h-3.5 text-blue-200" />
-              <span className="underline decoration-blue-300">{BRAND_CONFIG.email}</span>
-            </a>
-            <span className="text-blue-200/60 hidden md:inline">|</span>
-            <Link
-              href="/admin"
-              className="hidden md:flex items-center gap-1 text-blue-100 hover:text-white transition-colors font-medium"
-              title="Admin Portal"
-            >
-              <Lock className="w-3 h-3 text-blue-200" />
-              <span>Admin Portal</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navigation Row */}
       <div
         className={`transition-all duration-300 ${
