@@ -13,13 +13,11 @@ import {
   Briefcase,
   Layers,
 } from "lucide-react";
-import { getLiveMetrics } from "@/app/actions/tracker";
 import BrandLogo from "@/components/BrandLogo";
 import SocialLinks from "@/components/SocialLinks";
 import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
 
-export default async function Footer() {
-  const metrics = await getLiveMetrics();
+export default function Footer() {
   const yearsOfExcellence = getYearsOfExcellence();
 
   return (
@@ -240,10 +238,7 @@ export default async function Footer() {
       </div>
 
       {/* Dynamic Visitor Tracking Module - Positioned in Absolute Bottom Footer */}
-      <VisitorCounter
-        initialTotal={metrics.totalVisits}
-        initialUnique={metrics.uniqueVisits}
-      />
+      <VisitorCounter />
     </footer>
   );
 }

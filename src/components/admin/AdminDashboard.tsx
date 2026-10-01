@@ -102,33 +102,116 @@ const STATUS_CONFIG: Record<
   },
 };
 
+const STORAGE_KEY = "bsi_inquiries_store_v1";
+
 export default function AdminDashboard({
   initialInquiries,
   metrics,
 }: AdminDashboardProps) {
   const router = useRouter();
-  const [inquiries, setInquiries] = useState<InquiryRecord[]>(initialInquiries);
+  
+  // Initialize with initialInquiries merged with client cache to prevent blank flashes
+  const [inquiries, setInquiries] = useState<InquiryRecord[]>(() => {
+    const map = new Map<string, InquiryRecord>();
+    if (Array.isArray(initialInquiries)) {
+      for (const item of initialInquiries) {
+        if (item && item.id) map.set(item.id, item);
+      }
+    }
+    if (typeof window !== "undefined") {
+      try {
+        const cached = localStorage.getItem(STORAGE_KEY);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed)) {
+            for (const item of parsed) {
+              if (item && item.id && !map.has(item.id)) {
+                map.set(item.id, item);
+              }
+            }
+          }
+        }
+      } catch {}
+    }
+    return Array.from(map.values()).sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+  });
+
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  // Sync component state whenever fresh initialInquiries arrive from server
+  // Helper to merge new records and persist to localStorage
+  const mergeAndPersistInquiries = useCallback((incoming: InquiryRecord[]) => {
+    setInquiries((prev) => {
+      const map = new Map<string, InquiryRecord>();
+      for (const item of prev) {
+        if (item && item.id) map.set(item.id, item);
+      }
+      for (const item of incoming) {
+        if (item && item.id) map.set(item.id, item);
+      }
+      const merged = Array.from(map.values()).sort(
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+      } catch {}
+      return merged;
+    });
+  }, []);
+
+  // Live client-side fetch from /api/inquiries to bypass any SSR caching delays
+  const fetchLiveInquiries = useCallback(async () => {
+    try {
+      const res = await fetch("/api/inquiries", {
+        cache: "no-store",
+        headers: { "Cache-Control": "no-cache" },
+      });
+      if (res.ok) {
+        const json = await res.json();
+        if (Array.isArray(json.inquiries)) {
+          mergeAndPersistInquiries(json.inquiries);
+        }
+      }
+    } catch (err) {
+      console.warn("Client inquiries fetch:", err);
+    }
+  }, [mergeAndPersistInquiries]);
+
+  // Sync component state whenever fresh initialInquiries arrive or on mount
   useEffect(() => {
-    setInquiries(initialInquiries);
-  }, [initialInquiries]);
+    try {
+      const cached = localStorage.getItem(STORAGE_KEY);
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          mergeAndPersistInquiries(parsed);
+        }
+      }
+    } catch {}
 
-  // Manual refresh handler
-  const handleRefresh = useCallback(() => {
-    setIsRefreshing(true);
-    router.refresh();
-    setTimeout(() => setIsRefreshing(false), 1200);
-  }, [router]);
+    if (initialInquiries && initialInquiries.length > 0) {
+      mergeAndPersistInquiries(initialInquiries);
+    }
 
-  // Live feed auto-sync: Poll for new customer inquiries every 15 seconds
+    fetchLiveInquiries();
+  }, [initialInquiries, mergeAndPersistInquiries, fetchLiveInquiries]);
+
+  // Live feed auto-sync: Poll for new customer inquiries every 8 seconds
   useEffect(() => {
     const timer = setInterval(() => {
-      router.refresh();
-    }, 15000);
+      fetchLiveInquiries();
+    }, 8000);
     return () => clearInterval(timer);
-  }, [router]);
+  }, [fetchLiveInquiries]);
+
+  // Manual refresh handler
+  const handleRefresh = useCallback(async () => {
+    setIsRefreshing(true);
+    await fetchLiveInquiries();
+    router.refresh();
+    setTimeout(() => setIsRefreshing(false), 800);
+  }, [fetchLiveInquiries, router]);
 
   const [viewMode, setViewMode] = useState<"feed" | "table">("feed");
   const [searchQuery, setSearchQuery] = useState("");
@@ -145,16 +228,26 @@ export default function AdminDashboard({
   };
 
   const handleStatusChange = async (id: string, newStatus: string) => {
-    // Optimistic update
-    setInquiries((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, status: newStatus } : item))
-    );
+    // Optimistic update with persistence
+    setInquiries((prev) => {
+      const updated = prev.map((item) => (item.id === id ? { ...item, status: newStatus } : item));
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
     if (selectedInquiry?.id === id) {
       setSelectedInquiry((prev) => (prev ? { ...prev, status: newStatus } : null));
     }
 
     startTransition(async () => {
       const res = await updateInquiryStatusAction(id, newStatus);
+      fetch("/api/inquiries", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status: newStatus }),
+      }).catch(() => null);
+
       if (res.success) {
         showNotification("success", `Inquiry status updated to ${STATUS_CONFIG[newStatus]?.label || newStatus}`);
       } else {
@@ -168,10 +261,17 @@ export default function AdminDashboard({
     if (selectedInquiry?.id === id) {
       setSelectedInquiry(null);
     }
-    setInquiries((prev) => prev.filter((item) => item.id !== id));
+    setInquiries((prev) => {
+      const filtered = prev.filter((item) => item.id !== id);
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
+      } catch {}
+      return filtered;
+    });
 
     startTransition(async () => {
       const res = await deleteInquiryAction(id);
+      fetch(`/api/inquiries?id=${id}`, { method: "DELETE" }).catch(() => null);
       if (res.success) {
         showNotification("success", "Inquiry deleted successfully");
       } else {

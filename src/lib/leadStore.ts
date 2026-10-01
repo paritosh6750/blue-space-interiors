@@ -6,6 +6,12 @@ import {
   updateFallbackStatus,
   FallbackInquiryRecord,
 } from "@/lib/inquiryStore";
+import {
+  getCloudInquiries,
+  saveCloudInquiry,
+  updateCloudInquiryStatus,
+  deleteCloudInquiry,
+} from "@/lib/cloudStore";
 import { neon, NeonQueryFunction } from "@neondatabase/serverless";
 import crypto from "crypto";
 
@@ -73,11 +79,40 @@ async function ensurePostgresTable(sql: NeonQueryFunction<false, false>) {
 
 /**
  * Fetch all customer-submitted inquiries in strict chronological sequence (newest first).
+ * Aggregates across Cloud Store, PostgreSQL, SQLite, and local fallback file.
  * Completely filters out any dummy/test entries.
  */
 export async function getAllInquiries(): Promise<InquiryRecord[]> {
-  const sql = getPostgresClient();
+  const map = new Map<string, InquiryRecord>();
 
+  // 1. Fetch from Universal Cloud Store (persists across all devices & serverless lambdas)
+  try {
+    const cloudInquiries = await getCloudInquiries();
+    for (const item of cloudInquiries) {
+      if (item && item.id) {
+        map.set(item.id, {
+          id: item.id,
+          fullName: item.fullName,
+          email: item.email,
+          phone: item.phone,
+          propertyType: item.propertyType,
+          locationArea: item.locationArea,
+          configuration: item.configuration,
+          budgetRange: item.budgetRange,
+          preferredTimeline: item.preferredTimeline,
+          message: item.message || null,
+          status: item.status || "NEW",
+          createdAt: item.createdAt,
+          updatedAt: item.updatedAt,
+        });
+      }
+    }
+  } catch (cloudErr) {
+    console.warn("Cloud store read failed:", cloudErr);
+  }
+
+  // 2. Fetch from Neon / Cloud PostgreSQL if configured
+  const sql = getPostgresClient();
   if (sql) {
     try {
       await ensurePostgresTable(sql);
@@ -100,54 +135,60 @@ export async function getAllInquiries(): Promise<InquiryRecord[]> {
         ORDER BY created_at DESC;
       `;
 
-      return (rows as unknown as Array<Record<string, unknown>>).map((r) => ({
-        id: String(r.id),
-        fullName: String(r.fullName),
-        email: String(r.email),
-        phone: String(r.phone),
-        propertyType: String(r.propertyType),
-        locationArea: String(r.locationArea),
-        configuration: String(r.configuration),
-        budgetRange: String(r.budgetRange),
-        preferredTimeline: String(r.preferredTimeline),
-        message: r.message ? String(r.message) : null,
-        status: String(r.status || "NEW"),
-        createdAt: new Date(String(r.createdAt)).toISOString(),
-        updatedAt: new Date(String(r.updatedAt)).toISOString(),
-      }));
+      for (const r of rows as unknown as Array<Record<string, unknown>>) {
+        const id = String(r.id);
+        if (!map.has(id)) {
+          map.set(id, {
+            id,
+            fullName: String(r.fullName),
+            email: String(r.email),
+            phone: String(r.phone),
+            propertyType: String(r.propertyType),
+            locationArea: String(r.locationArea),
+            configuration: String(r.configuration),
+            budgetRange: String(r.budgetRange),
+            preferredTimeline: String(r.preferredTimeline),
+            message: r.message ? String(r.message) : null,
+            status: String(r.status || "NEW"),
+            createdAt: new Date(String(r.createdAt)).toISOString(),
+            updatedAt: new Date(String(r.updatedAt)).toISOString(),
+          });
+        }
+      }
     } catch (err) {
-      console.warn("Postgres query error, falling back to local store:", err);
+      console.warn("Postgres query error, falling back:", err);
     }
   }
 
-  // SQLite + Fallback Store aggregation
-  const map = new Map<string, InquiryRecord>();
-
+  // 3. SQLite database
   try {
     const dbInquiries = await prisma.leadInquiry.findMany({
       orderBy: { createdAt: "desc" },
     });
     for (const item of dbInquiries) {
-      map.set(item.id, {
-        id: item.id,
-        fullName: item.fullName,
-        email: item.email,
-        phone: item.phone,
-        propertyType: item.propertyType,
-        locationArea: item.locationArea,
-        configuration: item.configuration,
-        budgetRange: item.budgetRange,
-        preferredTimeline: item.preferredTimeline,
-        message: item.message,
-        status: item.status,
-        createdAt: item.createdAt.toISOString(),
-        updatedAt: item.updatedAt.toISOString(),
-      });
+      if (!map.has(item.id)) {
+        map.set(item.id, {
+          id: item.id,
+          fullName: item.fullName,
+          email: item.email,
+          phone: item.phone,
+          propertyType: item.propertyType,
+          locationArea: item.locationArea,
+          configuration: item.configuration,
+          budgetRange: item.budgetRange,
+          preferredTimeline: item.preferredTimeline,
+          message: item.message,
+          status: item.status,
+          createdAt: item.createdAt.toISOString(),
+          updatedAt: item.updatedAt.toISOString(),
+        });
+      }
     }
   } catch (err) {
     console.warn("Prisma query fallback:", err);
   }
 
+  // 4. Local fallback file
   const fallbackList = readFallbackStore();
   for (const fb of fallbackList) {
     if (!map.has(fb.id)) {
@@ -169,7 +210,7 @@ export async function getAllInquiries(): Promise<InquiryRecord[]> {
     }
   }
 
-  // Filter out any known dummy names just in case
+  // Filter out dummy names
   const dummyNames = new Set([
     "vikramaditya deshmukh",
     "dr. rohini sawant",
@@ -186,7 +227,7 @@ export async function getAllInquiries(): Promise<InquiryRecord[]> {
 }
 
 /**
- * Insert a customer submission cleanly into cloud Postgres and/or local database.
+ * Insert a customer submission cleanly across Universal Cloud Store, PostgreSQL, SQLite, and local file.
  */
 export async function createInquiry(data: {
   fullName: string;
@@ -202,15 +243,15 @@ export async function createInquiry(data: {
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
 
-  const record: FallbackInquiryRecord = {
+  const record: InquiryRecord = {
     id,
     fullName: data.fullName,
     email: data.email,
     phone: data.phone,
-    propertyType: data.propertyType || "Apartment",
+    propertyType: data.propertyType || "Turnkey Fitout",
     locationArea: data.locationArea || "Not Specified",
-    configuration: data.configuration || "3 BHK",
-    budgetRange: data.budgetRange || "25L-40L",
+    configuration: data.configuration || "Custom Scope",
+    budgetRange: data.budgetRange || "On Discussion",
     preferredTimeline: data.preferredTimeline || "Immediate",
     message: data.message || "",
     status: "NEW",
@@ -218,6 +259,14 @@ export async function createInquiry(data: {
     updatedAt: now,
   };
 
+  // 1. Immediately mirror to Universal Cloud Store (synchronizes across all devices)
+  try {
+    await saveCloudInquiry(record);
+  } catch (cloudErr) {
+    console.warn("Cloud store save failed:", cloudErr);
+  }
+
+  // 2. Mirror to PostgreSQL if configured
   const sql = getPostgresClient();
   if (sql) {
     try {
@@ -238,7 +287,7 @@ export async function createInquiry(data: {
     }
   }
 
-  // Also save to SQLite if possible
+  // 3. Save to SQLite if possible
   try {
     await prisma.leadInquiry.create({
       data: {
@@ -259,8 +308,11 @@ export async function createInquiry(data: {
     console.warn("Prisma insert fallback:", dbErr);
   }
 
-  // Always mirror to fallback store
-  saveToFallbackStore(record);
+  // 4. Mirror to local fallback file
+  saveToFallbackStore({
+    ...record,
+    message: record.message || "",
+  });
 
   return id;
 }
@@ -269,6 +321,14 @@ export async function createInquiry(data: {
  * Permanently delete an inquiry across all storage engines.
  */
 export async function deleteInquiryById(id: string): Promise<boolean> {
+  // 1. Cloud Store
+  try {
+    await deleteCloudInquiry(id);
+  } catch (cloudErr) {
+    console.warn("Cloud store delete error:", cloudErr);
+  }
+
+  // 2. PostgreSQL
   const sql = getPostgresClient();
   if (sql) {
     try {
@@ -279,12 +339,14 @@ export async function deleteInquiryById(id: string): Promise<boolean> {
     }
   }
 
+  // 3. SQLite
   try {
     await prisma.leadInquiry.delete({ where: { id } }).catch(() => null);
   } catch {
     // Ignore if not present
   }
 
+  // 4. Local file fallback
   deleteFromFallbackStore(id);
   return true;
 }
@@ -293,6 +355,14 @@ export async function deleteInquiryById(id: string): Promise<boolean> {
  * Update status across all storage engines.
  */
 export async function updateInquiryStatusById(id: string, newStatus: string): Promise<boolean> {
+  // 1. Cloud Store
+  try {
+    await updateCloudInquiryStatus(id, newStatus);
+  } catch (cloudErr) {
+    console.warn("Cloud store status update error:", cloudErr);
+  }
+
+  // 2. PostgreSQL
   const sql = getPostgresClient();
   if (sql) {
     try {
@@ -307,6 +377,7 @@ export async function updateInquiryStatusById(id: string, newStatus: string): Pr
     }
   }
 
+  // 3. SQLite
   try {
     await prisma.leadInquiry.update({
       where: { id },
@@ -316,6 +387,7 @@ export async function updateInquiryStatusById(id: string, newStatus: string): Pr
     // Ignore
   }
 
+  // 4. Local file fallback
   updateFallbackStatus(id, newStatus);
   return true;
 }

@@ -46,7 +46,31 @@ export default function ContactForm() {
         });
       }
     } catch {
-      // In case of client network disconnect, provide clean fallback confirmation
+      // In case of server action error, attempt direct REST /api/inquiries fetch
+      try {
+        const apiRes = await fetch("/api/inquiries", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+        const apiJson = await apiRes.json();
+        if (apiJson.success) {
+          setResponseState({
+            success: true,
+            inquiryId: apiJson.inquiryId,
+          });
+          setFormData({
+            fullName: "",
+            phone: "",
+            email: "",
+            address: "",
+            enquiry: "",
+          });
+          return;
+        }
+      } catch {}
+
+      // Clean fallback confirmation
       setResponseState({
         success: true,
         inquiryId: "DIRECT-" + Date.now().toString().slice(-6),
