@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   MessageSquare,
 } from "lucide-react";
+import { BRAND_CONFIG } from "@/lib/constants";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -67,13 +68,13 @@ export default function ContactForm() {
     <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl relative">
       <div className="flex items-center gap-2 text-xs font-bold text-[#3154A5] uppercase tracking-wider mb-2">
         <Sparkles className="w-3.5 h-3.5 text-[#3154A5]" />
-        <span>Direct Architectural Review</span>
+        <span>Direct Design &amp; Contracting Review</span>
       </div>
       <h3 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900">
-        Request 3D Spatial Layout & Locked BOQ
+        Request 3D Spatial Layout &amp; Locked BOQ
       </h3>
       <p className="text-xs sm:text-sm text-slate-600 mt-2 mb-8 leading-relaxed font-light">
-        Submit your property details below. Contact Person Mr. Sunil Pandey will review your builder floorplan and contact you within 4 business hours with an architectural feasibility assessment.
+        Submit your property details below. {BRAND_CONFIG.contactPerson} will review your floorplan and contact you within 4 business hours with an engineering and contracting feasibility assessment.
       </p>
 
       {responseState?.success ? (
@@ -89,11 +90,11 @@ export default function ContactForm() {
             <span className="font-mono text-[#3154A5] font-bold">
               BSI-{responseState.inquiryId?.slice(0, 6).toUpperCase()}
             </span>
-            . Contact Person Mr. Sunil Pandey will call you shortly to arrange your 3D presentation.
+            . {BRAND_CONFIG.contactPerson} will call you shortly to arrange your 3D presentation and locked BOQ review.
           </p>
           <div className="mt-6 pt-4 border-t border-emerald-200 text-xs text-slate-600 flex items-center justify-center gap-2">
             <ShieldCheck className="w-4 h-4 text-[#3154A5]" />
-            <span>Logged into Blue Space Interior Design Systems</span>
+            <span>Logged into Blue Space Interior Design &amp; Contracting Systems</span>
           </div>
           <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
@@ -189,7 +190,7 @@ export default function ContactForm() {
                 }
                 className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:bg-white focus:outline-none focus:border-[#3154A5] focus:ring-1 focus:ring-[#3154A5] transition-all"
               >
-                <option value="Mumbai MMR (Thane, Hiranandani, Bandra, Powai)">Mumbai MMR (Thane, Hiranandani, Bandra, Worli, Powai)</option>
+                <option value="Mumbai MMR (Thane, Hiranandani, Bandra, Powai)">Mumbai MMR (Thane, Borivali, Mulund, Bandra, Powai)</option>
                 <option value="Pune / PCMC (Baner, Koregaon Park, Kalyani Nagar)">Pune / PCMC (Baner, Koregaon Park, Kalyani Nagar)</option>
                 <option value="Bengaluru (Indiranagar, Koramangala, Whitefield)">Bengaluru (Indiranagar, Koramangala, Whitefield)</option>
                 <option value="Delhi NCR (Gurgaon, South Delhi, Noida)">Delhi NCR (Gurgaon, South Delhi, Noida)</option>
@@ -200,7 +201,7 @@ export default function ContactForm() {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                Apartment Configuration *
+                Property Category &amp; Type *
               </label>
               <select
                 value={formData.configuration}
@@ -212,9 +213,10 @@ export default function ContactForm() {
                 <option value="3 BHK Luxury">3 BHK Luxury Apartment</option>
                 <option value="4 BHK Spacious">4 BHK Spacious Residence</option>
                 <option value="4.5 / 5 BHK Penthouse">4.5 / 5 BHK Penthouse / Sky Villa</option>
-                <option value="Duplex Villa">Independent Duplex / Row House</option>
+                <option value="Duplex Villa">Independent Villa / Bungalow</option>
+                <option value="Corporate Office">Corporate Office / Commercial Workspace</option>
+                <option value="Retail / Hospitality">Retail Showroom / Hospitality Space</option>
                 <option value="2 BHK Executive">2 BHK Executive Fitout</option>
-                <option value="Commercial Studio / Clinic">Commercial Studio / Medical Clinic</option>
               </select>
             </div>
           </div>
@@ -234,8 +236,9 @@ export default function ContactForm() {
               >
                 <option value="25L-40L">₹25 Lakhs – ₹40 Lakhs (Premium 3 BHK Turnkey)</option>
                 <option value="40L-70L">₹40 Lakhs – ₹70 Lakhs (Luxury Architectural 4 BHK)</option>
-                <option value="70L+">₹70 Lakhs+ (Ultra-Luxury Penthouse & Duplex)</option>
+                <option value="70L+">₹70 Lakhs+ (Ultra-Luxury Penthouse &amp; Duplex)</option>
                 <option value="16L-24L">₹16 Lakhs – ₹24 Lakhs (Executive 2 BHK)</option>
+                <option value="Commercial-Custom">Commercial / Office Fitout (Custom BOQ)</option>
               </select>
             </div>
 
@@ -260,11 +263,11 @@ export default function ContactForm() {
           {/* Custom Message */}
           <div>
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-              Specific Architectural Requirements / Floorplan Notes (Optional)
+              Property Scope / Floorplan Notes (Optional)
             </label>
             <textarea
               rows={3}
-              placeholder="e.g. Possession in Raymond Ten X Tower 4 next month. Need soundproofing for home office, walk-in closet for master suite, and German handleless kitchen."
+              placeholder="e.g. Possession next month. Need turnkey contracting for full home/office, acoustic false ceiling, modular millwork, and Italian marble restoration."
               value={formData.message}
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
@@ -280,7 +283,7 @@ export default function ContactForm() {
             className="w-full brand-button py-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all disabled:opacity-50 cursor-pointer"
           >
             {isSubmitting ? (
-              <span>Transmitting Request to Principal Architect...</span>
+              <span>Transmitting Request to {BRAND_CONFIG.contactPerson}...</span>
             ) : (
               <>
                 <Send className="w-4 h-4" />
@@ -293,18 +296,20 @@ export default function ContactForm() {
           <div className="pt-2 flex items-center justify-center gap-2 text-xs text-slate-600">
             <span>Prefer instant WhatsApp?</span>
             <a
-              href="https://wa.me/917738318383?text=Hello%20Mr.%20Sunil%20Pandey%2C%20I%20am%20interested%20in%20turnkey%20interior%20design%20services%20with%20Blue%20Space%20Interiors."
+              href={`https://wa.me/917738318383?text=${encodeURIComponent(
+                "Hello Mr. Sunil Pandey, I am interested in turnkey interior design & contracting services with Blue Space Interiors."
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-700 font-semibold hover:underline inline-flex items-center gap-1"
             >
               <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Chat with Mr. Sunil Pandey (+91 77383 18383)</span>
+              <span>Chat with {BRAND_CONFIG.contactPerson} (+91 77383 18383)</span>
             </a>
           </div>
 
           <p className="text-[11px] text-center text-slate-500 font-light">
-            Confidentiality Guarantee: Your contact information is never shared with third parties. Direct architectural review only.
+            Confidentiality Guarantee: Your contact information is never shared with third parties. Direct consultation with {BRAND_CONFIG.contactPerson} only.
           </p>
         </form>
       )}

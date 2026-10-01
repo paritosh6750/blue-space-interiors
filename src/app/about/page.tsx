@@ -1,40 +1,42 @@
-import prisma from "@/lib/prisma";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Award,
   ShieldCheck,
   Compass,
-  CheckCircle,
   ArrowRight,
   Sparkles,
-  Users2,
-  Building,
-  Factory,
-  GraduationCap,
+  Building2,
+  CheckCircle2,
+  PhoneCall,
+  MapPin,
+  Clock,
+  BookOpen,
+  Briefcase,
+  Layers,
+  HelpCircle,
 } from "lucide-react";
+import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
 
 export const revalidate = 0; // Fresh SSR data
 
 export const metadata: Metadata = {
-  title: "About Us | Blue Space Interiors | Premier Architectural & Turnkey Studio",
+  title: "About Us | Blue Space Interiors | Turnkey Interior Design & Contracting PAN India",
   description:
-    "Learn about Blue Space Interiors, founded by Sir J.J. College of Architecture and VJTI alumni. Single-window turnkey execution with 45-day guaranteed handover, zero cost escalations, and PAN India reach. Studio HQ at The Capital Tree, Thane (West).",
+    "Learn about Blue Space Interiors, established in 2020. Single-window turnkey interior design and contracting bridging the gap between designers and contractors. Guaranteed 120-day handover across India, led by Mr. Sunil Pandey.",
   keywords: [
-    "luxury turnkey interior designers",
-    "architectural interior design firm",
-    "turnkey interior design studio India",
-    "Abhishek Pandey architect",
-    "Sanskruti Suryavanshi interior designer",
-    "luxury residential interiors PAN India",
-    "Blue Space Interiors",
+    "turnkey interior design and contracting",
+    "interior contracting firm India",
+    "Sunil Pandey Blue Space Interiors",
+    "turnkey fitout contractors",
+    "commercial and residential interior contracting",
+    "120 day handover guarantee",
+    "PAN India interior contractors",
   ],
 };
 
-import { getSafeTeamMembers } from "@/lib/fallbackData";
-
-export default async function AboutPage() {
-  const teamMembers = await getSafeTeamMembers();
+export default function AboutPage() {
+  const yearsOfExcellence = getYearsOfExcellence();
 
   return (
     <div className="bg-[#fbfaf7] text-slate-900 min-h-screen">
@@ -43,77 +45,82 @@ export default async function AboutPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#3154A5] text-xs font-bold tracking-wider uppercase mb-4 shadow-sm">
             <Compass className="w-3.5 h-3.5 text-[#3154A5]" />
-            <span>Architectural Rigor • Institutional Pedigree</span>
+            <span>Integrated Design &amp; Contracting • Established 2020</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 max-w-4xl mx-auto leading-tight">
-            Architectural Mastery with Premier{" "}
-            <span className="brand-gradient-text">Luxury Interior Designers</span>
+            Single-Window Accountability in{" "}
+            <span className="brand-gradient-text">Design &amp; Contracting</span>
           </h1>
 
-          <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-light leading-relaxed">
-            Founded by alumni of Sir J.J. College of Architecture and VJTI Mumbai, Blue Space Interiors brings structural integrity, German factory engineering, and uncompromising turnkey accountability to luxury residences across India.
+          <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-3xl mx-auto font-light leading-relaxed">
+            Blue Space Interiors was founded to eliminate the fundamental disconnect that plagues the interior industry: 
+            impractical concepts created by detached designers, and the lack of design understanding among standalone contractors. 
+            We unify both under one disciplined roof with a strict {BRAND_CONFIG.handoverGuarantee}.
           </p>
         </div>
       </section>
 
-      {/* Brand Narrative & Studio History */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
+      {/* Brand Narrative & Core Metrics Ribbon */}
+      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7">
             <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
-              Our Origin & Purpose
+              Our Vision &amp; Inception
             </span>
-            <h2 className="mt-2 text-3xl font-serif font-bold text-slate-900">
-              Why We Built a Direct Architectural Turnkey Studio
+            <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
+              Why We Built a Direct Design &amp; Contracting Model
             </h2>
             <div className="mt-6 space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed font-light">
               <p>
-                In 2018, as large venture-funded aggregators entered the market with mass-market modular furniture catalogs, we witnessed high-net-worth homeowners facing acute frustration. Homeowners purchasing premium 3 BHK, 4 BHK, penthouses, and private villas were being assigned junior freelance coordinators and particle-board cabinetry that sagged under coastal humidity.
+                Established in <strong>2020</strong> under the leadership of <strong>Mr. Sunil Pandey</strong>, Blue Space Interiors was built from the ground up to solve an acute industry frustration. For years, clients undertaking residential, commercial, or corporate renovations faced a painful choice: hire an expensive design studio that produced unbuildable drawings with runaway budgets, or hire an unorganized local contractor who butchered design aesthetics and missed timelines by months.
               </p>
               <p>
-                Blue Space Interiors was established as a direct architectural countermeasure. Led by Council of Architecture-registered Architect Abhishek Pandey (COA: CA/2012/54892) and Civil Engineer Panya Bangari (VJTI), we built our own 18,000 sq.ft. cleanroom pre-fabrication plant in the Thane manufacturing corridor to deliver turnkey excellence across India.
+                We realized that the real problem was not design alone or contracting alone—it was the <em>fracture</em> between the two. Designers lacked hands-on site contracting experience, while standalone contractors lacked architectural literacy.
               </p>
               <p>
-                By pre-fabricating 85% of modular cabinetry off-site using calibrated Century Club Prime BWP Marine Plywood and genuine Austrian Blum fittings, we eliminated on-site noise, dust, and contractor delays. This architectural precision enables our legally bound 45-day key handover and 10-year direct warranty.
+                Blue Space Interiors provides complete <strong>Design &amp; Contracting</strong> with an emphasis on rigorous execution. By keeping spatial design, MEP engineering, material sourcing, and site contracting under a single point of accountability, we ensure that every square foot drawn is constructible, every item in our BOQ is locked, and every handover is delivered within our guaranteed <strong>120-day timeline</strong>.
               </p>
             </div>
 
             <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-slate-200 pt-6">
               <div>
-                <span className="text-2xl sm:text-3xl font-serif font-bold text-[#3154A5]">10+ Years</span>
-                <p className="text-xs text-slate-600 mt-1 font-medium">Architectural Excellence</p>
+                <span className="text-2xl sm:text-3xl font-serif font-bold text-[#3154A5]">{yearsOfExcellence}</span>
+                <p className="text-xs text-slate-600 mt-1 font-medium">of Excellence (Est. 2020)</p>
               </div>
               <div>
                 <span className="text-2xl sm:text-3xl font-serif font-bold text-[#3154A5]">150+</span>
                 <p className="text-xs text-slate-600 mt-1 font-medium">Projects Delivered</p>
               </div>
               <div>
-                <span className="text-2xl sm:text-3xl font-serif font-bold text-[#3154A5]">End-To-End</span>
-                <p className="text-xs text-slate-600 mt-1 font-medium">Project Management</p>
+                <span className="text-2xl sm:text-3xl font-serif font-bold text-[#3154A5]">120-Day</span>
+                <p className="text-xs text-slate-600 mt-1 font-medium">Handover Guarantee</p>
               </div>
               <div>
-                <span className="text-2xl sm:text-3xl font-serif font-bold text-[#3154A5]">Pan India</span>
-                <p className="text-xs text-slate-600 mt-1 font-medium">Execution Network</p>
+                <span className="text-2xl sm:text-3xl font-serif font-bold text-[#3154A5]">PAN India</span>
+                <p className="text-xs text-slate-600 mt-1 font-medium">Execution Scope</p>
               </div>
             </div>
           </div>
 
-          <div className="relative">
+          <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl">
               <img
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-                alt="Blue Space Interiors Studio & Architecture Desk"
-                className="w-full h-[480px] object-cover"
+                alt="Blue Space Interiors Turnkey Contracting Leadership"
+                className="w-full h-[460px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-lg">
                 <div className="flex items-center gap-2 text-xs text-[#3154A5] font-bold uppercase tracking-wider">
-                  <Factory className="w-4 h-4 text-[#3154A5]" />
-                  <span>Precision Offsite Manufacturing Facility</span>
+                  <Briefcase className="w-4 h-4 text-[#3154A5]" />
+                  <span>Turnkey Leadership</span>
                 </div>
-                <p className="text-xs text-slate-600 mt-1.5 font-light">
-                  Equipped with German Homag CNC beam saws, PUR zero-joint edge banders, and specialized dust-free PU spray booths.
+                <h3 className="text-base font-serif font-bold text-slate-900 mt-1">
+                  Mr. Sunil Pandey
+                </h3>
+                <p className="text-xs text-slate-600 mt-1 font-light leading-relaxed">
+                  Head of Turnkey Contracting &amp; Client Advisory. Personally governing BOQ integrity, technical feasibility, and on-time site handovers across India.
                 </p>
               </div>
             </div>
@@ -121,138 +128,170 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Dynamic Core Team Members Section */}
-      <section className="py-20 bg-[#f8f7f4] border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase flex items-center justify-center gap-1.5">
-              <Users2 className="w-3.5 h-3.5 text-[#3154A5]" />
-              Core Leadership & Architectural Directors
-            </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
-              The Specialized Minds Shaping High-End Residences
+      {/* SEO-Optimized Thought Leadership Blog / Article Section */}
+      <section className="py-20 bg-[#f8f7f4] border-y border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#3154A5] text-xs font-bold tracking-wider uppercase mb-3 shadow-xs">
+              <BookOpen className="w-3.5 h-3.5 text-[#3154A5]" />
+              <span>Industry Editorial &amp; Analysis</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 leading-tight">
+              Bridging the Divide: Why the Gap Between Designers &amp; Contractors Fails Projects
             </h2>
-            <p className="mt-3 text-slate-600 text-sm font-light">
-              Unlike platforms where your project is handed to outsourced subcontractors, our core leaders personally govern every stage of design and execution.
+            <p className="mt-3 text-slate-600 text-sm sm:text-base font-light">
+              An inside analysis on how impractical design concepts and contractor communication breakdowns inflate budgets by 30%—and how integrated Design &amp; Contracting solves it.
             </p>
           </div>
 
-          {/* Dynamic Grid */}
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member) => (
-              <div
-                key={member.id}
-                className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all flex flex-col group"
-              >
-                <div className="relative h-72 overflow-hidden bg-slate-100">
-                  <img
-                    src={member.avatarUrl}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                  
-                  <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-slate-200 text-[10px] font-bold text-[#3154A5] shadow-sm">
-                    {member.experience.split("•")[0]}
-                  </div>
+          <article className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-lg space-y-8 text-slate-700 text-sm sm:text-base leading-relaxed font-light">
+            {/* Part 1 */}
+            <div>
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-slate-900 flex items-center gap-2">
+                <span className="w-8 h-8 rounded-xl bg-blue-50 text-[#3154A5] text-sm font-bold flex items-center justify-center border border-blue-200 flex-shrink-0">
+                  01
+                </span>
+                The Designer Dilemma: Impractical Concepts Detached From Site Feasibility
+              </h3>
+              <p className="mt-3">
+                In standard architectural practice, interior designers typically operate behind computer monitors. They create visually stunning 3D renderings featuring cantilevered stone islands, intricate false ceiling drops, and hidden flush doors. However, many designers work in conceptual silos without an in-depth understanding of on-site MEP (Mechanical, Electrical, and Plumbing) constraints, load-bearing beam profiles, HVAC duct clearances, and real-world material tolerances.
+              </p>
+              <p className="mt-3">
+                The result? A set of aesthetic drawings that look breathtaking in a PDF portfolio but prove unbuildable on-site. When the physical site reveals ceiling beam drops, structural columns, or ducting shafts that the drawings overlooked, the client is forced into compromises, costly structural revisions, and budget variations.
+              </p>
+            </div>
 
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-serif font-bold text-white group-hover:text-blue-200 transition-colors">
-                      {member.name}
-                    </h3>
-                    <p className="text-xs font-medium text-blue-200 mt-0.5">
-                      {member.role}
-                    </p>
-                  </div>
+            {/* Part 2 */}
+            <div className="pt-6 border-t border-slate-100">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-slate-900 flex items-center gap-2">
+                <span className="w-8 h-8 rounded-xl bg-blue-50 text-[#3154A5] text-sm font-bold flex items-center justify-center border border-blue-200 flex-shrink-0">
+                  02
+                </span>
+                The Contractor Trap: Lack of Design Comprehension and Aesthetic Sensitivity
+              </h3>
+              <p className="mt-3">
+                On the opposite end of the spectrum are standalone local contractors. While they understand cement, plywood, and labor management, most contractors lack the architectural literacy to interpret nuanced design drawings. Subtle details such as shadow-gap reveals, 3000K warm lighting reflections, bookmatched stone veining, and millimeter-calibrated hardware clearances are frequently misunderstood or dismissed as unnecessary complications.
+              </p>
+              <p className="mt-3">
+                Without a designer actively directing site execution daily, standalone contractors substitute specified materials with generic alternatives, misalign groove details, and improvise on the fly. The final outcome bears little resemblance to what the homeowner or enterprise originally paid for.
+              </p>
+            </div>
+
+            {/* Part 3 */}
+            <div className="pt-6 border-t border-slate-100">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-slate-900 flex items-center gap-2">
+                <span className="w-8 h-8 rounded-xl bg-blue-50 text-[#3154A5] text-sm font-bold flex items-center justify-center border border-blue-200 flex-shrink-0">
+                  03
+                </span>
+                The Blame Game That Costs Clients Months and Millions
+              </h3>
+              <p className="mt-3">
+                When a project is bifurcated between a separate designer and a separate contractor, the client inevitably becomes the mediator in a relentless blame game:
+              </p>
+              <ul className="mt-3 space-y-2 list-disc pl-6 text-slate-600">
+                <li>
+                  The designer claims: <em>&ldquo;The contractor is incompetent and doesn&rsquo;t know how to read drawings.&rdquo;</em>
+                </li>
+                <li>
+                  The contractor fires back: <em>&ldquo;The designer doesn&rsquo;t understand site realities and gave unworkable measurements.&rdquo;</em>
+                </li>
+              </ul>
+              <p className="mt-3">
+                While both parties pass the blame, the client suffers months of possession delays, society NOC fines, and escalating variation bills.
+              </p>
+            </div>
+
+            {/* Part 4 */}
+            <div className="pt-6 border-t border-slate-100">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-slate-900 flex items-center gap-2">
+                <span className="w-8 h-8 rounded-xl bg-blue-50 text-[#3154A5] text-sm font-bold flex items-center justify-center border border-blue-200 flex-shrink-0">
+                  04
+                </span>
+                The Blue Space Solution: Unified Design &amp; Contracting Under Sunil Pandey
+              </h3>
+              <p className="mt-3">
+                Blue Space Interiors eliminates the middleman, the fragmentation, and the finger-pointing. We operate as an integrated <strong>Design &amp; Contracting</strong> firm where design intent and site execution are governed by the same accountable leadership team under <strong>Mr. Sunil Pandey</strong>.
+              </p>
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-4 rounded-2xl bg-blue-50/60 border border-blue-200">
+                  <h4 className="font-semibold text-slate-900 text-sm flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#3154A5]" />
+                    Design Grounded in Constructability
+                  </h4>
+                  <p className="text-xs text-slate-600 mt-1">
+                    Every 3D render and working drawing is pre-vetted by our contracting engineers before client presentation, ensuring zero structural surprises.
+                  </p>
                 </div>
-
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="inline-block px-3 py-1 rounded-lg bg-blue-50 border border-blue-200 text-[11px] text-[#3154A5] font-semibold mb-3">
-                      Specialty: {member.specialty}
-                    </div>
-                    <p className="text-xs text-slate-600 leading-relaxed font-light">
-                      {member.bio}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                    <span className="flex items-center gap-1 text-emerald-700 font-semibold">
-                      <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
-                      Active Project Lead
-                    </span>
-                    <span className="text-[#3154A5] font-bold">Studio Headquarters</span>
-                  </div>
+                <div className="p-4 rounded-2xl bg-blue-50/60 border border-blue-200">
+                  <h4 className="font-semibold text-slate-900 text-sm flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#3154A5]" />
+                    Locked BOQ &amp; Zero Cost Escalations
+                  </h4>
+                  <p className="text-xs text-slate-600 mt-1">
+                    Because we execute the contracting directly, our itemized Bill of Quantities is locked upfront. No mid-project price spikes or hidden variation fees.
+                  </p>
+                </div>
+                <div className="p-4 rounded-2xl bg-blue-50/60 border border-blue-200">
+                  <h4 className="font-semibold text-slate-900 text-sm flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#3154A5]" />
+                    Guaranteed 120-Day Handover SLA
+                  </h4>
+                  <p className="text-xs text-slate-600 mt-1">
+                    Parallel milestone management ensures civil, electrical, carpentry, and finishing progress synchronously without site idle time.
+                  </p>
+                </div>
+                <div className="p-4 rounded-2xl bg-blue-50/60 border border-blue-200">
+                  <h4 className="font-semibold text-slate-900 text-sm flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#3154A5]" />
+                    PAN India Execution Capability
+                  </h4>
+                  <p className="text-xs text-slate-600 mt-1">
+                    Mobilizing verified project management and contracting crews for residential, corporate, and retail properties across Indian metros.
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+
+            {/* Part 5 */}
+            <div className="pt-6 border-t border-slate-100">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-slate-900 flex items-center gap-2">
+                <span className="w-8 h-8 rounded-xl bg-blue-50 text-[#3154A5] text-sm font-bold flex items-center justify-center border border-blue-200 flex-shrink-0">
+                  05
+                </span>
+                Comprehensive Turnkey Scopes: Residential, Commercial &amp; Corporate
+              </h3>
+              <p className="mt-3">
+                Whether executing a high-ticket penthouse, a duplex residence, a high-rise apartment, or a multi-floor commercial corporate workspace, the principles of integrated contracting remain the same: single-window accountability, transparent itemized costing, certified materials, and prompt possession.
+              </p>
+            </div>
+          </article>
         </div>
       </section>
 
-      {/* Institutional Credentials & Quality Benchmarks */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
-            Rigorous Engineering Standards
-          </span>
-          <h2 className="mt-2 text-3xl font-serif font-bold text-slate-900">
-            Our Certified Material Commitments
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm">
-            <Award className="w-8 h-8 text-[#3154A5] mb-3" />
-            <h4 className="text-slate-900 font-semibold text-sm">Blum & Häfele Direct OEM</h4>
-            <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light">
-              Exclusively original Austrian Blum Aventos lift-ups, Legrabox drawers, and Häfele architectural handles certified for 200,000 cycles.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm">
-            <ShieldCheck className="w-8 h-8 text-emerald-600 mb-3" />
-            <h4 className="text-slate-900 font-semibold text-sm">Century Club Prime BWP</h4>
-            <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light">
-              100% Calibrated Boiling Water Proof plywood with Gurjan face veneer, zero core gaps, and 25-year manufacturer anti-borer warranty.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm">
-            <Sparkles className="w-8 h-8 text-[#3154A5] mb-3" />
-            <h4 className="text-slate-900 font-semibold text-sm">Italian Stone Diamond Polish</h4>
-            <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light">
-              Laser-calibrated mitered joint transitions and 8-stage diamond abrasive pad polishing with water-repellent silane impregnators.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm">
-            <GraduationCap className="w-8 h-8 text-blue-600 mb-3" />
-            <h4 className="text-slate-900 font-semibold text-sm">COA Registered Supervision</h4>
-            <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light">
-              Every structural wall opening, electrical load calculation, and false ceiling structural grid is certified by registered architects.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* About CTA */}
-      <section className="py-16 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-blue-50/70 border-t border-blue-200 text-center">
+      {/* About CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-blue-50/70 border-t border-blue-200 text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900">
             Schedule a Private Discussion with Mr. Sunil Pandey
           </h2>
-          <p className="mt-3 text-slate-600 text-sm max-w-xl mx-auto font-light">
-            Bring your builder floorplan to our studio at 1507 on 15th, The Capital Tree, Pokhran Road No. 2, Thane (West) 400601 for an architectural feasibility review.
+          <p className="mt-3 text-slate-600 text-sm sm:text-base max-w-xl mx-auto font-light">
+            Bring your floorplan to our registered office in Thane (West), Maharashtra or schedule a comprehensive virtual consultation from anywhere in India.
           </p>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="brand-button px-8 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center gap-2 shadow-md"
+              className="brand-button px-8 py-3.5 rounded-xl text-xs font-bold tracking-wider uppercase flex items-center gap-2 shadow-md"
             >
-              <span>Schedule Architectural Session</span>
+              <span>Book Project Consultation</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
+            <a
+              href={`tel:${BRAND_CONFIG.phoneRaw}`}
+              className="px-8 py-3.5 rounded-xl text-xs font-semibold tracking-wider text-slate-800 bg-white border border-slate-300 flex items-center gap-2 hover:border-[#3154A5] shadow-sm transition-all"
+            >
+              <PhoneCall className="w-4 h-4 text-[#3154A5]" />
+              <span>Call Direct: {BRAND_CONFIG.phone}</span>
+            </a>
           </div>
         </div>
       </section>

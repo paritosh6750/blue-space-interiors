@@ -1,5 +1,4 @@
 import Link from "next/link";
-import prisma from "@/lib/prisma";
 import {
   ShieldCheck,
   CheckCircle2,
@@ -16,30 +15,35 @@ import {
   Check,
   MapPin,
   Mail,
+  Briefcase,
+  Layers,
 } from "lucide-react";
 
 import { getSafeFeaturedProjects } from "@/lib/fallbackData";
+import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
 
 export const revalidate = 0; // Fresh SSR data
 
 export default async function HomePage() {
   const featuredProjects = await getSafeFeaturedProjects();
+  const yearsOfExcellence = getYearsOfExcellence();
 
-  // Schema.org JSON-LD for Luxury Turnkey Architectural & Interior Studio
+  // Schema.org JSON-LD for Turnkey Interior Design & Contracting Business
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
-    "name": "Blue Space Interiors",
-    "alternateName": "Blue Space Turnkey Luxury Interior Designers",
+    "name": BRAND_CONFIG.name,
+    "alternateName": "Blue Space Turnkey Interior Design & Contracting",
     "description":
-      "Blue Space Interiors is a premier architectural and turnkey interior design studio delivering bespoke residential transformations across India. Specializing in high-end penthouses, 3 BHK, 4 BHK, and luxury villas. Guaranteed 45-day handover, zero cost escalations, and 10-year warranty. Studio headquarters at The Capital Tree, Thane (West).",
+      "Blue Space Interiors is a premier turnkey interior design and contracting firm delivering complete end-to-end fitouts for residential, commercial, and corporate properties across India. Guaranteed 120-day handover, zero cost escalations, and single-window contracting execution led by Mr. Sunil Pandey.",
     "url": "https://bluespaceinteriors.com",
-    "telephone": "+917738318383",
-    "email": "bluespaceinteriors1@gmail.com",
+    "telephone": BRAND_CONFIG.phoneRaw,
+    "email": BRAND_CONFIG.email,
     "priceRange": "₹₹₹₹",
+    "taxID": BRAND_CONFIG.gstin,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "1507 on 15th, The Capital Tree, Pokhran Road No. 2",
+      "streetAddress": "Thane West",
       "addressLocality": "Thane West",
       "addressRegion": "Maharashtra",
       "postalCode": "400601",
@@ -70,10 +74,10 @@ export default async function HomePage() {
     "sameAs": [
       "https://www.instagram.com/blue_space_interiors?stkn=d215ZWN2cTdqN3Fk",
       "https://www.facebook.com/108155958732682?ref=PROFILE_EDIT_xav_ig_profile_page_web",
-      "https://www.threads.com/@blue_space_interiors?xmt=AQG0IGwV1GoBLDtI18XKZJ9Y2wucsVIJLH9P3JFgGawIpf0"
+      "https://www.threads.com/@blue_space_interiors?xmt=AQG0IGwV1GoBLDtI18XKZJ9Y2wucsVIJLH9P3JFgGawIpf0",
     ],
     "keywords":
-      "luxury turnkey interior designers, turnkey interior design studio India, architectural interior designers PAN India, luxury penthouses and villa interiors, Blue Space Interiors",
+      "turnkey interior contracting, interior design and contracting firm, residential and commercial interior fitouts, 120 day handover guarantee, Blue Space Interiors Sunil Pandey",
   };
 
   const faqJsonLd = {
@@ -82,34 +86,34 @@ export default async function HomePage() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How does Blue Space Interiors guarantee a 45-day turnkey handover?",
+        "name": "How does Blue Space Interiors guarantee a 120-day turnkey handover?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Unlike aggregators who rely on on-site manual carpentry, Blue Space Interiors manufactures 85% of modular cabinetry, wardrobes, and kitchen casework offsite in our precision CNC prefabrication facility. While civil, tiling, and false ceiling works happen at your residence, cabinetry is pre-finished with German PUR edge-banding. On-site installation takes only 10 to 14 days, allowing us to legally commit to a 45-day key handover with a ₹2,500/day penalty guarantee.",
+          "text": "Through our integrated Design & Contracting methodology led by Mr. Sunil Pandey, we bridge the gap between design conceptualization and on-site contracting. With locked procurement timelines, in-house technical supervision, and structured milestone scheduling across civil, MEP, millwork, and finishes, we commit to a strict 120-day turnkey key handover with zero delays.",
         },
       },
       {
         "@type": "Question",
-        "name": "What is the typical turnkey interior cost per square foot for a 3 BHK or 4 BHK?",
+        "name": "What property types do you undertake for interior contracting?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Turnkey interior execution typically ranges between ₹1,800 to ₹3,500 per sq.ft. depending on material specifications. A premium 3 BHK (1,400–1,800 sq.ft.) averages ₹28L to ₹42L for complete turnkey scope including modular kitchen, wardrobes, false ceilings, lighting, and civil works. A luxury 4 BHK or penthouse with Italian marble and Daikin VRV HVAC averages ₹50L to ₹85L+.",
+          "text": "We execute turnkey interior design and contracting for all types of properties across India—including luxury apartments, penthouses, independent villas, commercial corporate offices, retail showrooms, and healthcare/hospitality environments.",
         },
       },
       {
         "@type": "Question",
-        "name": "Why choose Blue Space Interiors over aggregators like Livspace or Bonito Designs?",
+        "name": "Why choose Blue Space Interiors over national aggregator platforms?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Aggregators operate on a broker model—they take 30–40% sales commissions and outsource your home to third-party sub-contractors and freelance designers who frequently change. Blue Space Interiors provides direct execution led by Principal Architect Abhishek Pandey (Sir J.J. College of Architecture) and VP Operations Panya Bangari (VJTI). We offer a 100% Zero Cost Escalation guarantee with fixed BOQ, 10-year direct warranty, and 100% BWP Marine Plywood instead of particle board.",
+          "text": "Aggregator platforms operate as sales brokers charging 30–40% commissions while outsourcing execution to unvetted third parties. Blue Space Interiors provides direct single-window Design & Contracting led by Mr. Sunil Pandey with a 100% Zero Cost Escalation guarantee, fixed itemized BOQ, certified materials, and dedicated site supervision.",
         },
       },
       {
         "@type": "Question",
-        "name": "Do you assist with gated society NOCs and working hour permissions?",
+        "name": "Do you provide turnkey contracting services across PAN India locations?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Premium gated communities across India have strict interior work rules (10 AM to 6 PM, zero drilling during lunch hours, goods elevator protection). Our dedicated liaison team manages society drawings, debris disposal NOCs, floor protection sheets, and security gate passes autonomously.",
+          "text": "Yes. Blue Space Interiors provides turnkey design and contracting services across India, mobilizing specialized execution crews, project managers, and supply chain partners for residential and commercial fitouts nationwide.",
         },
       },
     ],
@@ -132,7 +136,7 @@ export default async function HomePage() {
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85"
-            alt="Luxury Turnkey Interior Design & Architecture - Blue Space Interiors PAN India"
+            alt="Premier Turnkey Interior Design & Contracting - Blue Space Interiors PAN India"
             className="w-full h-full object-cover opacity-15"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#fbfaf7] via-[#fbfaf7]/80 to-transparent" />
@@ -141,19 +145,19 @@ export default async function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#3154A5] text-xs font-bold tracking-wider uppercase mb-8 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-[#3154A5]" />
-            <span>Bespoke Architectural Interiors • PAN India Turnkey Execution</span>
+            <span>Turnkey Interior Design &amp; Contracting • PAN India Execution</span>
           </div>
 
           {/* Primary Target Keyword in H1 */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-slate-900 tracking-tight leading-[1.12] max-w-5xl mx-auto">
-            Premier <span className="brand-gradient-text">Luxury Turnkey Interior Design</span> &amp; Architecture
+            Premier Turnkey <span className="brand-gradient-text">Interior Design &amp; Contracting</span> Firm
           </h1>
 
           <p className="mt-6 text-base sm:text-xl text-slate-700 max-w-3xl mx-auto font-light leading-relaxed">
-            Eliminate fragmented contractors, budget creep, and agonizing possession delays. We design and execute 
-            architectural-grade turnkey transformations for premium 3 BHK, 4 BHK, penthouses, and private residences 
-            across India with a strictly enforced{" "}
-            <strong className="text-slate-900 font-semibold">45-day handover guarantee</strong>.
+            Eliminate the costly divide between impractical designers and disconnected contractors. 
+            We engineer and execute complete turnkey fitouts for <strong className="text-slate-900 font-semibold">all kinds of properties</strong>—residential, 
+            commercial, corporate, and retail spaces across India—with a strict{" "}
+            <strong className="text-slate-900 font-semibold">{BRAND_CONFIG.handoverGuarantee}</strong>.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm font-medium text-slate-700">
@@ -163,11 +167,11 @@ export default async function HomePage() {
             </span>
             <span className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm">
               <Clock className="w-4 h-4 text-[#3154A5]" />
-              Guaranteed 45-Day Handover Protocol
+              Guaranteed 120-Day Handover Protocol
             </span>
             <span className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm">
-              <Award className="w-4 h-4 text-[#3154A5]" />
-              10-Year Direct Structural Warranty
+              <Layers className="w-4 h-4 text-[#3154A5]" />
+              Integrated Design &amp; Contracting Execution
             </span>
           </div>
 
@@ -176,14 +180,14 @@ export default async function HomePage() {
               href="/contact"
               className="brand-button px-8 py-4 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase flex items-center gap-2 shadow-lg hover:scale-105 transition-transform"
             >
-              <span>Schedule VIP Design Consultation</span>
+              <span>Schedule Project Consultation</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/portfolio"
               className="px-8 py-4 rounded-xl text-xs sm:text-sm font-semibold tracking-wider text-slate-800 bg-white border border-slate-300 hover:border-[#3154A5] shadow-sm transition-all"
             >
-              Explore Featured Residences
+              Explore Projects
             </Link>
           </div>
 
@@ -193,8 +197,8 @@ export default async function HomePage() {
               <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-2 shadow-xs">
                 <Award className="w-5 h-5" />
               </div>
-              <span className="font-serif font-bold text-slate-900 text-sm sm:text-base">10+ Years</span>
-              <span className="text-[11px] sm:text-xs text-slate-600 font-medium">of Excellence</span>
+              <span className="font-serif font-bold text-slate-900 text-sm sm:text-base">{yearsOfExcellence}</span>
+              <span className="text-[11px] sm:text-xs text-slate-600 font-medium">of Excellence (Est. 2020)</span>
             </div>
             <div className="flex flex-col items-center text-center p-2">
               <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-2 shadow-xs">
@@ -205,18 +209,18 @@ export default async function HomePage() {
             </div>
             <div className="flex flex-col items-center text-center p-2 col-span-2 md:col-span-1">
               <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-2 shadow-xs">
-                <ShieldCheck className="w-5 h-5" />
+                <Briefcase className="w-5 h-5" />
               </div>
-              <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm leading-snug">End -To- End</span>
-              <span className="text-[11px] sm:text-xs text-slate-600 font-medium">Project Management &amp; Execution</span>
+              <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm leading-snug">Design &amp; Contracting</span>
+              <span className="text-[11px] sm:text-xs text-slate-600 font-medium">End-To-End Single Window</span>
             </div>
             <div className="flex flex-col items-center text-center p-2">
               <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-2 shadow-xs">
                 <MapPin className="w-5 h-5" />
               </div>
-              <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm">Pan India</span>
-              <a href="tel:+917738318383" className="text-xs text-[#3154A5] font-bold hover:underline mt-0.5">
-                7738318383
+              <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm">PAN India Services</span>
+              <a href={`tel:${BRAND_CONFIG.phoneRaw}`} className="text-xs text-[#3154A5] font-bold hover:underline mt-0.5">
+                {BRAND_CONFIG.phoneDisplay}
               </a>
             </div>
             <div className="flex flex-col items-center text-center p-2 col-span-2 md:col-span-1">
@@ -224,27 +228,26 @@ export default async function HomePage() {
                 <Mail className="w-5 h-5" />
               </div>
               <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm">Direct Desk</span>
-              <a href="mailto:bluespaceinteriors1@gmail.com" className="text-[11px] text-[#3154A5] font-semibold hover:underline mt-0.5 break-all">
-                bluespaceinteriors1@gmail.com
+              <a href={`mailto:${BRAND_CONFIG.email}`} className="text-[11px] text-[#3154A5] font-semibold hover:underline mt-0.5 break-all">
+                {BRAND_CONFIG.email}
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Target SEO & Competitive Positioning: Turnkey vs Livspace / Bonito */}
+      {/* Target SEO & Competitive Positioning: Turnkey Design & Contracting vs Aggregators */}
       <section className="py-24 bg-[#f8f7f4] border-y border-slate-200 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
               The Turnkey Advantage
             </span>
-            {/* Target Keyword in H2 */}
             <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
-              Why Discerning Homeowners Choose Our <span className="brand-gradient-text">Direct Turnkey Architecture</span> Model
+              Why Clients Choose Our <span className="brand-gradient-text">Design &amp; Contracting</span> Model
             </h2>
             <p className="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-light">
-              Aggregator companies like Livspace, Bonito Designs, and HomeLane operate on an outsourced broker model. They charge 30–40% platform margins while sub-contracting your expensive apartment to temporary third-party vendors. Blue Space Interiors delivers direct architectural engineering with in-house accountability.
+              In the interior industry, clients consistently suffer from a fundamental disconnect: standalone designers produce impractical concepts detached from site realities, while separate unorganized contractors lack design understanding. Blue Space Interiors bridges this gap by unifying Design &amp; Contracting under single-window management.
             </p>
           </div>
 
@@ -254,36 +257,36 @@ export default async function HomePage() {
             <div className="p-8 rounded-3xl bg-white border-2 border-[#3154A5] shadow-xl relative transform lg:-translate-y-2 flex flex-col justify-between">
               <div>
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#3154A5] text-white px-4 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
-                  Direct Architectural Firm
+                  Design &amp; Contracting Firm
                 </div>
                 <h3 className="text-2xl font-serif font-bold text-slate-900 flex items-center gap-2 mt-2">
                   <Sparkles className="w-5 h-5 text-[#3154A5]" />
                   Blue Space Interiors
                 </h3>
                 <p className="text-xs text-[#3154A5] font-bold mt-1">
-                  Sir J.J. College & VJTI Leadership • Zero Subcontracting
+                  Single-Window Leadership by Sunil Pandey • Even More of Contracting
                 </p>
 
                 <ul className="mt-6 space-y-4 text-xs sm:text-sm text-slate-700">
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>45-Day Handover Guarantee:</strong> Legally backed with ₹2,500/day penalty clause for delays.</span>
+                    <span><strong>120-Day Handover Guarantee:</strong> Legally backed milestone schedule with structured phase management.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>100% Fixed BOQ:</strong> Itemized quote with zero cost escalation protection. No surprise bills.</span>
+                    <span><strong>100% Fixed BOQ:</strong> Itemized contracting quote with zero cost escalation protection. No surprise bills.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Certified Materials:</strong> Century Club Prime & Greenply BWP Marine Plywood with genuine Austrian Blum hardware.</span>
+                    <span><strong>All Property Categories:</strong> Comprehensive turnkey execution for residential, commercial, office, and retail projects.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>In-House Factory Precision:</strong> 18,000 sq.ft. cleanroom pre-fabrication plant eliminates on-site dust and ensures German edge-banding precision.</span>
+                    <span><strong>Certified Materials:</strong> Premium Boiling Water Proof (BWP) Marine Plywood and genuine branded architectural hardware.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Direct Principal Access:</strong> Direct supervision by Principal Architect Abhishek Pandey.</span>
+                    <span><strong>Single-Window Accountability:</strong> Led directly by Sunil Pandey, ensuring design vision matches site contracting flawlessly.</span>
                   </li>
                 </ul>
               </div>
@@ -293,41 +296,41 @@ export default async function HomePage() {
                   href="/contact"
                   className="brand-button w-full text-center py-3 rounded-xl text-xs font-bold uppercase tracking-wider block shadow-md"
                 >
-                  Book Free Feasibility Study
+                  Book Free Project Feasibility
                 </Link>
               </div>
             </div>
 
-            {/* National Aggregators */}
+            {/* National Aggregator Platforms */}
             <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
                 <h3 className="text-xl font-serif font-bold text-slate-800">
-                  National Aggregators
+                  National Aggregator Platforms
                 </h3>
-                <p className="text-xs text-slate-500 mt-1">Livspace, Bonito Designs, HomeLane</p>
+                <p className="text-xs text-slate-500 mt-1">Broker Aggregator &amp; Commission Model</p>
 
                 <ul className="mt-6 space-y-4 text-xs sm:text-sm text-slate-600">
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>High Design Churn:</strong> Junior freelance designers with high turnover; multiple handover handoffs.</span>
+                    <span><strong>Broker Overhead:</strong> 30–40% sales margin markups while execution is outsourced to third-party sub-contractors.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>Budget Creep:</strong> Initial quotes exclude civil, electrical, and ducting, resulting in 20–35% escalation.</span>
+                    <span><strong>Budget Escalations:</strong> Low initial catalog estimates followed by 20–35% variation invoices for site works.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>Catalog Constraints:</strong> Rigid box dimensions that fail to accommodate unique structural beam drops, pillars, and ceiling ducting.</span>
+                    <span><strong>High Designer Churn:</strong> Freelance coordinators change mid-project, breaking continuity and aesthetic intent.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>90–120 Day Delays:</strong> Fragmented supply chains and third-party vendor blaming causes prolonged possession delays.</span>
+                    <span><strong>Possession Delays:</strong> Fragmented supply chains and vendor finger-pointing cause prolonged handover delays.</span>
                   </li>
                 </ul>
               </div>
 
               <div className="mt-8 pt-6 border-t border-slate-100 text-[11px] text-slate-500 text-center">
-                High overhead sales commission model
+                High overhead sales broker model
               </div>
             </div>
 
@@ -335,26 +338,26 @@ export default async function HomePage() {
             <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
                 <h3 className="text-xl font-serif font-bold text-slate-800">
-                  Local Freelance Carpenters
+                  Standalone Local Contractors
                 </h3>
-                <p className="text-xs text-slate-500 mt-1">Fragmented Local Labor &amp; Sub-vendors</p>
+                <p className="text-xs text-slate-500 mt-1">Fragmented Labor Without Design Fluency</p>
 
                 <ul className="mt-6 space-y-4 text-xs sm:text-sm text-slate-600">
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>Zero 3D Modeling:</strong> Work proceeds on hand-drawn sketches with frequent aesthetic misunderstandings.</span>
+                    <span><strong>Lack of Design Comprehension:</strong> Inability to interpret detailed architectural drawings, resulting in aesthetic failure.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>Material Substitution Risk:</strong> Commercial grade ply substituted for promised marine ply with zero traceability.</span>
+                    <span><strong>Zero 3D Visualization:</strong> Work executed based on verbal assumptions and rough hand sketches.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>Prolonged Dust &amp; Noise:</strong> Manual cutting inside residences creates friction with gated society rules and delays move-in dates.</span>
+                    <span><strong>Material Inconsistency:</strong> Substandard commercial ply substituted without client awareness.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>No Written Warranty:</strong> Once final settlement is collected, response for repairs becomes impossible.</span>
+                    <span><strong>No Written Warranty:</strong> Once final payments are released, post-handover support is non-existent.</span>
                   </li>
                 </ul>
               </div>
@@ -375,19 +378,18 @@ export default async function HomePage() {
               <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
                 Proven Handover Excellence
               </span>
-              {/* Target Keyword in H2 */}
               <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
-                Completed Residences by Premier <span className="brand-gradient-text">Luxury Interior Architects</span>
+                Completed Projects by Premier <span className="brand-gradient-text">Design &amp; Contracting</span> Firm
               </h2>
               <p className="mt-2 text-slate-600 text-sm max-w-xl font-light">
-                Explore real completed penthouses, duplexes, and luxury residences delivered within our 45-day turnkey protocol.
+                Explore real completed residences, commercial spaces, and bespoke fitouts delivered within our 120-day turnkey protocol across India.
               </p>
             </div>
             <Link
               href="/portfolio"
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#3154A5] hover:text-slate-900 transition-colors"
             >
-              <span>View All Completed Residences</span>
+              <span>Explore Projects</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -427,7 +429,7 @@ export default async function HomePage() {
                     <span className="text-slate-500">Handover Protocol:</span>
                     <span className="text-emerald-700 font-semibold flex items-center gap-1">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                      45-Day Delivery Verified
+                      120-Day Delivery Verified
                     </span>
                   </div>
                 </div>
@@ -437,8 +439,41 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Transparent Thane Price Estimation Guide */}
-      <section className="py-20 bg-[#f8f7f4] border-t border-slate-200">
+      {/* Flagship Projects Section - Exactly Oberoi Sky City (32), Oberoi Eternia & Enigma (26), Piramal Vaikunth (25), Hiranandani (10) */}
+      <section className="py-20 bg-white border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
+              Proven Project Footprint
+            </span>
+            <h2 className="mt-2 text-2xl sm:text-3xl font-serif font-bold text-slate-900">
+              Flagship Project Deliveries Across Premier Developments
+            </h2>
+            <p className="mt-2 text-xs sm:text-sm text-slate-600 font-light">
+              Our single-window contracting teams have successfully delivered dozens of high-value turnkey interior fitouts across leading gated developments and commercial properties.
+            </p>
+          </div>
+
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+            {BRAND_CONFIG.flagshipCommunities.map((loc, i) => (
+              <div
+                key={i}
+                className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all text-center shadow-sm"
+              >
+                <Building2 className="w-7 h-7 text-[#3154A5] mx-auto mb-3" />
+                <h4 className="text-sm sm:text-base font-semibold text-slate-900">{loc.name}</h4>
+                <p className="text-xs text-slate-500 mt-0.5">{loc.location}</p>
+                <div className="mt-3 inline-block px-3 py-1 rounded-full bg-emerald-50 text-xs text-emerald-700 font-bold border border-emerald-200">
+                  {loc.projectCount}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Transparent Price Estimation Guide */}
+      <section className="py-20 bg-[#f8f7f4] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase flex items-center justify-center gap-1.5">
@@ -446,10 +481,10 @@ export default async function HomePage() {
               Transparent Budgeting
             </span>
             <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
-              Turnkey Interior Cost Benchmark for Luxury Residences
+              Turnkey Interior Cost Benchmark for All Properties
             </h2>
             <p className="mt-3 text-slate-600 text-sm font-light">
-              We eliminate hidden charges through guaranteed itemized BOQs. Here is the realistic turnkey cost breakdown for high-end gated residences.
+              We eliminate hidden charges through guaranteed itemized BOQs. Here is the realistic turnkey cost breakdown for residences, penthouses, and commercial fitouts.
             </p>
           </div>
 
@@ -464,12 +499,12 @@ export default async function HomePage() {
                   <span className="text-xs text-slate-500">all-inclusive</span>
                 </div>
                 <p className="text-xs text-slate-500 mt-2 font-light">
-                  Suitable for 750–950 sq.ft. carpet area (e.g., Lodha Amara, Rustomjee Urbania).
+                  Suitable for 750–950 sq.ft. carpet area.
                 </p>
                 <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    BWP Marine Ply modular kitchen with Blum hardware
+                    BWP Marine Ply modular kitchen with branded hardware
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
@@ -477,11 +512,15 @@ export default async function HomePage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Gypsum false ceiling with Philips 3000K COB lights
+                    Gypsum false ceiling with warm ambient COB lights
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Asian Paints Royale Luxury paint across all rooms
+                    Premium Royale Luxury paint across all rooms
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                    120-Day Handover Guarantee
                   </li>
                 </ul>
               </div>
@@ -495,39 +534,39 @@ export default async function HomePage() {
 
             <div className="p-8 rounded-3xl bg-white border-2 border-[#3154A5] shadow-xl relative flex flex-col justify-between">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#3154A5] text-white px-3.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">
-                Most Selected Standard
+                Most Selected
               </div>
               <div>
                 <span className="text-xs font-bold text-[#3154A5] uppercase tracking-wider">
-                  3 BHK Luxury Turnkey
+                  3 BHK / 4 BHK Luxury Fitout
                 </span>
                 <div className="mt-2 flex items-baseline gap-2">
-                  <span className="text-3xl font-serif font-bold text-slate-900">₹28L – ₹42L</span>
+                  <span className="text-3xl font-serif font-bold text-slate-900">₹28L – ₹48L</span>
                   <span className="text-xs text-slate-500">all-inclusive</span>
                 </div>
                 <p className="text-xs text-slate-600 mt-2 font-light">
-                  Suitable for 1,200–1,600 sq.ft. carpet area (e.g., Raymond Ten X, Rosa Manhattan).
+                  Suitable for 1,200–1,800 sq.ft. carpet area.
                 </p>
                 <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    German acrylic kitchen with quartz counter & Blum Aventos
+                    Acrylic/PU modular kitchen with quartz counter &amp; lift-up systems
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Master walk-in wardrobe with glass profiles & LED reveals
+                    Master walk-in wardrobe with glass profiles &amp; LED reveals
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Acoustic wall panelling & hidden flush door system
+                    Acoustic wall panelling &amp; hidden flush door system
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Diamond marble floor restoration or imported wooden flooring
+                    Precision marble floor restoration or imported wooden flooring
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Strict 45-day guaranteed key handover
+                    Strict 120-day guaranteed key handover
                   </li>
                 </ul>
               </div>
@@ -535,38 +574,42 @@ export default async function HomePage() {
                 href="/contact"
                 className="mt-8 brand-button text-center py-3 rounded-xl text-xs font-bold uppercase tracking-wider block shadow-md"
               >
-                Inquire 3 BHK Plan
+                Inquire Luxury Plan
               </Link>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
                 <span className="text-xs font-bold text-[#3154A5] uppercase tracking-wider">
-                  4 BHK / Penthouse Signature
+                  Penthouse, Villa &amp; Commercial Scopes
                 </span>
                 <div className="mt-2 flex items-baseline gap-2">
-                  <span className="text-3xl font-serif font-bold text-slate-900">₹50L – ₹85L+</span>
+                  <span className="text-3xl font-serif font-bold text-slate-900">₹50L – ₹95L+</span>
                   <span className="text-xs text-slate-500">bespoke scope</span>
                 </div>
                 <p className="text-xs text-slate-500 mt-2 font-light">
-                  Suitable for 2,200–4,000+ sq.ft. (e.g., Hiranandani Estate, Sheth Avalon).
+                  Customized for 2,200–5,000+ sq.ft. penthouses, villas, or commercial corporate offices.
                 </p>
                 <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Italian Statuario/Bottochino marble supply & laying
+                    Italian marble supply, laying &amp; 8-stage diamond abrasive polishing
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Daikin VRV central HVAC with magnetic linear diffusers
+                    Central VRV HVAC ducting with linear diffusers
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Lutron smart automation for lighting, climate & shades
+                    Smart automation for lighting, climate &amp; security
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Dedicated senior architect stationed on site
+                    Full commercial MEP, conference audio-visual &amp; civil contracting
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                    Dedicated senior project manager stationed on site
                   </li>
                 </ul>
               </div>
@@ -574,63 +617,9 @@ export default async function HomePage() {
                 href="/contact"
                 className="mt-8 brand-button text-center py-3 rounded-xl text-xs font-bold uppercase tracking-wider block shadow-md"
               >
-                Inquire Penthouse Plan
+                Inquire Bespoke Scope
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Flagship Gated Developments & National Execution */}
-      <section className="py-20 bg-white border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
-              Flagship Developments
-            </span>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-serif font-bold text-slate-900">
-              Specialized Expertise in High-Rise Enclaves &amp; Pan-India Communities
-            </h2>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600 font-light">
-              From leading gated communities in Mumbai MMR to bespoke residences across India, we autonomously manage society NOC documentation, freight elevator bookings, and zero-noise timing protocols.
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              {
-                society: "Hiranandani Communities",
-                location: "Ghodbunder & Powai",
-                deliveries: "52+ Completed Residences",
-              },
-              {
-                society: "Raymond Ten X & Environs",
-                location: "Pokhran Road Corridors",
-                deliveries: "38+ Turnkey Fitouts",
-              },
-              {
-                society: "Sheth Avalon & Enclaves",
-                location: "High-Rise Residential Towers",
-                deliveries: "24+ Luxury Penthouses",
-              },
-              {
-                society: "Lodha & Prestige Communities",
-                location: "Major Metro Corridors",
-                deliveries: "44+ Bespoke Residences",
-              },
-            ].map((loc, i) => (
-              <div
-                key={i}
-                className="p-5 rounded-2xl bg-[#fbfaf7] border border-slate-200 hover:border-blue-400 transition-all text-center shadow-sm"
-              >
-                <Building2 className="w-6 h-6 text-[#3154A5] mx-auto mb-2" />
-                <h4 className="text-sm font-semibold text-slate-900">{loc.society}</h4>
-                <p className="text-[11px] text-slate-500">{loc.location}</p>
-                <div className="mt-2 inline-block px-2.5 py-0.5 rounded-full bg-emerald-50 text-[10px] text-emerald-700 font-semibold border border-emerald-200">
-                  {loc.deliveries}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -643,7 +632,7 @@ export default async function HomePage() {
               Client Testimonials
             </span>
             <h2 className="mt-2 text-3xl font-serif font-bold text-slate-900">
-              Endorsed by Discerning C-Suite Executives, Doctors &amp; Leaders
+              Endorsed by Discerning C-Suite Executives, Business Leaders &amp; Homeowners
             </h2>
           </div>
 
@@ -651,26 +640,26 @@ export default async function HomePage() {
             {[
               {
                 name: "Vikramaditya Deshmukh",
-                title: "VP, Cloud Engineering (Capgemini)",
-                residence: "4.5 BHK Duplex, Rodas Enclave, Hiranandani Estate",
+                title: "VP, Cloud Engineering",
+                residence: "4.5 BHK Duplex Penthouse",
                 quote:
-                  "As an IT executive with long overseas work hours, I had zero bandwidth to deal with contractors or purchase plywood. Abhishek Pandey and Panya Bangari managed everything down to the millimeter. The concealed Daikin VRV air-conditioning and German kitchen are magnificent. They handed over keys on Day 44 with zero budget inflation.",
+                  "As an IT executive with long overseas work hours, I had zero bandwidth to coordinate between independent designers and unorganized contractors. Sunil Pandey and the Blue Space contracting team governed everything down to the millimeter. The concealed VRV air-conditioning and custom kitchen are magnificent. They handed over keys ahead of schedule within the 120-day commitment with zero budget inflation.",
                 rating: 5,
               },
               {
                 name: "Dr. Rohini & Dr. Sanjeev Sawant",
-                title: "Consultant Radiologists, Jupiter Hospital",
-                residence: "3 BHK Residence, Raymond Ten X Habitat, Pokhran Rd 2",
+                title: "Consultant Radiologists",
+                residence: "3 BHK Residence Fitout",
                 quote:
-                  "We previously lost months of peace with an aggregator who gave an initial low estimate and then billed 30% extra under variation clauses. Blue Space gave us a locked BOQ, adhered to society rules, and delivered top-tier acoustic ceilings and walk-in closets. Truly the most dependable turnkey interior architecture team.",
+                  "We previously lost months of peace with an aggregator platform that gave an initial low estimate and then billed 30% extra under variation clauses. Blue Space Interiors gave us a locked BOQ, adhered to gated community timing rules, and delivered top-tier acoustic ceilings and walk-in closets. Truly dependable single-window contracting.",
                 rating: 5,
               },
               {
                 name: "Manish Khandelwal",
-                title: "Managing Director, Khandelwal Logistics",
-                residence: "5 BHK Duplex Villa, Pokhran Road No. 1",
+                title: "Managing Director, Logistics Firm",
+                residence: "Corporate Office & Executive Suite",
                 quote:
-                  "The teak cantilever staircase and backlit quartzite bar island are showstoppers for our evening guests. Seeing our 3D render match reality down to the exact lighting temperature was incredible. Their 10-year warranty gives genuine peace of mind.",
+                  "Blue Space Interiors executed our commercial workspace and private executive suite with exceptional precision. The seamless glass partitions, acoustic meeting rooms, and custom reception counter reflect pristine craftsmanship. Their fixed BOQ and proactive site coordination eliminated all contracting stress.",
                 rating: 5,
               },
             ].map((t, idx) => (
@@ -709,44 +698,44 @@ export default async function HomePage() {
               Frequently Answered Questions
             </span>
             <h2 className="mt-2 text-3xl font-serif font-bold text-slate-900">
-              Frequently Asked Questions About <span className="brand-gradient-text">Turnkey Interior Design</span>
+              Frequently Asked Questions About <span className="brand-gradient-text">Turnkey Design &amp; Contracting</span>
             </h2>
           </div>
 
           <div className="space-y-6">
             <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
               <h3 className="text-base font-serif font-semibold text-slate-900">
-                How does Blue Space Interiors guarantee a 45-day turnkey handover?
+                How does Blue Space Interiors guarantee a 120-day turnkey handover?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Unlike aggregators who rely on on-site manual carpentry, Blue Space Interiors manufactures 85% of modular cabinetry, wardrobes, and kitchen casework offsite in our precision CNC facility. While civil, tiling, and false ceiling works happen at your residence, cabinetry is pre-finished with German PUR edge-banding. On-site installation takes only 10 to 14 days, allowing us to legally commit to a 45-day key handover with a ₹2,500/day penalty guarantee.
+                Through our integrated Design &amp; Contracting methodology led by Mr. Sunil Pandey, we bridge the gap between design conceptualization and on-site contracting. With locked procurement timelines, in-house technical supervision, and structured milestone scheduling across civil, MEP, millwork, and finishes, we commit to a strict 120-day turnkey key handover with zero delays.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
               <h3 className="text-base font-serif font-semibold text-slate-900">
-                What is the typical turnkey interior cost per square foot for a 3 BHK or 4 BHK?
+                What kind of properties do you execute interior contracting for?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Turnkey interior execution typically ranges between ₹1,800 to ₹3,500 per sq.ft. depending on material specifications. A premium 3 BHK (1,400–1,800 sq.ft.) averages ₹28L to ₹42L for complete turnkey scope including modular kitchen, wardrobes, false ceilings, lighting, and civil works. A luxury 4 BHK or penthouse with Italian marble and Daikin VRV HVAC averages ₹50L to ₹85L+.
+                We handle all categories of properties—including luxury apartments, sky villas, penthouses, commercial corporate offices, retail showrooms, and healthcare/hospitality properties. Our contracting crews are equipped for both large-scale commercial fitouts and bespoke residential transformations.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
               <h3 className="text-base font-serif font-semibold text-slate-900">
-                Why choose Blue Space Interiors over aggregators like Livspace or Bonito Designs?
+                Why choose Blue Space Interiors over national aggregator platforms?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Aggregators operate on a broker model—they take 30–40% sales commissions and outsource your home to third-party sub-contractors and freelance designers who frequently change. Blue Space Interiors provides direct execution led by Principal Architect Abhishek Pandey (Sir J.J. College of Architecture) and VP Operations Panya Bangari (VJTI). We offer a 100% Zero Cost Escalation guarantee with fixed BOQ, 10-year direct warranty, and 100% BWP Marine Plywood instead of particle board.
+                Aggregator platforms operate as sales brokers charging 30–40% commissions while outsourcing execution to unvetted third parties. Blue Space Interiors provides direct single-window Design &amp; Contracting led by Mr. Sunil Pandey with a 100% Zero Cost Escalation guarantee, fixed itemized BOQ, certified materials, and dedicated site supervision.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
               <h3 className="text-base font-serif font-semibold text-slate-900">
-                Do you assist with gated society NOCs and working hour permissions?
+                Do you provide turnkey contracting services across PAN India locations?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Yes. Premium gated communities have strict interior work rules (10 AM to 6 PM, zero drilling during lunch hours, goods elevator protection). Our dedicated liaison team manages society drawings, debris disposal NOCs, floor protection sheets, and security gate passes autonomously across all our project sites.
+                Yes. While our registered office is in Thane (West), Maharashtra, we execute turnkey interior design and contracting projects across India. Our project management and specialized contracting teams mobilize nationwide to deliver consistent quality and strict SLA adherence.
               </p>
             </div>
           </div>
@@ -757,25 +746,25 @@ export default async function HomePage() {
       <section className="py-20 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-blue-50/70 border-t border-blue-200 text-center">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-slate-900">
-            Transform Your Residence into an Architectural Masterpiece
+            Transform Your Property with Single-Window Contracting
           </h2>
           <p className="mt-4 text-slate-700 text-sm sm:text-base max-w-2xl mx-auto font-light">
-            Schedule a private consultation at our studio headquarters in The Capital Tree, Thane (West) or request a virtual property review from anywhere in India. Receive a customized 3D spatial layout and fixed-item BOQ within 4 business hours.
+            Schedule a private consultation at our registered office in Thane (West), Maharashtra or request a virtual property review from anywhere in India. Receive a customized 3D spatial layout and fixed-item BOQ within 4 business hours.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
               className="brand-button px-8 py-4 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase flex items-center gap-2 shadow-lg"
             >
-              <span>Book Private Design Consultation</span>
+              <span>Book Project Consultation</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="tel:+917738318383"
+              href={`tel:${BRAND_CONFIG.phoneRaw}`}
               className="px-8 py-4 rounded-xl text-xs sm:text-sm font-semibold tracking-wider text-slate-800 bg-white border border-slate-300 flex items-center gap-2 hover:border-[#3154A5] shadow-sm transition-all"
             >
               <PhoneCall className="w-4 h-4 text-[#3154A5]" />
-              <span>Studio Desk: +91 77383 18383</span>
+              <span>Direct Desk: {BRAND_CONFIG.phone}</span>
             </a>
           </div>
         </div>

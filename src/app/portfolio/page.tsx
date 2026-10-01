@@ -1,8 +1,6 @@
-import prisma from "@/lib/prisma";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  Compass,
   MapPin,
   Maximize2,
   CheckCircle2,
@@ -10,30 +8,31 @@ import {
   Sparkles,
   Award,
   Building,
-  ShieldCheck,
+  Briefcase,
   Mail,
 } from "lucide-react";
+
+import { getSafeAllProjects } from "@/lib/fallbackData";
+import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
 
 export const revalidate = 0; // Fresh SSR data
 
 export const metadata: Metadata = {
-  title: "Portfolio | Blue Space Interiors | Premier Luxury Turnkey Residences",
+  title: "Portfolio | Blue Space Interiors | Turnkey Interior Design & Contracting Projects",
   description:
-    "Explore luxury residential interior design case studies delivered across India: penthouses, duplexes, 3 BHK, and 4 BHK residences. 100% turnkey execution in 45 days.",
+    "Explore turnkey interior design and contracting case studies delivered across India: luxury residences, penthouses, duplexes, and commercial fitouts. 100% turnkey execution with 120-day handover guarantee.",
   keywords: [
-    "luxury residential portfolio",
+    "turnkey interior contracting portfolio",
     "turnkey interior design projects",
-    "luxury penthouse interiors",
-    "villa interior architecture",
-    "45 day handover interiors",
-    "Blue Space Interiors",
+    "residential and commercial interior fitouts",
+    "120 day handover interiors",
+    "Blue Space Interiors Sunil Pandey",
   ],
 };
 
-import { getSafeAllProjects } from "@/lib/fallbackData";
-
 export default async function PortfolioPage() {
   const projects = await getSafeAllProjects();
+  const yearsOfExcellence = getYearsOfExcellence();
 
   return (
     <div className="bg-[#fbfaf7] text-slate-900 min-h-screen">
@@ -46,11 +45,11 @@ export default async function PortfolioPage() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 max-w-4xl mx-auto leading-tight">
-            Curated Residences by Premier <span className="brand-gradient-text">Luxury Interior Architects</span>
+            Curated Projects by Premier <span className="brand-gradient-text">Design &amp; Contracting</span> Firm
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-light leading-relaxed">
-            Witness how architectural precision, German joinery, and natural stone combine into timeless residences across iconic gated societies and private estates.
+            Witness how single-window contracting precision, certified materials, and meticulous craftsmanship combine across residential, commercial, and corporate properties nationwide.
           </p>
 
           {/* 5-Pillar Core Excellence Bar */}
@@ -59,30 +58,30 @@ export default async function PortfolioPage() {
               <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-1.5 shadow-xs">
                 <Award className="w-4 h-4" />
               </div>
-              <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm">10+ Years</span>
-              <span className="text-[10px] sm:text-xs text-slate-600 font-medium">of Excellence</span>
+              <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm">{yearsOfExcellence}</span>
+              <span className="text-[10px] sm:text-xs text-slate-600 font-medium">of Excellence (Est. 2020)</span>
             </div>
             <div className="flex flex-col items-center text-center p-1.5">
               <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-1.5 shadow-xs">
                 <Building className="w-4 h-4" />
               </div>
               <span className="font-serif font-bold text-[#3154A5] text-xs sm:text-sm">150+ Projects</span>
-              <span className="text-[10px] sm:text-xs text-slate-600 font-medium">Portfolio Archive</span>
+              <span className="text-[10px] sm:text-xs text-slate-600 font-medium">Delivered to Date</span>
             </div>
             <div className="flex flex-col items-center text-center p-1.5 col-span-2 md:col-span-1">
               <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-1.5 shadow-xs">
-                <ShieldCheck className="w-4 h-4" />
+                <Briefcase className="w-4 h-4" />
               </div>
-              <span className="font-serif font-bold text-slate-900 text-[11px] sm:text-xs leading-snug">End -To- End</span>
-              <span className="text-[10px] sm:text-xs text-slate-600 font-medium">Project Execution</span>
+              <span className="font-serif font-bold text-slate-900 text-[11px] sm:text-xs leading-snug">Design &amp; Contracting</span>
+              <span className="text-[10px] sm:text-xs text-slate-600 font-medium">Single-Window Execution</span>
             </div>
             <div className="flex flex-col items-center text-center p-1.5">
               <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-1.5 shadow-xs">
                 <MapPin className="w-4 h-4" />
               </div>
-              <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm">Pan India</span>
-              <a href="tel:+917738318383" className="text-[11px] text-[#3154A5] font-bold hover:underline mt-0.5">
-                7738318383
+              <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm">PAN India</span>
+              <a href={`tel:${BRAND_CONFIG.phoneRaw}`} className="text-[11px] text-[#3154A5] font-bold hover:underline mt-0.5">
+                {BRAND_CONFIG.phoneDisplay}
               </a>
             </div>
             <div className="flex flex-col items-center text-center p-1.5 col-span-2 md:col-span-1">
@@ -90,8 +89,8 @@ export default async function PortfolioPage() {
                 <Mail className="w-4 h-4" />
               </div>
               <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm">Direct Desk</span>
-              <a href="mailto:bluespaceinteriors1@gmail.com" className="text-[10px] text-[#3154A5] font-semibold hover:underline mt-0.5 break-all">
-                bluespaceinteriors1@gmail.com
+              <a href={`mailto:${BRAND_CONFIG.email}`} className="text-[10px] text-[#3154A5] font-semibold hover:underline mt-0.5 break-all">
+                {BRAND_CONFIG.email}
               </a>
             </div>
           </div>
@@ -163,12 +162,12 @@ export default async function PortfolioPage() {
                     </h2>
 
                     <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                      A complete architectural overhaul designed and executed within our 45-day turnkey SLA. All modular cabinetry was manufactured off-site in our precision prefabrication plant using 100% Century Club Prime BWP Marine Plywood and Austrian Blum hardware.
+                      A complete turnkey fitout designed and executed within our guaranteed 120-day SLA. Built with high-grade Boiling Water Proof (BWP) Marine Plywood, certified architectural hardware, and precision site contracting.
                     </p>
 
                     <div className="mt-6">
                       <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-                        Key Architectural Features & Specifications
+                        Key Specifications &amp; Contracting Scope
                       </h4>
                       <ul className="space-y-2.5">
                         {highlightsArray.map((highlight, idx) => (
@@ -186,12 +185,10 @@ export default async function PortfolioPage() {
 
                   <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
                     <div>
-                      <span className="text-[11px] text-slate-500 block">Handover Date</span>
-                      <span className="text-xs font-semibold text-slate-800">
-                        {new Date(project.completionDate).toLocaleDateString("en-IN", {
-                          month: "long",
-                          year: "numeric",
-                        })}
+                      <span className="text-[11px] text-slate-500 block">Handover Timeline</span>
+                      <span className="text-xs font-semibold text-emerald-700 flex items-center gap-1">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                        120-Day Verified
                       </span>
                     </div>
 
@@ -214,10 +211,10 @@ export default async function PortfolioPage() {
       <section className="py-16 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-blue-50/70 border-t border-blue-200 text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900">
-            Have an Upcoming Residential Possession or Renovation?
+            Have an Upcoming Property Possession or Fitout?
           </h2>
           <p className="mt-3 text-slate-600 text-sm font-light">
-            Bring your builder layout to Principal Architect Abhishek Pandey for a turnkey spatial audit and 3D concept before commencing your fitout.
+            Bring your layout to Mr. Sunil Pandey for a comprehensive design &amp; contracting feasibility audit and fixed BOQ before commencing your fitout.
           </p>
           <div className="mt-8 flex justify-center">
             <Link

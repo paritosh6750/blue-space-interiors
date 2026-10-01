@@ -13,15 +13,17 @@ import {
   Award,
   Building,
   ShieldCheck,
+  Briefcase,
 } from "lucide-react";
+import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Blue Space Interiors | Premier Luxury Turnkey Studio",
+  title: "Contact Us | Blue Space Interiors | Turnkey Interior Design & Contracting PAN India",
   description:
-    "Schedule a direct consultation with Contact Person Mr. Sunil Pandey at our studio headquarters at 1507 on 15th, The Capital Tree, Pokhran Road No. 2, Thane (West) 400601, or book a virtual session from anywhere in India. Cell: +91 77383 18383.",
+    "Schedule a direct consultation with Contact Person Mr. Sunil Pandey at our registered office in Thane (West), Maharashtra 400601, or book a virtual session from anywhere in India. Cell: +91 77383 18383.",
   keywords: [
-    "contact turnkey interior designer",
-    "luxury interior design consultation",
+    "contact turnkey interior contractor",
+    "interior contracting consultation",
     "Blue Space Interiors contact",
     "Sunil Pandey Blue Space Interiors",
     "turnkey interior studio PAN India",
@@ -29,6 +31,8 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const yearsOfExcellence = getYearsOfExcellence();
+
   return (
     <div className="bg-[#fbfaf7] text-slate-900 min-h-screen">
       {/* Header Banner */}
@@ -36,16 +40,17 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#3154A5] text-xs font-bold tracking-wider uppercase mb-4 shadow-sm">
             <Compass className="w-3.5 h-3.5 text-[#3154A5]" />
-            <span>Studio Headquarters &amp; Architecture Desk</span>
+            <span>Turnkey Contracting Desk • PAN India Execution</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 max-w-4xl mx-auto leading-tight">
             Schedule a Private Consultation with Our{" "}
-            <span className="brand-gradient-text">Principal Architects</span>
+            <span className="brand-gradient-text">Contracting Leadership</span>
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-light leading-relaxed">
-            Begin your journey toward an exquisite, stress-free turnkey home. Meet our leadership team and Contact Person Mr. Sunil Pandey at our studio headquarters at The Capital Tree on Pokhran Road No. 2, or arrange a virtual property evaluation from anywhere in India.
+            Begin your journey toward an exquisite, stress-free interior fitout. Meet our leadership team and Contact Person 
+            Mr. Sunil Pandey at our registered office in Thane (West), Maharashtra, or arrange a virtual property evaluation from anywhere in India.
           </p>
         </div>
       </section>
@@ -63,22 +68,22 @@ export default function ContactPage() {
             {/* Studio Coordinates Card */}
             <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-md">
               <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
-                Studio Location
+                Contact &amp; Corporate Details
               </span>
               <h3 className="text-2xl font-serif font-bold text-slate-900 mt-1">
-                Studio Headquarters
+                Office Coordinates
               </h3>
 
               <div className="mt-6 space-y-4 text-xs sm:text-sm text-slate-700 font-light">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-[#3154A5] mt-0.5 flex-shrink-0" />
                   <div>
-                    <strong className="text-slate-900 block font-semibold">Studio Address:</strong>
+                    <strong className="text-slate-900 block font-semibold">Registered Office:</strong>
                     <span>
-                      1507 on 15th, The Capital Tree, Pokhran Road No. 2, Thane (West), Maharashtra 400601
+                      {BRAND_CONFIG.registeredCity}
                     </span>
-                    <span className="text-slate-500 block text-xs mt-1">
-                      Landmark: Off Pokhran Road 2, near Bethany Hospital & Majiwada Junction
+                    <span className="text-[#3154A5] block text-xs mt-1 font-semibold">
+                      Providing Turnkey Contracting Services PAN India
                     </span>
                   </div>
                 </div>
@@ -87,19 +92,19 @@ export default function ContactPage() {
                   <User className="w-5 h-5 text-[#3154A5] flex-shrink-0" />
                   <div>
                     <strong className="text-slate-900 block font-semibold">Contact Person:</strong>
-                    <span className="text-slate-900 font-medium">Mr. Sunil Pandey</span>
+                    <span className="text-slate-900 font-medium">{BRAND_CONFIG.contactPerson}</span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-[#3154A5] flex-shrink-0" />
                   <div>
-                    <strong className="text-slate-900 block font-semibold">Cell Number / Direct Line:</strong>
+                    <strong className="text-slate-900 block font-semibold">Direct Mobile / WhatsApp:</strong>
                     <a
-                      href="tel:+917738318383"
+                      href={`tel:${BRAND_CONFIG.phoneRaw}`}
                       className="hover:text-[#3154A5] transition-colors font-semibold text-slate-900"
                     >
-                      +91 77383 18383
+                      {BRAND_CONFIG.phone}
                     </a>
                   </div>
                 </div>
@@ -109,10 +114,10 @@ export default function ContactPage() {
                   <div>
                     <strong className="text-slate-900 block font-semibold">Official Email:</strong>
                     <a
-                      href="mailto:bluespaceinteriors1@gmail.com"
+                      href={`mailto:${BRAND_CONFIG.email}`}
                       className="hover:text-[#3154A5] transition-colors font-medium"
                     >
-                      bluespaceinteriors1@gmail.com
+                      {BRAND_CONFIG.email}
                     </a>
                   </div>
                 </div>
@@ -120,18 +125,18 @@ export default function ContactPage() {
                 <div className="flex items-center gap-3">
                   <Clock className="w-5 h-5 text-[#3154A5] flex-shrink-0" />
                   <div>
-                    <strong className="text-slate-900 block font-semibold">Studio Visiting Hours:</strong>
+                    <strong className="text-slate-900 block font-semibold">Business Hours:</strong>
                     <span>Monday – Saturday: 10:00 AM – 8:00 PM</span>
                     <span className="text-slate-500 block text-xs">
-                      (Sunday by prior appointment for working professionals)
+                      (Sunday by prior appointment for working executives)
                     </span>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
+                <div className="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-700">
                   <FileCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                   <span>
-                    Council of Architecture Reg: <strong>CA/2012/54892</strong> | GSTIN: 27AABCB9123M1Z5
+                    Verified GSTIN: <strong className="font-mono text-slate-900 font-bold">{BRAND_CONFIG.gstin}</strong>
                   </span>
                 </div>
               </div>
@@ -148,7 +153,7 @@ export default function ContactPage() {
                   <div className="w-7 h-7 rounded-lg bg-white border border-blue-200 flex items-center justify-center text-[#3154A5] flex-shrink-0 shadow-xs">
                     <Award className="w-3.5 h-3.5" />
                   </div>
-                  <span><strong className="font-semibold text-slate-900">10+ Years of Excellence</strong> in luxury residential architecture.</span>
+                  <span><strong className="font-semibold text-slate-900">{yearsOfExcellence} of Excellence</strong> in turnkey contracting (Est. 2020).</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-7 h-7 rounded-lg bg-white border border-blue-200 flex items-center justify-center text-[#3154A5] flex-shrink-0 shadow-xs">
@@ -158,21 +163,21 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-7 h-7 rounded-lg bg-white border border-blue-200 flex items-center justify-center text-[#3154A5] flex-shrink-0 shadow-xs">
-                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <Briefcase className="w-3.5 h-3.5" />
                   </div>
-                  <span><strong className="font-semibold text-slate-900">End -To- End Project Management &amp; Execution</strong> from design to handover.</span>
+                  <span><strong className="font-semibold text-slate-900">End -To- End Design &amp; Contracting</strong> from concept to 120-day handover.</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-7 h-7 rounded-lg bg-white border border-blue-200 flex items-center justify-center text-[#3154A5] flex-shrink-0 shadow-xs">
                     <MapPin className="w-3.5 h-3.5" />
                   </div>
-                  <span><strong className="font-semibold text-slate-900">Pan India Presence:</strong> Direct client desk at <a href="tel:+917738318383" className="font-bold text-[#3154A5] underline">7738318383</a>.</span>
+                  <span><strong className="font-semibold text-slate-900">PAN India Services:</strong> Direct client desk at <a href={`tel:${BRAND_CONFIG.phoneRaw}`} className="font-bold text-[#3154A5] underline">{BRAND_CONFIG.phoneDisplay}</a>.</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-7 h-7 rounded-lg bg-white border border-blue-200 flex items-center justify-center text-[#3154A5] flex-shrink-0 shadow-xs">
                     <Mail className="w-3.5 h-3.5" />
                   </div>
-                  <span><strong className="font-semibold text-slate-900">Official Inquiries:</strong> <a href="mailto:bluespaceinteriors1@gmail.com" className="font-semibold text-[#3154A5] underline">bluespaceinteriors1@gmail.com</a>.</span>
+                  <span><strong className="font-semibold text-slate-900">Official Inquiries:</strong> <a href={`mailto:${BRAND_CONFIG.email}`} className="font-semibold text-[#3154A5] underline">{BRAND_CONFIG.email}</a>.</span>
                 </div>
               </div>
             </div>
@@ -186,16 +191,16 @@ export default function ContactPage() {
                 Explore Real Site Walkthroughs
               </h3>
               <p className="text-xs text-slate-600 mb-5 font-light">
-                Follow our official social accounts for completed apartment reels, behind-the-scenes carpentry craftsmanship, and design insights.
+                Follow our official social media channels for real project walkthroughs, site progress updates, and contracting insights.
               </p>
               <SocialLinks variant="contact-card" />
             </div>
 
-            {/* Landmark & Transit Directions */}
+            {/* Pan India Consultation & Mobilization */}
             <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-50/60 to-white border border-blue-200 shadow-sm">
               <h4 className="text-lg font-serif font-bold text-slate-900 flex items-center gap-2">
                 <Navigation className="w-4 h-4 text-[#3154A5]" />
-                Visiting Our Studio Headquarters
+                Consultation &amp; National Mobilization
               </h4>
               <ul className="mt-4 space-y-3 text-xs sm:text-sm text-slate-700 font-light">
                 <li className="flex items-start gap-2.5">
@@ -203,7 +208,7 @@ export default function ContactPage() {
                     1
                   </span>
                   <span>
-                    <strong>From Eastern Express Highway:</strong> Take Cadbury Junction flyover exit toward Pokhran Road No. 2; continue past Bethany Hospital to The Capital Tree (15th Floor, Suite 1507).
+                    <strong>In-Person Consultation:</strong> Available by appointment at our registered office in Thane (West), Maharashtra for floorplan reviews.
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -211,7 +216,7 @@ export default function ContactPage() {
                     2
                   </span>
                   <span>
-                    <strong>From Ghodbunder Road / Hiranandani Estate:</strong> Drive south past Manpada junction towards Pokhran Road No. 2 to reach The Capital Tree.
+                    <strong>Virtual 3D &amp; BOQ Sessions (PAN India):</strong> For properties across Mumbai MMR, Pune, Bengaluru, Delhi NCR, and nationwide, our leadership team conducts end-to-end virtual consultations.
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -219,7 +224,7 @@ export default function ContactPage() {
                     3
                   </span>
                   <span>
-                    <strong>Visitor Parking:</strong> Dedicated visitor parking is available at The Capital Tree with security assistance on arrival.
+                    <strong>Direct Site Deployment:</strong> Our dedicated project managers and specialized contracting trades mobilize directly to your site to execute according to our 120-day SLA.
                   </span>
                 </li>
               </ul>

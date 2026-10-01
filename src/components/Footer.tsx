@@ -1,26 +1,26 @@
 import Link from "next/link";
 import VisitorCounter from "@/components/VisitorCounter";
 import {
-  Compass,
   MapPin,
   Phone,
   Mail,
   Clock,
-  Shield,
   Award,
-  CheckCircle2,
-  FileCheck,
-  User,
   Building,
+  User,
   ShieldCheck,
   Lock,
+  Briefcase,
+  Layers,
 } from "lucide-react";
 import { getLiveMetrics } from "@/app/actions/tracker";
 import BrandLogo from "@/components/BrandLogo";
 import SocialLinks from "@/components/SocialLinks";
+import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
 
 export default async function Footer() {
   const metrics = await getLiveMetrics();
+  const yearsOfExcellence = getYearsOfExcellence();
 
   return (
     <footer className="bg-[#fcfbf9] border-t border-slate-200 text-slate-700">
@@ -32,9 +32,9 @@ export default async function Footer() {
               <Award className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-slate-900 font-semibold text-sm">10+ Years of Excellence</h4>
+              <h4 className="text-slate-900 font-semibold text-sm">{yearsOfExcellence} of Excellence</h4>
               <p className="text-xs text-slate-600 mt-0.5 font-light">
-                Institutional pedigree &amp; architectural precision.
+                Established in {BRAND_CONFIG.establishedYear} with single-window accountability.
               </p>
             </div>
           </div>
@@ -46,19 +46,19 @@ export default async function Footer() {
             <div>
               <h4 className="text-slate-900 font-semibold text-sm">150+ Turnkey Projects</h4>
               <p className="text-xs text-slate-600 mt-0.5 font-light">
-                Completed across premium gated communities.
+                Completed across residential &amp; commercial properties.
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-4 p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
             <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center flex-shrink-0 text-[#3154A5]">
-              <ShieldCheck className="w-6 h-6" />
+              <Briefcase className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-slate-900 font-semibold text-sm">End -To- End Execution</h4>
+              <h4 className="text-slate-900 font-semibold text-sm">Design &amp; Contracting</h4>
               <p className="text-xs text-slate-600 mt-0.5 font-light">
-                Single-window project management &amp; factory fabrication.
+                {BRAND_CONFIG.handoverGuarantee} with locked BOQ.
               </p>
             </div>
           </div>
@@ -68,9 +68,12 @@ export default async function Footer() {
               <MapPin className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-slate-900 font-semibold text-sm">Pan India Presence</h4>
+              <h4 className="text-slate-900 font-semibold text-sm">PAN India Services</h4>
               <p className="text-xs text-slate-600 mt-0.5 font-light">
-                Direct client line: <a href="tel:+917738318383" className="font-bold text-[#3154A5] underline">7738318383</a>
+                Direct client line:{" "}
+                <a href={`tel:${BRAND_CONFIG.phoneRaw}`} className="font-bold text-[#3154A5] underline">
+                  {BRAND_CONFIG.phoneDisplay}
+                </a>
               </p>
             </div>
           </div>
@@ -86,28 +89,28 @@ export default async function Footer() {
               <BrandLogo variant="horizontal" size="lg" />
             </Link>
             <p className="text-slate-600 text-xs sm:text-sm mt-4 leading-relaxed pr-6 font-light">
-              Premier turnkey architectural and interior design firm executing luxury residences, villas, and penthouses across India.
-              Founded by Sir J.J. College of Architecture and VJTI alumni, we eliminate contractor fragmentation
-              through direct factory execution, delivering bespoke living environments with a strict 45-day key handover.
+              Premier turnkey interior design and contracting firm executing complete fitouts for residential, commercial, 
+              and corporate properties across India. We bridge the gap between design and contracting with single-window 
+              accountability, locked BOQs, and a guaranteed 120-day key handover.
             </p>
             <div className="mt-6 flex flex-wrap gap-2 text-[11px] text-[#3154A5]">
               <span className="px-3 py-1 rounded-lg bg-blue-50 border border-blue-200 font-medium">
-                10+ Years of Excellence
+                {yearsOfExcellence} of Excellence
               </span>
               <span className="px-3 py-1 rounded-lg bg-blue-50 border border-blue-200 font-medium">
                 150+ Projects
               </span>
               <span className="px-3 py-1 rounded-lg bg-blue-50 border border-blue-200 font-medium">
-                End -To- End Execution
+                Design &amp; Contracting
               </span>
               <span className="px-3 py-1 rounded-lg bg-blue-50 border border-blue-200 font-medium">
-                Pan India
+                PAN India Services
               </span>
             </div>
 
             <div className="mt-6 pt-4 border-t border-slate-200">
               <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2.5">
-                Official Studio Portals
+                Official Portals
               </span>
               <SocialLinks variant="footer" />
             </div>
@@ -116,17 +119,17 @@ export default async function Footer() {
           {/* Column 2: Navigation Links */}
           <div>
             <h4 className="text-slate-900 font-serif text-sm font-bold tracking-wider uppercase border-b border-blue-200 pb-2">
-              Studio Navigation
+              Navigation
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs text-slate-600">
               <li>
                 <Link href="/" className="hover:text-[#3154A5] transition-colors">
-                  Home (Turnkey Architecture)
+                  Home (Design &amp; Contracting)
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="hover:text-[#3154A5] transition-colors">
-                  About Us &amp; Leadership
+                  About Us (Bridging the Gap)
                 </Link>
               </li>
               <li>
@@ -136,12 +139,12 @@ export default async function Footer() {
               </li>
               <li>
                 <Link href="/portfolio" className="hover:text-[#3154A5] transition-colors">
-                  Curated Portfolio
+                  Explore Projects
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-[#3154A5] transition-colors">
-                  Consultation &amp; 3D Estimation
+                  Consultation &amp; Feasibility
                 </Link>
               </li>
               <li className="pt-2 border-t border-slate-200">
@@ -156,73 +159,73 @@ export default async function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Prime Metros & Enclaves Served */}
+          {/* Column 3: Core Contracting Verticals (Completely replaces Thane Enclaves Served) */}
           <div>
             <h4 className="text-slate-900 font-serif text-sm font-bold tracking-wider uppercase border-b border-blue-200 pb-2">
-              National Reach &amp; Enclaves
+              Contracting Verticals
             </h4>
-            <ul className="mt-4 space-y-2 text-xs text-slate-600">
+            <ul className="mt-4 space-y-2.5 text-xs text-slate-600">
               <li className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Mumbai MMR &amp; Thane Corridors</span>
+                <Layers className="w-3.5 h-3.5 text-[#3154A5]" />
+                <span>Turnkey Residential Fitouts</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Pune &amp; PCMC Luxury Enclaves</span>
+                <Layers className="w-3.5 h-3.5 text-[#3154A5]" />
+                <span>Corporate Office Interiors</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Bengaluru Tech Enclaves</span>
+                <Layers className="w-3.5 h-3.5 text-[#3154A5]" />
+                <span>Commercial &amp; Retail Contracting</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Delhi NCR Luxury Residences</span>
+                <Layers className="w-3.5 h-3.5 text-[#3154A5]" />
+                <span>Luxury Penthouses &amp; Villas</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Hyderabad High-Rise Towers</span>
+                <Layers className="w-3.5 h-3.5 text-[#3154A5]" />
+                <span>Turnkey Civil &amp; MEP Fitouts</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Major Metros (PAN India Scope)</span>
+                <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                <span className="font-semibold text-slate-900">PAN India Project Execution</span>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Contact & Studio Info */}
+          {/* Column 4: Contact & Office Info */}
           <div>
             <h4 className="text-slate-900 font-serif text-sm font-bold tracking-wider uppercase border-b border-blue-200 pb-2">
-              Studio Headquarters
+              Office Coordinates
             </h4>
             <div className="mt-4 space-y-3 text-xs text-slate-600 font-light">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#3154A5] mt-0.5 flex-shrink-0" />
                 <span>
-                  1507 on 15th, The Capital Tree, Pokhran Road No. 2, Thane (West), Maharashtra 400601
+                  {BRAND_CONFIG.registeredCity} • Executing PAN India
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <User className="w-4 h-4 text-[#3154A5] flex-shrink-0" />
-                <span>Contact Person: <strong className="text-slate-900 font-medium">Mr. Sunil Pandey</strong></span>
+                <span>Contact Person: <strong className="text-slate-900 font-medium">{BRAND_CONFIG.contactPerson}</strong></span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#3154A5] flex-shrink-0" />
-                <a href="tel:+917738318383" className="hover:text-[#3154A5] transition-colors font-medium">
-                  +91 77383 18383
+                <a href={`tel:${BRAND_CONFIG.phoneRaw}`} className="hover:text-[#3154A5] transition-colors font-medium">
+                  {BRAND_CONFIG.phone}
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#3154A5] flex-shrink-0" />
-                <a href="mailto:bluespaceinteriors1@gmail.com" className="hover:text-[#3154A5] transition-colors">
-                  bluespaceinteriors1@gmail.com
+                <a href={`mailto:${BRAND_CONFIG.email}`} className="hover:text-[#3154A5] transition-colors">
+                  {BRAND_CONFIG.email}
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-[#3154A5] flex-shrink-0" />
                 <span>Mon – Sat: 10:00 AM – 8:00 PM</span>
               </div>
-              <div className="pt-2 text-[11px] text-slate-500">
-                COA Reg: <strong>CA/2012/54892</strong> | GSTIN: 27AABCB9123M1Z5
+              <div className="pt-2 text-[11px] text-slate-700">
+                GSTIN: <strong className="font-mono text-slate-900 font-bold">{BRAND_CONFIG.gstin}</strong>
               </div>
             </div>
           </div>
@@ -231,7 +234,7 @@ export default async function Footer() {
         {/* Legal Copyright Bar */}
         <div className="mt-12 pt-8 border-t border-slate-200 text-[11px] text-slate-500 text-center">
           <p>
-            © {new Date().getFullYear()} Blue Space Interiors LLP. All Rights Reserved. Reg. Architectural &amp; Turnkey Interior Studio, Headquartered in Thane West.
+            © {new Date().getFullYear()} {BRAND_CONFIG.name}. All Rights Reserved. Turnkey Interior Design &amp; Contracting Firm • Registered in Thane West, Maharashtra • Services PAN India.
           </p>
         </div>
       </div>
