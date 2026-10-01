@@ -17,6 +17,7 @@ import {
   Mail,
   Briefcase,
   Layers,
+  User,
 } from "lucide-react";
 
 import { getSafeFeaturedProjects } from "@/lib/fallbackData";
@@ -67,6 +68,7 @@ export default async function HomePage() {
       { "@type": "AdministrativeArea", "name": "Mumbai Metropolitan Region" },
       { "@type": "AdministrativeArea", "name": "Thane" },
       { "@type": "AdministrativeArea", "name": "Pune" },
+      { "@type": "AdministrativeArea", "name": "Odisha" },
       { "@type": "AdministrativeArea", "name": "Bengaluru" },
       { "@type": "AdministrativeArea", "name": "Delhi NCR" },
       { "@type": "AdministrativeArea", "name": "Hyderabad" },
@@ -97,7 +99,7 @@ export default async function HomePage() {
         "name": "What property types do you undertake for interior contracting?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We execute turnkey interior design and contracting for all types of properties across India—including luxury apartments, penthouses, independent villas, commercial corporate offices, retail showrooms, and healthcare/hospitality environments.",
+          "text": "We execute turnkey interior design and contracting for all types of properties across India—including grand villas (such as our 12,000 sq.ft. villa in Angul, Odisha), luxury high-rise residences (Oberoi Enigma, Hiranandani Estate, Sai Nirvana), penthouses, and commercial corporate offices.",
         },
       },
       {
@@ -118,6 +120,54 @@ export default async function HomePage() {
       },
     ],
   };
+
+  const realTestimonials = [
+    {
+      clientName: "Mr. Sanjay Sahoo",
+      clientRole: "Coal Mining",
+      location: "Sikshyakpada, Angul, Odisha",
+      projectScope: "12,000 Sq.Ft. Luxury Villa Project",
+      quote:
+        "Blue Space Interiors designed and executed our 12,000 sq.ft. private villa in Angul, Odisha with remarkable expertise. Executing a lavish project of this scale across state borders was seamless under Sunil Pandey's single-window contracting governance. The luxurious double-height ceilings, stone finishes, and custom joinery are world-class.",
+      rating: 5,
+    },
+    {
+      clientName: "Mr. Neeraj Medekar",
+      clientRole: "General Manager in Hitachi",
+      location: "Flat 901, Glendale, Lake Enclave, Hiranandani Estate, Thane",
+      projectScope: "2,000 Sq.Ft. Luxury Residence Fitout",
+      quote:
+        "As General Manager at Hitachi, engineering precision and committed timelines are non-negotiable for me. Blue Space Interiors designed and executed our 2,000 sq.ft. residence at Lake Enclave, Hiranandani Estate to perfection. Their luxurious and lavish finishes, locked BOQ, and zero cost escalations made the fitout completely seamless.",
+      rating: 5,
+    },
+    {
+      clientName: "Mr. Anand Acharya",
+      clientRole: "Owner of Chemical Company",
+      location: "Tower A, 2604, Oberoi Enigma, Mulund, Mumbai",
+      projectScope: "2,200 Sq.Ft. 4 BHK Grand Residence",
+      quote:
+        "For our 2,200 sq.ft. 4 BHK at Oberoi Enigma Mulund, Blue Space Interiors delivered a masterclass in turnkey contracting. The lavish bookmatched marble craftsmanship, concealed air-conditioning, and custom furniture reflect top-tier designer precision. Handover was on schedule with complete quality assurance.",
+      rating: 5,
+    },
+    {
+      clientName: "Ms. Bhavana Waignkar",
+      clientRole: "IT Professional",
+      location: "Flat 2506, Oberoi Enigma, Mulund, Mumbai",
+      projectScope: "1,450 Sq.Ft. 3 BHK Luxury Suite",
+      quote:
+        "Designing and executing our 1,450 sq.ft. 3 BHK at Oberoi Enigma Mulund was handled with utmost professionalism. As an IT professional with tight schedules, I appreciated Blue Space Interiors managing everything autonomously—from society NOCs to modular joinery. The luxurious and lavish aesthetic exceeded all our expectations.",
+      rating: 5,
+    },
+    {
+      clientName: "Mr. Himanshu Shrivastava",
+      clientRole: "Branch Manager in HDFC Bank",
+      location: "Flat 2503, Sai Nirvana, Kalyan",
+      projectScope: "4,000 Sq.Ft. Grand Residence",
+      quote:
+        "Executing a 4,000 sq.ft. comprehensive transformation at Sai Nirvana, Kalyan requires genuine contracting muscle. Sunil Pandey and his team executed the entire scope with lavish details, robust BWP Marine Plywood, and strict financial discipline under the 120-day timeline.",
+      rating: 5,
+    },
+  ];
 
   return (
     <>
@@ -156,7 +206,7 @@ export default async function HomePage() {
           <p className="mt-6 text-base sm:text-xl text-slate-700 max-w-3xl mx-auto font-light leading-relaxed">
             Eliminate the costly divide between impractical designers and disconnected contractors. 
             We engineer and execute complete turnkey fitouts for <strong className="text-slate-900 font-semibold">all kinds of properties</strong>—residential, 
-            commercial, corporate, and retail spaces across India—with designer precision and a strict{" "}
+            commercial, corporate, and grand villas across India—with designer precision and a strict{" "}
             <strong className="text-slate-900 font-semibold">{BRAND_CONFIG.handoverGuarantee}</strong>.
           </p>
 
@@ -240,7 +290,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Target SEO & Competitive Positioning: Turnkey Design & Contracting vs Aggregators */}
+      {/* Target SEO & Competitive Positioning */}
       <section className="py-24 bg-[#f8f7f4] border-y border-slate-200 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
@@ -286,7 +336,7 @@ export default async function HomePage() {
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>All Property Categories:</strong> Comprehensive turnkey execution for residential, commercial, office, and retail projects.</span>
+                    <span><strong>All Property Categories:</strong> From grand 12,000 sq.ft. villas to high-rise apartments and corporate offices.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
@@ -378,7 +428,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Featured Projects Showcase with Target Keyword */}
+      {/* Featured Real Projects Showcase */}
       <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -387,10 +437,10 @@ export default async function HomePage() {
                 Proven Handover Excellence
               </span>
               <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
-                Completed Projects by Premier <span className="brand-gradient-text">Design &amp; Contracting</span> Firm
+                Completed Real Projects by Premier <span className="brand-gradient-text">Design &amp; Contracting</span> Firm
               </h2>
               <p className="mt-2 text-slate-600 text-sm max-w-xl font-light">
-                Explore real completed residences, commercial spaces, and bespoke fitouts delivered with designer precision within our 120-day turnkey protocol across India.
+                Explore real completed residences, grand private villas, and bespoke fitouts designed and executed by Blue Space Interiors in luxurious and lavish styling across India.
               </p>
             </div>
             <Link
@@ -403,7 +453,7 @@ export default async function HomePage() {
           </div>
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredProjects.map((project) => (
+            {featuredProjects.slice(0, 3).map((project) => (
               <div
                 key={project.id}
                 className="bg-[#fcfbf9] rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all group flex flex-col"
@@ -424,20 +474,26 @@ export default async function HomePage() {
 
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">
+                      Designed &amp; Executed by Blue Space Interiors
+                    </span>
                     <h3 className="text-lg font-serif font-bold text-slate-900 group-hover:text-[#3154A5] transition-colors leading-snug">
                       {project.title}
                     </h3>
-                    <p className="text-xs text-[#3154A5] mt-1 font-semibold">{project.locality}</p>
+                    <p className="text-xs text-[#3154A5] mt-1 font-semibold flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {project.locality}
+                    </p>
                     <p className="text-xs text-slate-600 mt-3 line-clamp-3 leading-relaxed font-light">
                       {project.scope}
                     </p>
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs">
-                    <span className="text-slate-500">Handover Protocol:</span>
+                    <span className="text-slate-500 font-medium">Style: Luxurious &amp; Lavish</span>
                     <span className="text-emerald-700 font-semibold flex items-center gap-1">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                      120-Day Delivery Verified
+                      120-Day Verified
                     </span>
                   </div>
                 </div>
@@ -447,7 +503,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Flagship Projects Section - Exactly Oberoi Sky City (32), Oberoi Eternia & Enigma (26), Piramal Vaikunth (25), Hiranandani (10) */}
+      {/* Flagship Projects Section */}
       <section className="py-20 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
@@ -458,7 +514,7 @@ export default async function HomePage() {
               Flagship Project Deliveries Across Premier Developments
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-slate-600 font-light">
-              Our single-window contracting teams have successfully delivered dozens of high-value turnkey interior fitouts across leading gated developments and commercial properties.
+              Our single-window contracting teams have successfully delivered dozens of high-value turnkey interior fitouts across leading gated developments and grand estates nationwide.
             </p>
           </div>
 
@@ -553,7 +609,7 @@ export default async function HomePage() {
                   <span className="text-xs text-slate-500">all-inclusive</span>
                 </div>
                 <p className="text-xs text-slate-600 mt-2 font-light">
-                  Suitable for 1,200–1,800 sq.ft. carpet area.
+                  Suitable for 1,200–1,800 sq.ft. carpet area (e.g. Oberoi Enigma).
                 </p>
                 <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
                   <li className="flex items-center gap-2">
@@ -589,14 +645,14 @@ export default async function HomePage() {
             <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
                 <span className="text-xs font-bold text-[#3154A5] uppercase tracking-wider">
-                  Penthouse, Villa &amp; Commercial Scopes
+                  Grand Villa &amp; Penthouse Scopes
                 </span>
                 <div className="mt-2 flex items-baseline gap-2">
-                  <span className="text-3xl font-serif font-bold text-slate-900">₹50L – ₹95L+</span>
+                  <span className="text-3xl font-serif font-bold text-slate-900">₹50L – ₹1Cr+</span>
                   <span className="text-xs text-slate-500">bespoke scope</span>
                 </div>
                 <p className="text-xs text-slate-500 mt-2 font-light">
-                  Customized for 2,200–5,000+ sq.ft. penthouses, villas, or commercial corporate offices.
+                  Customized for 2,200–12,000+ sq.ft. private villas, grand estates, or commercial corporate offices.
                 </p>
                 <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
                   <li className="flex items-center gap-2">
@@ -613,7 +669,7 @@ export default async function HomePage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Full commercial MEP, conference audio-visual &amp; civil contracting
+                    Full turnkey civil contracting, custom chandeliers &amp; bespoke furnishings
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
@@ -632,48 +688,26 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Real Verified Client Endorsements - NO individual person names */}
+      {/* Real Verified Client Endorsements */}
       <section className="py-24 bg-[#f8f7f4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto">
             <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
-              Client Testimonials
+              Real Client Endorsements
             </span>
             <h2 className="mt-2 text-3xl font-serif font-bold text-slate-900">
               Endorsed by Discerning C-Suite Executives, Business Leaders &amp; Homeowners
             </h2>
+            <p className="mt-2 text-xs sm:text-sm text-slate-600 font-light">
+              Real completed projects designed and executed by Blue Space Interiors in luxurious and lavish styling across India.
+            </p>
           </div>
 
           <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                role: "VP, Cloud Engineering",
-                title: "Luxury Duplex Penthouse Fitout",
-                verified: "120-Day Handover Verified",
-                quote:
-                  "As an IT executive with demanding work hours, I had zero bandwidth to coordinate between independent designers and unorganized contractors. Sunil Pandey and the Blue Space contracting team governed everything down to the millimeter. The concealed VRV air-conditioning and custom kitchen are magnificent. They handed over keys ahead of schedule within the 120-day commitment with zero budget inflation.",
-                rating: 5,
-              },
-              {
-                role: "Senior Medical Consultant",
-                title: "3 BHK Residence Fitout",
-                verified: "Zero Cost Escalation Verified",
-                quote:
-                  "We previously lost months of peace with an aggregator platform that gave an initial low estimate and then billed 30% extra under variation clauses. Blue Space Interiors gave us a locked BOQ, adhered to gated community timing rules, and delivered top-tier acoustic ceilings and walk-in closets with a solid 5-year warranty. Truly dependable single-window contracting.",
-                rating: 5,
-              },
-              {
-                role: "Corporate Managing Director",
-                title: "Commercial Office & Executive Suite",
-                verified: "Turnkey Contracting Verified",
-                quote:
-                  "Blue Space Interiors executed our commercial workspace and private executive suite with exceptional designer precision. The seamless glass partitions, acoustic meeting rooms, and custom reception counter reflect pristine craftsmanship. Their fixed BOQ and proactive site coordination eliminated all contracting stress.",
-                rating: 5,
-              },
-            ].map((t, idx) => (
+            {realTestimonials.slice(0, 3).map((t, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between relative"
+                className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-blue-300 transition-all flex flex-col justify-between relative"
               >
                 <div>
                   <div className="flex items-center gap-1 text-[#3154A5] mb-4">
@@ -687,11 +721,49 @@ export default async function HomePage() {
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-slate-100">
-                  <h4 className="text-sm font-semibold text-slate-900">{t.role}</h4>
-                  <p className="text-[11px] text-[#3154A5] font-medium">{t.title}</p>
-                  <p className="text-[11px] text-emerald-700 font-semibold mt-0.5 flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                    {t.verified}
+                  <h4 className="text-sm font-semibold text-slate-900 flex items-center gap-1.5">
+                    <User className="w-4 h-4 text-[#3154A5]" />
+                    <span>{t.clientName}</span>
+                  </h4>
+                  <p className="text-[11px] text-[#3154A5] font-semibold">{t.clientRole}</p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{t.projectScope}</p>
+                  <p className="text-[10px] text-slate-400 mt-0.5 flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-slate-400" />
+                    {t.location}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Additional 2 Client Cards */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            {realTestimonials.slice(3, 5).map((t, idx) => (
+              <div
+                key={idx}
+                className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-blue-300 transition-all flex flex-col justify-between relative"
+              >
+                <div>
+                  <div className="flex items-center gap-1 text-[#3154A5] mb-4">
+                    {[...Array(t.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-[#3154A5]" />
+                    ))}
+                  </div>
+                  <Quote className="w-8 h-8 text-blue-200 mb-3" />
+                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed italic font-light">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-slate-100">
+                  <h4 className="text-sm font-semibold text-slate-900 flex items-center gap-1.5">
+                    <User className="w-4 h-4 text-[#3154A5]" />
+                    <span>{t.clientName}</span>
+                  </h4>
+                  <p className="text-[11px] text-[#3154A5] font-semibold">{t.clientRole}</p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{t.projectScope}</p>
+                  <p className="text-[10px] text-slate-400 mt-0.5 flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-slate-400" />
+                    {t.location}
                   </p>
                 </div>
               </div>
@@ -728,7 +800,7 @@ export default async function HomePage() {
                 What kind of properties do you execute interior contracting for?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                We handle all categories of properties—including luxury apartments, sky villas, penthouses, commercial corporate offices, retail showrooms, and healthcare/hospitality properties. Our contracting crews are equipped for both large-scale commercial fitouts and bespoke residential transformations.
+                We handle all categories of properties—including luxury apartments, sky villas, penthouses, commercial corporate offices, retail showrooms, and grand private villas (like our 12,000 sq.ft. villa estate in Angul, Odisha). Our contracting crews are equipped for both large-scale fitouts and bespoke residences.
               </p>
             </div>
 
@@ -755,7 +827,7 @@ export default async function HomePage() {
                 Do you provide turnkey contracting services across PAN India locations?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Yes. While our registered office is in Thane (West), Maharashtra, we execute turnkey interior design and contracting projects across India. Our project management and specialized contracting teams mobilize nationwide to deliver consistent quality and strict SLA adherence.
+                Yes. While our registered office is in Thane (West), Maharashtra, we execute turnkey interior design and contracting projects across India (proven by our grand 12,000 sq.ft. villa execution in Angul, Odisha, as well as multiple projects across Mumbai MMR). Our project management and specialized contracting teams mobilize nationwide to deliver consistent quality and strict SLA adherence.
               </p>
             </div>
           </div>
