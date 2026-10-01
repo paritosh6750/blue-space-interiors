@@ -6,7 +6,6 @@ import {
   Layers,
   ArrowRight,
   ShieldCheck,
-  Check,
   Award,
   Building2,
   MapPin,
@@ -20,12 +19,13 @@ import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Turnkey Interior Design & Contracting | Blue Space Interiors | PAN India",
   description:
-    "End-to-end turnkey interior design and contracting solutions across India for residential, commercial, and corporate properties. Guaranteed 120-day key handover, zero cost escalations, certified materials, and direct contracting execution led by Mr. Sunil Pandey.",
+    "End-to-end turnkey interior design and contracting solutions across India for residential, commercial, and corporate properties. Guaranteed 120-day key handover, 5-year warranty, zero cost escalations, and direct contracting execution led by Mr. Sunil Pandey.",
   keywords: [
     "turnkey interior contracting",
     "turnkey interior design and contracting India",
     "commercial and residential interior contractors",
     "120 day handover guarantee",
+    "5 year warranty interiors",
     "Blue Space Interiors Sunil Pandey",
     "zero cost escalation contracting",
   ],
@@ -42,7 +42,7 @@ export default function TurnkeyServicesPage() {
       description:
         "Directed by Mr. Sunil Pandey, our engineering and contracting team coordinates a comprehensive spatial audit. We capture exact slab-to-beam clearances, conduit positions, column setbacks, and site constraints to ensure designs are 100% buildable from day one.",
       highlights: [
-        "Precision laser floor and ceiling mapping",
+        "Laser floor and ceiling mapping with designer precision",
         "Concealed electrical conduit & plumbing line tracing",
         "HVAC, ventilation, and structural feasibility audit",
       ],
@@ -68,7 +68,7 @@ export default function TurnkeyServicesPage() {
       highlights: [
         "100% Boiling Water Proof (BWP) Marine Plywood calibration",
         "Durable heat-resistant zero-joint edge banding",
-        "Original certified soft-close architectural hardware",
+        "Original certified soft-close hardware",
       ],
     },
     {
@@ -76,7 +76,7 @@ export default function TurnkeyServicesPage() {
       title: "Clean Fitout Assembly & MEP Integration",
       duration: "Days 66–105",
       description:
-        "Pre-finished modular units and architectural components arrive on site for clean assembly. In parallel, our specialized crews complete acoustic false ceilings, concealed VRV/split air conditioning, designer electrical lighting, and wall treatments.",
+        "Pre-finished modular units and interior components arrive on site for clean assembly. In parallel, our specialized crews complete acoustic false ceilings, concealed VRV/split air conditioning, designer electrical lighting, and wall treatments.",
       highlights: [
         "Heavy-duty protective floor covering across common lobbies and site",
         "Precision HVAC ducting and electrical testing",
@@ -91,7 +91,7 @@ export default function TurnkeyServicesPage() {
         "Our site quality managers execute a rigorous snag checklist—verifying drawer glides, plumbing pressure, electrical socket earthing, and millimeter alignment. We perform industrial deep cleaning and hand over keys strictly on or before Day 120.",
       highlights: [
         "Guaranteed 120-day key handover protocol",
-        "Comprehensive structural warranty certificate issued",
+        "Comprehensive 5-Year Direct Structural Warranty issued",
         "Complete appliance, fixture, and maintenance dossier provided",
       ],
     },
@@ -284,148 +284,13 @@ export default function TurnkeyServicesPage() {
                 <tr>
                   <td className="py-4 px-6 font-medium text-slate-900">Warranty &amp; Support</td>
                   <td className="py-4 px-6 bg-blue-50/50 border-x border-blue-200 text-emerald-700 font-semibold">
-                    Direct Structural Warranty
+                    5-Year Direct Structural Warranty
                   </td>
                   <td className="py-4 px-6 text-slate-600">Tedious app ticketing friction</td>
                   <td className="py-4 px-6 text-rose-600">Zero accountability</td>
                 </tr>
               </tbody>
             </table>
-          </div>
-        </div>
-      </section>
-
-      {/* Turnkey Scope Packages */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
-            Tailored Scopes
-          </span>
-          <h2 className="mt-2 text-3xl font-serif font-bold text-slate-900">
-            Tailored Turnkey Scopes for Every Property
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition-all flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-bold text-[#3154A5] uppercase tracking-wider">
-                Residential Fitouts
-              </span>
-              <h3 className="text-xl font-serif font-bold text-slate-900 mt-1">
-                Luxury Apartment &amp; Home Fitout
-              </h3>
-              <p className="text-xs text-slate-600 mt-2 font-light">
-                Engineered for 2 BHK, 3 BHK, and 4 BHK residences with turnkey ease.
-              </p>
-              <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Full home modular carpentry &amp; false ceiling integration
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Acrylic/PU modular kitchen with quartz counter &amp; soft-close systems
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Concealed architectural lighting with 3000K ambient COBs
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  120-Day Handover Guarantee with locked BOQ
-                </li>
-              </ul>
-            </div>
-            <Link
-              href="/contact"
-              className="mt-8 brand-button text-center py-3 rounded-xl text-xs font-bold uppercase tracking-wider block shadow-md"
-            >
-              Request Residential Proposal
-            </Link>
-          </div>
-
-          <div className="p-8 rounded-3xl bg-white border-2 border-[#3154A5] relative flex flex-col justify-between shadow-xl">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#3154A5] text-white px-3.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">
-              Signature
-            </div>
-            <div>
-              <span className="text-xs font-bold text-[#3154A5] uppercase tracking-wider">
-                Penthouses &amp; Villas
-              </span>
-              <h3 className="text-xl font-serif font-bold text-slate-900 mt-1">
-                The Estate &amp; Penthouse Scope
-              </h3>
-              <p className="text-xs text-slate-600 mt-2 font-light">
-                Customized for expansive penthouses, duplex residences, and private villas.
-              </p>
-              <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Italian marble supply, laying &amp; diamond abrasive polishing
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Acoustic fluted veneer panelling &amp; hidden flush door system
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Central VRV HVAC with architectural linear diffusers
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Smart automation for lighting, climate &amp; security
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Dedicated on-site contracting project manager
-                </li>
-              </ul>
-            </div>
-            <Link
-              href="/contact"
-              className="mt-8 brand-button text-center py-3 rounded-xl text-xs font-bold uppercase tracking-wider block shadow-md"
-            >
-              Request Penthouse Proposal
-            </Link>
-          </div>
-
-          <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition-all flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-bold text-[#3154A5] uppercase tracking-wider">
-                Commercial &amp; Corporate
-              </span>
-              <h3 className="text-xl font-serif font-bold text-slate-900 mt-1">
-                Corporate Office &amp; Retail Fitout
-              </h3>
-              <p className="text-xs text-slate-600 mt-2 font-light">
-                High-efficiency turnkey fitouts for modern offices, retail stores, and commercial workspaces.
-              </p>
-              <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Seamless glass partitions, acoustic meeting rooms &amp; workstations
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Commercial MEP, server rack cooling, and electrical distribution
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Executive cabins, reception desk &amp; pantry joinery
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Strict milestone adherence with 120-day handover SLA
-                </li>
-              </ul>
-            </div>
-            <Link
-              href="/contact"
-              className="mt-8 brand-button text-center py-3 rounded-xl text-xs font-bold uppercase tracking-wider block shadow-md"
-            >
-              Request Commercial Quote
-            </Link>
           </div>
         </div>
       </section>

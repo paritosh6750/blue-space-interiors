@@ -20,12 +20,13 @@ export const revalidate = 0; // Fresh SSR data
 export const metadata: Metadata = {
   title: "Portfolio | Blue Space Interiors | Turnkey Interior Design & Contracting Projects",
   description:
-    "Explore turnkey interior design and contracting case studies delivered across India: luxury residences, penthouses, duplexes, and commercial fitouts. 100% turnkey execution with 120-day handover guarantee.",
+    "Explore turnkey interior design and contracting case studies delivered across India: luxury residences, penthouses, duplexes, and commercial fitouts. 100% turnkey execution with 120-day handover guarantee and 5-year warranty.",
   keywords: [
     "turnkey interior contracting portfolio",
     "turnkey interior design projects",
     "residential and commercial interior fitouts",
     "120 day handover interiors",
+    "5 year warranty interiors",
     "Blue Space Interiors Sunil Pandey",
   ],
 };
@@ -49,7 +50,7 @@ export default async function PortfolioPage() {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-light leading-relaxed">
-            Witness how single-window contracting precision, certified materials, and meticulous craftsmanship combine across residential, commercial, and corporate properties nationwide.
+            Witness how single-window contracting, designer precision, certified materials, and meticulous craftsmanship combine across residential, commercial, and corporate properties nationwide.
           </p>
 
           {/* 5-Pillar Core Excellence Bar */}
@@ -162,7 +163,7 @@ export default async function PortfolioPage() {
                     </h2>
 
                     <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                      A complete turnkey fitout designed and executed within our guaranteed 120-day SLA. Built with high-grade Boiling Water Proof (BWP) Marine Plywood, certified architectural hardware, and precision site contracting.
+                      A complete turnkey fitout designed and executed within our guaranteed 120-day SLA with designer precision. Built with high-grade Boiling Water Proof (BWP) Marine Plywood, certified architectural hardware, and backed by a 5-year direct structural warranty.
                     </p>
 
                     <div className="mt-6">

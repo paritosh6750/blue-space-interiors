@@ -35,7 +35,7 @@ export default async function HomePage() {
     "name": BRAND_CONFIG.name,
     "alternateName": "Blue Space Turnkey Interior Design & Contracting",
     "description":
-      "Blue Space Interiors is a premier turnkey interior design and contracting firm delivering complete end-to-end fitouts for residential, commercial, and corporate properties across India. Guaranteed 120-day handover, zero cost escalations, and single-window contracting execution led by Mr. Sunil Pandey.",
+      "Blue Space Interiors is a premier turnkey interior design and contracting firm delivering complete end-to-end fitouts for residential, commercial, and corporate properties across India. Guaranteed 120-day handover, 5-year warranty, zero cost escalations, and single-window contracting execution led by Mr. Sunil Pandey.",
     "url": "https://bluespaceinteriors.com",
     "telephone": BRAND_CONFIG.phoneRaw,
     "email": BRAND_CONFIG.email,
@@ -77,7 +77,7 @@ export default async function HomePage() {
       "https://www.threads.com/@blue_space_interiors?xmt=AQG0IGwV1GoBLDtI18XKZJ9Y2wucsVIJLH9P3JFgGawIpf0",
     ],
     "keywords":
-      "turnkey interior contracting, interior design and contracting firm, residential and commercial interior fitouts, 120 day handover guarantee, Blue Space Interiors Sunil Pandey",
+      "turnkey interior contracting, interior design and contracting firm, residential and commercial interior fitouts, 120 day handover guarantee, 5 year warranty, Blue Space Interiors Sunil Pandey",
   };
 
   const faqJsonLd = {
@@ -89,7 +89,7 @@ export default async function HomePage() {
         "name": "How does Blue Space Interiors guarantee a 120-day turnkey handover?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Through our integrated Design & Contracting methodology led by Mr. Sunil Pandey, we bridge the gap between design conceptualization and on-site contracting. With locked procurement timelines, in-house technical supervision, and structured milestone scheduling across civil, MEP, millwork, and finishes, we commit to a strict 120-day turnkey key handover with zero delays.",
+          "text": "Through our integrated Design & Contracting methodology led by Mr. Sunil Pandey, we bridge the gap between design conceptualization and on-site contracting. With locked procurement timelines, designer precision, in-house technical supervision, and structured milestone scheduling across civil, MEP, millwork, and finishes, we commit to a strict 120-day turnkey key handover with zero delays.",
         },
       },
       {
@@ -102,18 +102,18 @@ export default async function HomePage() {
       },
       {
         "@type": "Question",
-        "name": "Why choose Blue Space Interiors over national aggregator platforms?",
+        "name": "What warranty does Blue Space Interiors provide?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Aggregator platforms operate as sales brokers charging 30–40% commissions while outsourcing execution to unvetted third parties. Blue Space Interiors provides direct single-window Design & Contracting led by Mr. Sunil Pandey with a 100% Zero Cost Escalation guarantee, fixed itemized BOQ, certified materials, and dedicated site supervision.",
+          "text": "Blue Space Interiors provides a comprehensive 5-Year Direct Structural Warranty covering modular joinery, hardware fixtures, and structural woodwork, supported by single-window direct resolution.",
         },
       },
       {
         "@type": "Question",
-        "name": "Do you provide turnkey contracting services across PAN India locations?",
+        "name": "Why choose Blue Space Interiors over national aggregator platforms?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Blue Space Interiors provides turnkey design and contracting services across India, mobilizing specialized execution crews, project managers, and supply chain partners for residential and commercial fitouts nationwide.",
+          "text": "Aggregator platforms operate as sales brokers charging 30–40% commissions while outsourcing execution to unvetted third parties. Blue Space Interiors provides direct single-window Design & Contracting led by Mr. Sunil Pandey with a 100% Zero Cost Escalation guarantee, fixed itemized BOQ, 5-year warranty, certified materials, and dedicated site supervision.",
         },
       },
     ],
@@ -156,7 +156,7 @@ export default async function HomePage() {
           <p className="mt-6 text-base sm:text-xl text-slate-700 max-w-3xl mx-auto font-light leading-relaxed">
             Eliminate the costly divide between impractical designers and disconnected contractors. 
             We engineer and execute complete turnkey fitouts for <strong className="text-slate-900 font-semibold">all kinds of properties</strong>—residential, 
-            commercial, corporate, and retail spaces across India—with a strict{" "}
+            commercial, corporate, and retail spaces across India—with designer precision and a strict{" "}
             <strong className="text-slate-900 font-semibold">{BRAND_CONFIG.handoverGuarantee}</strong>.
           </p>
 
@@ -170,8 +170,12 @@ export default async function HomePage() {
               Guaranteed 120-Day Handover Protocol
             </span>
             <span className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm">
+              <Award className="w-4 h-4 text-[#3154A5]" />
+              5-Year Direct Structural Warranty
+            </span>
+            <span className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm">
               <Layers className="w-4 h-4 text-[#3154A5]" />
-              Integrated Design &amp; Contracting Execution
+              Integrated Design &amp; Contracting
             </span>
           </div>
 
@@ -278,15 +282,19 @@ export default async function HomePage() {
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>5-Year Direct Warranty:</strong> Written structural warranty covering woodwork, joinery, and fittings.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
                     <span><strong>All Property Categories:</strong> Comprehensive turnkey execution for residential, commercial, office, and retail projects.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Certified Materials:</strong> Premium Boiling Water Proof (BWP) Marine Plywood and genuine branded architectural hardware.</span>
+                    <span><strong>Certified Materials:</strong> Premium Boiling Water Proof (BWP) Marine Plywood and genuine branded hardware.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Single-Window Accountability:</strong> Led directly by Sunil Pandey, ensuring design vision matches site contracting flawlessly.</span>
+                    <span><strong>Single-Window Accountability:</strong> Led directly by Sunil Pandey, ensuring design vision matches site contracting with designer precision.</span>
                   </li>
                 </ul>
               </div>
@@ -345,7 +353,7 @@ export default async function HomePage() {
                 <ul className="mt-6 space-y-4 text-xs sm:text-sm text-slate-600">
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>Lack of Design Comprehension:</strong> Inability to interpret detailed architectural drawings, resulting in aesthetic failure.</span>
+                    <span><strong>Lack of Design Comprehension:</strong> Inability to interpret detailed drawings, resulting in aesthetic failure.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
@@ -382,7 +390,7 @@ export default async function HomePage() {
                 Completed Projects by Premier <span className="brand-gradient-text">Design &amp; Contracting</span> Firm
               </h2>
               <p className="mt-2 text-slate-600 text-sm max-w-xl font-light">
-                Explore real completed residences, commercial spaces, and bespoke fitouts delivered within our 120-day turnkey protocol across India.
+                Explore real completed residences, commercial spaces, and bespoke fitouts delivered with designer precision within our 120-day turnkey protocol across India.
               </p>
             </div>
             <Link
@@ -520,7 +528,7 @@ export default async function HomePage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    120-Day Handover Guarantee
+                    120-Day Handover Guarantee &amp; 5-Year Warranty
                   </li>
                 </ul>
               </div>
@@ -562,11 +570,11 @@ export default async function HomePage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Precision marble floor restoration or imported wooden flooring
+                    Designer precision marble restoration or imported wooden flooring
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Strict 120-day guaranteed key handover
+                    120-Day Handover Guarantee &amp; 5-Year Structural Warranty
                   </li>
                 </ul>
               </div>
@@ -593,7 +601,7 @@ export default async function HomePage() {
                 <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Italian marble supply, laying &amp; 8-stage diamond abrasive polishing
+                    Italian marble supply, laying &amp; diamond abrasive polishing
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
@@ -624,7 +632,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Real Verified Client Endorsements */}
+      {/* Real Verified Client Endorsements - NO individual person names */}
       <section className="py-24 bg-[#f8f7f4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto">
@@ -639,27 +647,27 @@ export default async function HomePage() {
           <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                name: "Vikramaditya Deshmukh",
-                title: "VP, Cloud Engineering",
-                residence: "4.5 BHK Duplex Penthouse",
+                role: "VP, Cloud Engineering",
+                title: "Luxury Duplex Penthouse Fitout",
+                verified: "120-Day Handover Verified",
                 quote:
-                  "As an IT executive with long overseas work hours, I had zero bandwidth to coordinate between independent designers and unorganized contractors. Sunil Pandey and the Blue Space contracting team governed everything down to the millimeter. The concealed VRV air-conditioning and custom kitchen are magnificent. They handed over keys ahead of schedule within the 120-day commitment with zero budget inflation.",
+                  "As an IT executive with demanding work hours, I had zero bandwidth to coordinate between independent designers and unorganized contractors. Sunil Pandey and the Blue Space contracting team governed everything down to the millimeter. The concealed VRV air-conditioning and custom kitchen are magnificent. They handed over keys ahead of schedule within the 120-day commitment with zero budget inflation.",
                 rating: 5,
               },
               {
-                name: "Dr. Rohini & Dr. Sanjeev Sawant",
-                title: "Consultant Radiologists",
-                residence: "3 BHK Residence Fitout",
+                role: "Senior Medical Consultant",
+                title: "3 BHK Residence Fitout",
+                verified: "Zero Cost Escalation Verified",
                 quote:
-                  "We previously lost months of peace with an aggregator platform that gave an initial low estimate and then billed 30% extra under variation clauses. Blue Space Interiors gave us a locked BOQ, adhered to gated community timing rules, and delivered top-tier acoustic ceilings and walk-in closets. Truly dependable single-window contracting.",
+                  "We previously lost months of peace with an aggregator platform that gave an initial low estimate and then billed 30% extra under variation clauses. Blue Space Interiors gave us a locked BOQ, adhered to gated community timing rules, and delivered top-tier acoustic ceilings and walk-in closets with a solid 5-year warranty. Truly dependable single-window contracting.",
                 rating: 5,
               },
               {
-                name: "Manish Khandelwal",
-                title: "Managing Director, Logistics Firm",
-                residence: "Corporate Office & Executive Suite",
+                role: "Corporate Managing Director",
+                title: "Commercial Office & Executive Suite",
+                verified: "Turnkey Contracting Verified",
                 quote:
-                  "Blue Space Interiors executed our commercial workspace and private executive suite with exceptional precision. The seamless glass partitions, acoustic meeting rooms, and custom reception counter reflect pristine craftsmanship. Their fixed BOQ and proactive site coordination eliminated all contracting stress.",
+                  "Blue Space Interiors executed our commercial workspace and private executive suite with exceptional designer precision. The seamless glass partitions, acoustic meeting rooms, and custom reception counter reflect pristine craftsmanship. Their fixed BOQ and proactive site coordination eliminated all contracting stress.",
                 rating: 5,
               },
             ].map((t, idx) => (
@@ -679,9 +687,12 @@ export default async function HomePage() {
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-slate-100">
-                  <h4 className="text-sm font-semibold text-slate-900">{t.name}</h4>
+                  <h4 className="text-sm font-semibold text-slate-900">{t.role}</h4>
                   <p className="text-[11px] text-[#3154A5] font-medium">{t.title}</p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">{t.residence}</p>
+                  <p className="text-[11px] text-emerald-700 font-semibold mt-0.5 flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                    {t.verified}
+                  </p>
                 </div>
               </div>
             ))}
@@ -708,7 +719,7 @@ export default async function HomePage() {
                 How does Blue Space Interiors guarantee a 120-day turnkey handover?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Through our integrated Design &amp; Contracting methodology led by Mr. Sunil Pandey, we bridge the gap between design conceptualization and on-site contracting. With locked procurement timelines, in-house technical supervision, and structured milestone scheduling across civil, MEP, millwork, and finishes, we commit to a strict 120-day turnkey key handover with zero delays.
+                Through our integrated Design &amp; Contracting methodology led by Mr. Sunil Pandey, we bridge the gap between design conceptualization and on-site contracting. With locked procurement timelines, designer precision, in-house technical supervision, and structured milestone scheduling across civil, MEP, millwork, and finishes, we commit to a strict 120-day turnkey key handover with zero delays.
               </p>
             </div>
 
@@ -723,10 +734,19 @@ export default async function HomePage() {
 
             <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
               <h3 className="text-base font-serif font-semibold text-slate-900">
+                What warranty is provided with your turnkey contracting?
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                All turnkey projects executed by Blue Space Interiors come with our legally backed 5-Year Direct Structural Warranty covering modular joinery, cabinetry, hardware fittings, and core carpentry.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
+              <h3 className="text-base font-serif font-semibold text-slate-900">
                 Why choose Blue Space Interiors over national aggregator platforms?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Aggregator platforms operate as sales brokers charging 30–40% commissions while outsourcing execution to unvetted third parties. Blue Space Interiors provides direct single-window Design &amp; Contracting led by Mr. Sunil Pandey with a 100% Zero Cost Escalation guarantee, fixed itemized BOQ, certified materials, and dedicated site supervision.
+                Aggregator platforms operate as sales brokers charging 30–40% commissions while outsourcing execution to unvetted third parties. Blue Space Interiors provides direct single-window Design &amp; Contracting led by Mr. Sunil Pandey with a 100% Zero Cost Escalation guarantee, fixed itemized BOQ, 5-year warranty, certified materials, and dedicated site supervision.
               </p>
             </div>
 

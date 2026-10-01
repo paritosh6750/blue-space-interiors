@@ -5,13 +5,16 @@ import { createInquiry } from "@/lib/leadStore";
 
 export interface InquiryFormData {
   fullName: string;
-  email: string;
   phone: string;
-  propertyType: string;
-  locationArea: string;
-  configuration: string;
-  budgetRange: string;
-  preferredTimeline: string;
+  email: string;
+  address: string;
+  enquiry?: string;
+  // Optional backward compatibility
+  propertyType?: string;
+  locationArea?: string;
+  configuration?: string;
+  budgetRange?: string;
+  preferredTimeline?: string;
   message?: string;
 }
 
@@ -21,16 +24,19 @@ export async function submitLeadInquiry(data: InquiryFormData) {
       return { success: false, error: "Please complete all required fields." };
     }
 
+    const resolvedAddress = data.address || data.locationArea || "Not Specified";
+    const resolvedEnquiry = data.enquiry || data.message || "";
+
     const inquiryId = await createInquiry({
       fullName: data.fullName,
       email: data.email,
       phone: data.phone,
-      propertyType: data.propertyType || "Apartment",
-      locationArea: data.locationArea || "Not Specified",
-      configuration: data.configuration || "3 BHK",
-      budgetRange: data.budgetRange || "25L-40L",
+      propertyType: data.propertyType || "Turnkey Fitout",
+      locationArea: resolvedAddress,
+      configuration: data.configuration || "Custom Scope",
+      budgetRange: data.budgetRange || "On Discussion",
       preferredTimeline: data.preferredTimeline || "Immediate",
-      message: data.message || "",
+      message: resolvedEnquiry,
     });
 
     try {

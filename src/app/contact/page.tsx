@@ -7,12 +7,10 @@ import {
   Phone,
   Mail,
   Clock,
-  Navigation,
   FileCheck,
   User,
   Award,
   Building,
-  ShieldCheck,
   Briefcase,
 } from "lucide-react";
 import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
@@ -165,7 +163,7 @@ export default function ContactPage() {
                   <div className="w-7 h-7 rounded-lg bg-white border border-blue-200 flex items-center justify-center text-[#3154A5] flex-shrink-0 shadow-xs">
                     <Briefcase className="w-3.5 h-3.5" />
                   </div>
-                  <span><strong className="font-semibold text-slate-900">End -To- End Design &amp; Contracting</strong> from concept to 120-day handover.</span>
+                  <span><strong className="font-semibold text-slate-900">End -To- End Design &amp; Contracting</strong> with 5-year warranty.</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-7 h-7 rounded-lg bg-white border border-blue-200 flex items-center justify-center text-[#3154A5] flex-shrink-0 shadow-xs">
@@ -185,7 +183,7 @@ export default function ContactPage() {
             {/* Official Social Media Portals */}
             <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-md">
               <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
-                Digital Studio Portals
+                Digital Portals
               </span>
               <h3 className="text-xl font-serif font-bold text-slate-900 mt-1 mb-2">
                 Explore Real Site Walkthroughs
@@ -194,40 +192,6 @@ export default function ContactPage() {
                 Follow our official social media channels for real project walkthroughs, site progress updates, and contracting insights.
               </p>
               <SocialLinks variant="contact-card" />
-            </div>
-
-            {/* Pan India Consultation & Mobilization */}
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-50/60 to-white border border-blue-200 shadow-sm">
-              <h4 className="text-lg font-serif font-bold text-slate-900 flex items-center gap-2">
-                <Navigation className="w-4 h-4 text-[#3154A5]" />
-                Consultation &amp; National Mobilization
-              </h4>
-              <ul className="mt-4 space-y-3 text-xs sm:text-sm text-slate-700 font-light">
-                <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-blue-100 border border-blue-300 text-[11px] text-[#3154A5] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    1
-                  </span>
-                  <span>
-                    <strong>In-Person Consultation:</strong> Available by appointment at our registered office in Thane (West), Maharashtra for floorplan reviews.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-blue-100 border border-blue-300 text-[11px] text-[#3154A5] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    2
-                  </span>
-                  <span>
-                    <strong>Virtual 3D &amp; BOQ Sessions (PAN India):</strong> For properties across Mumbai MMR, Pune, Bengaluru, Delhi NCR, and nationwide, our leadership team conducts end-to-end virtual consultations.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-blue-100 border border-blue-300 text-[11px] text-[#3154A5] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    3
-                  </span>
-                  <span>
-                    <strong>Direct Site Deployment:</strong> Our dedicated project managers and specialized contracting trades mobilize directly to your site to execute according to our 120-day SLA.
-                  </span>
-                </li>
-              </ul>
             </div>
           </div>
         </div>

@@ -14,6 +14,8 @@ export const BRAND_CONFIG = {
   email: "bluespaceinteriors1@gmail.com",
   handoverGuarantee: "120-Day Handover Guarantee",
   handoverDays: 120,
+  warrantyGuarantee: "5-Year Direct Structural Warranty",
+  warrantyYears: 5,
   tagline: "Premier Turnkey Interior Design & Contracting Firm",
   coverage: "PAN India Execution",
   registeredCity: "Thane (West), Maharashtra 400601",

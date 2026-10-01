@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  Award,
-  ShieldCheck,
   Compass,
   ArrowRight,
   Sparkles,
   Building2,
   CheckCircle2,
   PhoneCall,
-  MapPin,
-  Clock,
-  BookOpen,
   Briefcase,
   Layers,
-  HelpCircle,
+  BookOpen,
 } from "lucide-react";
 import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
 
@@ -23,7 +18,7 @@ export const revalidate = 0; // Fresh SSR data
 export const metadata: Metadata = {
   title: "About Us | Blue Space Interiors | Turnkey Interior Design & Contracting PAN India",
   description:
-    "Learn about Blue Space Interiors, established in 2020. Single-window turnkey interior design and contracting bridging the gap between designers and contractors. Guaranteed 120-day handover across India, led by Mr. Sunil Pandey.",
+    "Learn about Blue Space Interiors, established in 2020. Single-window turnkey interior design and contracting bridging the gap between designers and contractors. Guaranteed 120-day handover across India, 5-year warranty, led by Mr. Sunil Pandey.",
   keywords: [
     "turnkey interior design and contracting",
     "interior contracting firm India",
@@ -49,14 +44,14 @@ export default function AboutPage() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 max-w-4xl mx-auto leading-tight">
-            Single-Window Accountability in{" "}
-            <span className="brand-gradient-text">Design &amp; Contracting</span>
+            Designing Mastery with the{" "}
+            <span className="brand-gradient-text">Top Interior Designers</span>
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-3xl mx-auto font-light leading-relaxed">
             Blue Space Interiors was founded to eliminate the fundamental disconnect that plagues the interior industry: 
             impractical concepts created by detached designers, and the lack of design understanding among standalone contractors. 
-            We unify both under one disciplined roof with a strict {BRAND_CONFIG.handoverGuarantee}.
+            We unify both under one disciplined roof with designer precision and a strict {BRAND_CONFIG.handoverGuarantee}.
           </p>
         </div>
       </section>
@@ -76,10 +71,10 @@ export default function AboutPage() {
                 Established in <strong>2020</strong> under the leadership of <strong>Mr. Sunil Pandey</strong>, Blue Space Interiors was built from the ground up to solve an acute industry frustration. For years, clients undertaking residential, commercial, or corporate renovations faced a painful choice: hire an expensive design studio that produced unbuildable drawings with runaway budgets, or hire an unorganized local contractor who butchered design aesthetics and missed timelines by months.
               </p>
               <p>
-                We realized that the real problem was not design alone or contracting alone—it was the <em>fracture</em> between the two. Designers lacked hands-on site contracting experience, while standalone contractors lacked architectural literacy.
+                We realized that the real problem was not design alone or contracting alone—it was the <em>fracture</em> between the two. Designers lacked hands-on site contracting experience, while standalone contractors lacked design literacy.
               </p>
               <p>
-                Blue Space Interiors provides complete <strong>Design &amp; Contracting</strong> with an emphasis on rigorous execution. By keeping spatial design, MEP engineering, material sourcing, and site contracting under a single point of accountability, we ensure that every square foot drawn is constructible, every item in our BOQ is locked, and every handover is delivered within our guaranteed <strong>120-day timeline</strong>.
+                Blue Space Interiors provides complete <strong>Design &amp; Contracting</strong> with an emphasis on rigorous execution. By keeping spatial design, MEP engineering, material sourcing, and site contracting under a single point of accountability, we ensure that every square foot drawn is constructible, every item in our BOQ is locked, and every handover is delivered within our guaranteed <strong>120-day timeline</strong> backed by a <strong>5-year structural warranty</strong>.
               </p>
             </div>
 
@@ -97,8 +92,8 @@ export default function AboutPage() {
                 <p className="text-xs text-slate-600 mt-1 font-medium">Handover Guarantee</p>
               </div>
               <div>
-                <span className="text-2xl sm:text-3xl font-serif font-bold text-[#3154A5]">PAN India</span>
-                <p className="text-xs text-slate-600 mt-1 font-medium">Execution Scope</p>
+                <span className="text-2xl sm:text-3xl font-serif font-bold text-[#3154A5]">5-Year</span>
+                <p className="text-xs text-slate-600 mt-1 font-medium">Direct Warranty</p>
               </div>
             </div>
           </div>
@@ -154,7 +149,7 @@ export default function AboutPage() {
                 The Designer Dilemma: Impractical Concepts Detached From Site Feasibility
               </h3>
               <p className="mt-3">
-                In standard architectural practice, interior designers typically operate behind computer monitors. They create visually stunning 3D renderings featuring cantilevered stone islands, intricate false ceiling drops, and hidden flush doors. However, many designers work in conceptual silos without an in-depth understanding of on-site MEP (Mechanical, Electrical, and Plumbing) constraints, load-bearing beam profiles, HVAC duct clearances, and real-world material tolerances.
+                In standard practice, interior designers often operate behind computer monitors. They create visually stunning 3D renderings featuring cantilevered stone islands, intricate false ceiling drops, and hidden flush doors. However, many designers work in conceptual silos without an in-depth understanding of on-site MEP (Mechanical, Electrical, and Plumbing) constraints, load-bearing beam profiles, HVAC duct clearances, and real-world material tolerances.
               </p>
               <p className="mt-3">
                 The result? A set of aesthetic drawings that look breathtaking in a PDF portfolio but prove unbuildable on-site. When the physical site reveals ceiling beam drops, structural columns, or ducting shafts that the drawings overlooked, the client is forced into compromises, costly structural revisions, and budget variations.
@@ -170,7 +165,7 @@ export default function AboutPage() {
                 The Contractor Trap: Lack of Design Comprehension and Aesthetic Sensitivity
               </h3>
               <p className="mt-3">
-                On the opposite end of the spectrum are standalone local contractors. While they understand cement, plywood, and labor management, most contractors lack the architectural literacy to interpret nuanced design drawings. Subtle details such as shadow-gap reveals, 3000K warm lighting reflections, bookmatched stone veining, and millimeter-calibrated hardware clearances are frequently misunderstood or dismissed as unnecessary complications.
+                On the opposite end of the spectrum are standalone local contractors. While they understand cement, plywood, and labor management, most contractors lack the design literacy to interpret nuanced drawings. Subtle details such as shadow-gap reveals, 3000K warm lighting reflections, bookmatched stone veining, and millimeter-calibrated hardware clearances are frequently misunderstood or dismissed as unnecessary complications.
               </p>
               <p className="mt-3">
                 Without a designer actively directing site execution daily, standalone contractors substitute specified materials with generic alternatives, misalign groove details, and improvise on the fly. The final outcome bears little resemblance to what the homeowner or enterprise originally paid for.
@@ -219,7 +214,7 @@ export default function AboutPage() {
                     Design Grounded in Constructability
                   </h4>
                   <p className="text-xs text-slate-600 mt-1">
-                    Every 3D render and working drawing is pre-vetted by our contracting engineers before client presentation, ensuring zero structural surprises.
+                    Every 3D render and working drawing is pre-vetted by our contracting engineers before client presentation, ensuring designer precision with zero structural surprises.
                   </p>
                 </div>
                 <div className="p-4 rounded-2xl bg-blue-50/60 border border-blue-200">
@@ -243,10 +238,10 @@ export default function AboutPage() {
                 <div className="p-4 rounded-2xl bg-blue-50/60 border border-blue-200">
                   <h4 className="font-semibold text-slate-900 text-sm flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#3154A5]" />
-                    PAN India Execution Capability
+                    5-Year Structural Warranty
                   </h4>
                   <p className="text-xs text-slate-600 mt-1">
-                    Mobilizing verified project management and contracting crews for residential, corporate, and retail properties across Indian metros.
+                    Direct written warranty for all modular joinery and contracting works, ensuring long-term peace of mind across PAN India projects.
                   </p>
                 </div>
               </div>
