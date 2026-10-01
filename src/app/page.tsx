@@ -44,7 +44,7 @@ export default async function HomePage() {
     "taxID": BRAND_CONFIG.gstin,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Thane West",
+      "streetAddress": "1507, Capital Tree, Pokhran Road No. 2",
       "addressLocality": "Thane West",
       "addressRegion": "Maharashtra",
       "postalCode": "400601",

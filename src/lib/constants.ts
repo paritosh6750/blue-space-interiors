@@ -16,9 +16,8 @@ export const BRAND_CONFIG = {
   handoverDays: 120,
   warrantyGuarantee: "5-Year Direct Structural Warranty",
   warrantyYears: 5,
-  tagline: "Premier Turnkey Interior Design & Contracting Firm",
   coverage: "PAN India Execution",
-  registeredCity: "Thane (West), Maharashtra 400601",
+  registeredCity: "1507, Capital Tree, Pokhran Road No. 2, Thane West, Maharashtra, 400601",
   
   // Featured project credentials requested by client
   flagshipCommunities: [
