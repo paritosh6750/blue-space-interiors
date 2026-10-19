@@ -135,7 +135,7 @@ export default function Navbar() {
             <div className="pt-4 flex flex-col gap-3">
               <div className="flex items-center gap-2 text-xs text-slate-500">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>Zero Cost Escalation | 120-Day Handover Guarantee</span>
+                <span>Zero Cost Escalation | 5-Year Structural Warranty</span>
               </div>
               <div className="pt-2 flex items-center justify-between border-t border-slate-100">
                 <span className="text-xs text-slate-500 font-medium">Follow Our Firm:</span>

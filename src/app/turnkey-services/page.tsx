@@ -19,12 +19,12 @@ import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Turnkey Interior Design & Contracting | Blue Space Interiors | PAN India",
   description:
-    "End-to-end turnkey interior design and contracting solutions across India for residential, commercial, and corporate properties. Guaranteed 120-day key handover, 5-year warranty, zero cost escalations, and direct contracting execution led by Mr. Sunil Pandey.",
+    "End-to-end turnkey interior design and contracting solutions across India for residential, commercial, and corporate properties. 5-year warranty, zero cost escalations, and direct contracting execution led by Mr. Sunil Pandey.",
   keywords: [
     "turnkey interior contracting",
     "turnkey interior design and contracting India",
     "commercial and residential interior contractors",
-    "120 day handover guarantee",
+    "turnkey contracting SLA",
     "5 year warranty interiors",
     "Blue Space Interiors Sunil Pandey",
     "zero cost escalation contracting",
@@ -61,7 +61,7 @@ export default function TurnkeyServicesPage() {
     },
     {
       number: "03",
-      title: "Civil, MEP & Modular Offsite Fabrication",
+      title: "Civil, Carpentry & Modular Offsite Fabrication",
       duration: "Days 21–65",
       description:
         "While wet civil works (masonry, tiling, gypsum framing, core cutting) proceed on site under gated society guidelines, all modular cabinetry, wardrobes, and commercial millwork are pre-fabricated offsite with precision machinery.",
@@ -73,7 +73,7 @@ export default function TurnkeyServicesPage() {
     },
     {
       number: "04",
-      title: "Clean Fitout Assembly & MEP Integration",
+      title: "Clean Fitout Assembly & Site Integration",
       duration: "Days 66–105",
       description:
         "Pre-finished modular units and interior components arrive on site for clean assembly. In parallel, our specialized crews complete acoustic false ceilings, concealed VRV/split air conditioning, designer electrical lighting, and wall treatments.",
@@ -85,12 +85,12 @@ export default function TurnkeyServicesPage() {
     },
     {
       number: "05",
-      title: "Comprehensive Snag Audit & 120-Day Handover",
-      duration: "Days 106–120",
+      title: "Comprehensive Snag Audit & Turnkey Handover",
+      duration: "Final Milestone Phase",
       description:
-        "Our site quality managers execute a rigorous snag checklist—verifying drawer glides, plumbing pressure, electrical socket earthing, and millimeter alignment. We perform industrial deep cleaning and hand over keys strictly on or before Day 120.",
+        "Our site quality managers execute a rigorous snag checklist—verifying drawer glides, plumbing pressure, electrical socket earthing, and millimeter alignment. We perform industrial deep cleaning and hand over keys strictly on schedule.",
       highlights: [
-        "Guaranteed 120-day key handover protocol",
+        "Strict milestone key handover protocol",
         "Comprehensive 5-Year Direct Structural Warranty issued",
         "Complete appliance, fixture, and maintenance dossier provided",
       ],
@@ -98,9 +98,9 @@ export default function TurnkeyServicesPage() {
   ];
 
   return (
-    <div className="bg-[#fbfaf7] text-slate-900 min-h-screen">
+    <div className="bg-[#fafafc] text-slate-900 min-h-screen">
       {/* Services Hero */}
-      <section className="relative py-20 bg-gradient-to-b from-[#f4f2ec] to-[#fbfaf7] border-b border-slate-200">
+      <section className="relative py-20 bg-gradient-to-b from-white via-slate-50 to-[#fafafc] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#3154A5] text-xs font-bold tracking-wider uppercase mb-4 shadow-sm">
             <Layers className="w-3.5 h-3.5 text-[#3154A5]" />
@@ -112,7 +112,7 @@ export default function TurnkeyServicesPage() {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-light leading-relaxed">
-            From raw concrete handover to a turnkey, impeccably finished property in 120 days. 
+            From raw concrete handover to a turnkey, impeccably finished property with single-window precision. 
             Residential, commercial, and corporate fitouts across India with one locked contract and zero headaches.
           </p>
 
@@ -214,8 +214,8 @@ export default function TurnkeyServicesPage() {
       </section>
 
       {/* Comparison Matrix */}
-      <section className="py-20 bg-[#f8f7f4] border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white border-y border-slate-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
               Comparative Analysis
@@ -224,7 +224,7 @@ export default function TurnkeyServicesPage() {
               Why Clients Select Our Design &amp; Contracting Model
             </h2>
             <p className="mt-2 text-slate-600 text-sm font-light">
-              Clear single-window accountability vs. aggregator platforms and unorganized standalone contractors.
+              Clear single-window accountability vs. commission-based aggregator platforms.
             </p>
           </div>
 
@@ -237,17 +237,15 @@ export default function TurnkeyServicesPage() {
                     Blue Space Interiors
                   </th>
                   <th className="py-5 px-6">National Aggregator Platforms</th>
-                  <th className="py-5 px-6">Standalone Local Contractors</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-sm">
                 <tr>
                   <td className="py-4 px-6 font-medium text-slate-900">Execution Timeline</td>
                   <td className="py-4 px-6 bg-blue-50/50 border-x border-blue-200 text-emerald-700 font-semibold">
-                    Strict 120-Day Handover Guarantee
+                    Strict Milestone Handover Commitment
                   </td>
                   <td className="py-4 px-6 text-slate-600">180+ Days typical</td>
-                  <td className="py-4 px-6 text-rose-600">Unpredictable (6+ months)</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-6 font-medium text-slate-900">Budget Certainty</td>
@@ -255,7 +253,6 @@ export default function TurnkeyServicesPage() {
                     100% Fixed BOQ (Zero Cost Escalation)
                   </td>
                   <td className="py-4 px-6 text-slate-600">15–30% Variation billings midway</td>
-                  <td className="py-4 px-6 text-rose-600">Constant budget overshoots</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-6 font-medium text-slate-900">Core Materials</td>
@@ -263,7 +260,6 @@ export default function TurnkeyServicesPage() {
                     100% Boiling Water Proof (BWP) Marine Plywood
                   </td>
                   <td className="py-4 px-6 text-slate-600">Commercial MDF/HDF particle boards</td>
-                  <td className="py-4 px-6 text-slate-600">Unverified commercial ply</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-6 font-medium text-slate-900">Hardware &amp; Fittings</td>
@@ -271,7 +267,6 @@ export default function TurnkeyServicesPage() {
                     Certified Original Architectural Hardware
                   </td>
                   <td className="py-4 px-6 text-slate-600">White-label basic hardware</td>
-                  <td className="py-4 px-6 text-slate-600">Local unbranded runners</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-6 font-medium text-slate-900">Project Governance</td>
@@ -279,7 +274,6 @@ export default function TurnkeyServicesPage() {
                     Led by Sunil Pandey (Single Window)
                   </td>
                   <td className="py-4 px-6 text-slate-600">Junior freelance coordinators</td>
-                  <td className="py-4 px-6 text-slate-600">Unqualified local labor</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-6 font-medium text-slate-900">Warranty &amp; Support</td>
@@ -287,7 +281,6 @@ export default function TurnkeyServicesPage() {
                     5-Year Direct Structural Warranty
                   </td>
                   <td className="py-4 px-6 text-slate-600">Tedious app ticketing friction</td>
-                  <td className="py-4 px-6 text-rose-600">Zero accountability</td>
                 </tr>
               </tbody>
             </table>
@@ -299,7 +292,7 @@ export default function TurnkeyServicesPage() {
       <section className="py-16 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-blue-50/70 border-t border-blue-200 text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900">
-            Secure Your 120-Day Turnkey Handover
+            Secure Your Turnkey Contracting Handover
           </h2>
           <p className="mt-3 text-slate-600 text-sm font-light">
             Contact Mr. Sunil Pandey today to review your property layout and lock your turnkey execution schedule.

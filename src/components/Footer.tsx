@@ -87,9 +87,9 @@ export default function Footer() {
               <BrandLogo variant="horizontal" size="lg" />
             </Link>
             <p className="text-slate-600 text-xs sm:text-sm mt-4 leading-relaxed pr-6 font-light">
-              Premier turnkey interior design and contracting firm executing complete fitouts for residential, commercial, 
+              Premier interior design and turnkey contracting firm executing complete fitouts for residential, commercial, 
               and corporate properties across India. We bridge the gap between design and contracting with single-window 
-              accountability, locked BOQs, and a guaranteed 120-day key handover.
+              accountability, locked BOQs, and a 5-year structural warranty.
             </p>
             <div className="mt-6 flex flex-wrap gap-2 text-[11px] text-[#3154A5]">
               <span className="px-3 py-1 rounded-lg bg-blue-50 border border-blue-200 font-medium">
@@ -181,7 +181,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-1.5">
                 <Layers className="w-3.5 h-3.5 text-[#3154A5]" />
-                <span>Turnkey Civil &amp; MEP Fitouts</span>
+                <span>Turnkey Civil &amp; Contracting Fitouts</span>
               </li>
               <li className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-emerald-600" />

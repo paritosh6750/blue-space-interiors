@@ -20,12 +20,12 @@ export const revalidate = 0; // Fresh SSR data
 export const metadata: Metadata = {
   title: "Portfolio | Blue Space Interiors | Turnkey Interior Design & Contracting Projects",
   description:
-    "Explore turnkey interior design and contracting case studies delivered across India: luxury residences, penthouses, duplexes, and commercial fitouts. 100% turnkey execution with 120-day handover guarantee and 5-year warranty.",
+    "Explore turnkey interior design and contracting case studies delivered across India: luxury residences, penthouses, duplexes, and commercial fitouts. 100% turnkey execution with guaranteed milestone delivery and 5-year warranty.",
   keywords: [
     "turnkey interior contracting portfolio",
     "turnkey interior design projects",
     "residential and commercial interior fitouts",
-    "120 day handover interiors",
+    "turnkey fitouts India",
     "5 year warranty interiors",
     "Blue Space Interiors Sunil Pandey",
   ],
@@ -36,9 +36,9 @@ export default async function PortfolioPage() {
   const yearsOfExcellence = getYearsOfExcellence();
 
   return (
-    <div className="bg-[#fbfaf7] text-slate-900 min-h-screen">
+    <div className="bg-[#fafafc] text-slate-900 min-h-screen">
       {/* Portfolio Hero */}
-      <section className="relative py-20 bg-gradient-to-b from-[#f4f2ec] to-[#fbfaf7] border-b border-slate-200">
+      <section className="relative py-20 bg-gradient-to-b from-white via-slate-50 to-[#fafafc] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#3154A5] text-xs font-bold tracking-wider uppercase mb-4 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-[#3154A5]" />
@@ -181,7 +181,7 @@ export default async function PortfolioPage() {
                     </div>
 
                     <p className="mt-4 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                      A complete turnkey fitout designed and executed within our guaranteed 120-day SLA with designer precision. Built with high-grade Boiling Water Proof (BWP) Marine Plywood, certified architectural hardware, and backed by a 5-year direct structural warranty.
+                      A complete turnkey fitout designed and executed within our guaranteed milestone SLA with designer precision. Built with high-grade Boiling Water Proof (BWP) Marine Plywood, certified architectural hardware, and backed by a 5-year direct structural warranty.
                     </p>
 
                     <div className="mt-6">
@@ -207,7 +207,7 @@ export default async function PortfolioPage() {
                       <span className="text-[11px] text-slate-500 block">Handover SLA &amp; Warranty</span>
                       <span className="text-xs font-semibold text-emerald-700 flex items-center gap-1">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                        120-Day Handover | 5-Year Warranty
+                        Turnkey Handover | 5-Year Warranty
                       </span>
                     </div>
 

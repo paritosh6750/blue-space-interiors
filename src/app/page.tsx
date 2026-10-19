@@ -91,7 +91,7 @@ export default async function HomePage() {
         "name": "How does Blue Space Interiors guarantee a 120-day turnkey handover?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Through our integrated Design & Contracting methodology led by Mr. Sunil Pandey, we bridge the gap between design conceptualization and on-site contracting. With locked procurement timelines, designer precision, in-house technical supervision, and structured milestone scheduling across civil, MEP, millwork, and finishes, we commit to a strict 120-day turnkey key handover with zero delays.",
+          "text": "Through our integrated Design & Contracting methodology led by Mr. Sunil Pandey, we bridge the gap between design conceptualization and on-site contracting. With locked procurement timelines, designer precision, in-house technical supervision, and structured milestone scheduling across civil, millwork, and architectural finishes, we commit to a strict 120-day turnkey key handover with zero delays.",
         },
       },
       {
@@ -99,7 +99,7 @@ export default async function HomePage() {
         "name": "What property types do you undertake for interior contracting?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We execute turnkey interior design and contracting for all types of properties across India—including grand villas (such as our 12,000 sq.ft. villa in Angul, Odisha), luxury high-rise residences (Oberoi Enigma, Hiranandani Estate, Sai Nirvana), penthouses, and commercial corporate offices.",
+          "text": "We execute turnkey interior design and contracting for all types of properties across India—including grand villas (such as our 12,000 sq.ft. villa in Angul, Odisha), luxury high-rise residences (Oberoi Eternia, Oberoi Enigma, Hiranandani Estate, Sai Nirvana), penthouses, and commercial corporate offices.",
         },
       },
       {
@@ -110,21 +110,13 @@ export default async function HomePage() {
           "text": "Blue Space Interiors provides a comprehensive 5-Year Direct Structural Warranty covering modular joinery, hardware fixtures, and structural woodwork, supported by single-window direct resolution.",
         },
       },
-      {
-        "@type": "Question",
-        "name": "Why choose Blue Space Interiors over national aggregator platforms?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Aggregator platforms operate as sales brokers charging 30–40% commissions while outsourcing execution to unvetted third parties. Blue Space Interiors provides direct single-window Design & Contracting led by Mr. Sunil Pandey with a 100% Zero Cost Escalation guarantee, fixed itemized BOQ, 5-year warranty, certified materials, and dedicated site supervision.",
-        },
-      },
     ],
   };
 
   const realTestimonials = [
     {
       clientName: "Mr. Sanjay Sahoo",
-      clientRole: "Coal Mining",
+      clientRole: "Coal Mining Business",
       location: "Sikshyakpada, Angul, Odisha",
       projectScope: "12,000 Sq.Ft. Luxury Villa Project",
       quote:
@@ -143,10 +135,10 @@ export default async function HomePage() {
     {
       clientName: "Ms. Bhavana Waignkar",
       clientRole: "IT Professional",
-      location: "Flat 2506, Oberoi Enigma, Mulund, Mumbai",
-      projectScope: "1,450 Sq.Ft. 3 BHK Luxury Suite",
+      location: "Flat 2506, Oberoi Eternia, Mulund, Mumbai",
+      projectScope: "1,450 Sq.Ft. Oberoi Eternia 3 BHK Luxury Suite",
       quote:
-        "Designing and executing our 1,450 sq.ft. 3 BHK at Oberoi Enigma Mulund was handled with utmost professionalism. As an IT professional with tight schedules, I appreciated Blue Space Interiors managing everything autonomously—from society NOCs to modular joinery. The luxurious and lavish aesthetic exceeded all our expectations.",
+        "Designing and executing our 1,450 sq.ft. 3 BHK at Oberoi Eternia Mulund was handled with utmost professionalism. As an IT professional with tight schedules, I appreciated Blue Space Interiors managing everything autonomously—from society NOCs to modular joinery. The luxurious and lavish aesthetic exceeded all our expectations.",
       rating: 5,
     },
     {
@@ -182,14 +174,14 @@ export default async function HomePage() {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#fbfaf7] via-white to-[#f4f2ec]">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-slate-50/70 to-blue-50/20">
         <div className="absolute inset-0 z-0">
           <img
             src="/projects/project-1-sanjay-sahoo-angul-villa.jpg"
-            alt="Premier Turnkey Interior Design & Contracting - Blue Space Interiors PAN India"
-            className="w-full h-full object-cover opacity-15"
+            alt="Premier Interior Design & Turnkey Contracting - Blue Space Interiors PAN India"
+            className="w-full h-full object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#fbfaf7] via-[#fbfaf7]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
@@ -200,7 +192,7 @@ export default async function HomePage() {
 
           {/* Primary Target Keyword in H1 */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-slate-900 tracking-tight leading-[1.12] max-w-5xl mx-auto">
-            Premier Turnkey <span className="brand-gradient-text">Interior Design &amp; Contracting</span> Firm
+            Premier Interior Design &amp; <span className="brand-gradient-text">Turnkey Contracting</span> Firm
           </h1>
 
           <p className="mt-6 text-base sm:text-xl text-slate-700 max-w-3xl mx-auto font-light leading-relaxed">
@@ -291,7 +283,7 @@ export default async function HomePage() {
       </section>
 
       {/* Target SEO & Competitive Positioning */}
-      <section className="py-24 bg-[#f8f7f4] border-y border-slate-200 relative">
+      <section className="py-24 bg-gradient-to-b from-white via-slate-50/70 to-white border-y border-slate-200 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
@@ -305,10 +297,10 @@ export default async function HomePage() {
             </p>
           </div>
 
-          {/* 3-Way Detailed Comparison Matrix */}
-          <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* 2-Way Focused Comparison Matrix */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Blue Space Interiors */}
-            <div className="p-8 rounded-3xl bg-white border-2 border-[#3154A5] shadow-xl relative transform lg:-translate-y-2 flex flex-col justify-between">
+            <div className="p-8 rounded-3xl bg-white border-2 border-[#3154A5] shadow-xl relative transform md:-translate-y-1 flex flex-col justify-between">
               <div>
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#3154A5] text-white px-4 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
                   Design &amp; Contracting Firm
@@ -362,7 +354,7 @@ export default async function HomePage() {
             {/* National Aggregator Platforms */}
             <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
-                <h3 className="text-xl font-serif font-bold text-slate-800">
+                <h3 className="text-2xl font-serif font-bold text-slate-800 mt-2">
                   National Aggregator Platforms
                 </h3>
                 <p className="text-xs text-slate-500 mt-1">Broker Aggregator &amp; Commission Model</p>
@@ -384,44 +376,19 @@ export default async function HomePage() {
                     <span className="text-rose-500 font-bold">✕</span>
                     <span><strong>Possession Delays:</strong> Fragmented supply chains and vendor finger-pointing cause prolonged handover delays.</span>
                   </li>
-                </ul>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-slate-100 text-[11px] text-slate-500 text-center">
-                High overhead sales broker model
-              </div>
-            </div>
-
-            {/* Local Unorganized Contractors */}
-            <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
-              <div>
-                <h3 className="text-xl font-serif font-bold text-slate-800">
-                  Standalone Local Contractors
-                </h3>
-                <p className="text-xs text-slate-500 mt-1">Fragmented Labor Without Design Fluency</p>
-
-                <ul className="mt-6 space-y-4 text-xs sm:text-sm text-slate-600">
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>Lack of Design Comprehension:</strong> Inability to interpret detailed drawings, resulting in aesthetic failure.</span>
+                    <span><strong>Standard Commercial Materials:</strong> Particle boards/MDF frequently substituted under white-label branding.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>Zero 3D Visualization:</strong> Work executed based on verbal assumptions and rough hand sketches.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>Material Inconsistency:</strong> Substandard commercial ply substituted without client awareness.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="text-rose-500 font-bold">✕</span>
-                    <span><strong>No Written Warranty:</strong> Once final payments are released, post-handover support is non-existent.</span>
+                    <span><strong>Impersonal Ticketing:</strong> Tedious app tickets and disconnected call centers instead of direct leadership support.</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-slate-100 text-[11px] text-slate-500 text-center">
-                High financial and execution risk
+              <div className="mt-8 pt-6 border-t border-slate-100 text-xs text-slate-500 text-center">
+                High overhead broker model with fragmented sub-contracted execution
               </div>
             </div>
           </div>
@@ -457,7 +424,7 @@ export default async function HomePage() {
             {featuredProjects.slice(0, 3).map((project) => (
               <div
                 key={project.id}
-                className="bg-[#fcfbf9] rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all group flex flex-col"
+                className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all group flex flex-col"
               >
                 <div className="relative h-64 overflow-hidden bg-slate-100">
                   <img
@@ -476,7 +443,9 @@ export default async function HomePage() {
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">
-                      Designed &amp; Executed by Blue Space Interiors
+                      {project.scope.toLowerCase().includes("brs")
+                        ? "Turnkey Design by BRS & Execution by Blue Space Interiors"
+                        : "Designed & Executed by Blue Space Interiors"}
                     </span>
                     <h3 className="text-lg font-serif font-bold text-slate-900 group-hover:text-[#3154A5] transition-colors leading-snug">
                       {project.title}
@@ -494,7 +463,7 @@ export default async function HomePage() {
                     <span className="text-slate-500 font-medium">Style: Luxurious &amp; Lavish</span>
                     <span className="text-emerald-700 font-semibold flex items-center gap-1">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                      120-Day Verified
+                      120-Day Handover
                     </span>
                   </div>
                 </div>
@@ -508,7 +477,7 @@ export default async function HomePage() {
               {featuredProjects.slice(3, 5).map((project) => (
                 <div
                   key={project.id}
-                  className="bg-[#fcfbf9] rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all group flex flex-col sm:flex-row"
+                  className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all group flex flex-col sm:flex-row"
                 >
                   <div className="relative h-64 sm:h-auto sm:w-1/2 overflow-hidden bg-slate-100 flex-shrink-0">
                     <img
@@ -527,7 +496,9 @@ export default async function HomePage() {
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
                       <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">
-                        Designed &amp; Executed by Blue Space Interiors
+                        {project.scope.toLowerCase().includes("brs")
+                          ? "Turnkey Design by BRS & Execution by Blue Space Interiors"
+                          : "Designed & Executed by Blue Space Interiors"}
                       </span>
                       <h3 className="text-lg font-serif font-bold text-slate-900 group-hover:text-[#3154A5] transition-colors leading-snug">
                         {project.title}
@@ -545,7 +516,7 @@ export default async function HomePage() {
                       <span className="text-slate-500 font-medium">Style: Luxurious &amp; Lavish</span>
                       <span className="text-emerald-700 font-semibold flex items-center gap-1">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                        120-Day Verified
+                        120-Day Handover
                       </span>
                     </div>
                   </div>
@@ -590,7 +561,7 @@ export default async function HomePage() {
       </section>
 
       {/* Transparent Price Estimation Guide */}
-      <section className="py-20 bg-[#f8f7f4] border-b border-slate-200">
+      <section className="py-20 bg-gradient-to-b from-white via-slate-50/70 to-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase flex items-center justify-center gap-1.5">
@@ -658,11 +629,11 @@ export default async function HomePage() {
                   3 BHK / 4 BHK Luxury Fitout
                 </span>
                 <div className="mt-2 flex items-baseline gap-2">
-                  <span className="text-3xl font-serif font-bold text-slate-900">₹28L – ₹48L</span>
+                  <span className="text-3xl font-serif font-bold text-slate-900">₹45L – ₹65L</span>
                   <span className="text-xs text-slate-500">all-inclusive</span>
                 </div>
                 <p className="text-xs text-slate-600 mt-2 font-light">
-                  Suitable for 1,200–1,800 sq.ft. carpet area (e.g. Oberoi Enigma).
+                  Suitable for 1,200–1,800 sq.ft. carpet area (e.g. Oberoi Eternia).
                 </p>
                 <ul className="mt-6 space-y-2.5 text-xs text-slate-700">
                   <li className="flex items-center gap-2">
@@ -698,10 +669,10 @@ export default async function HomePage() {
             <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
                 <span className="text-xs font-bold text-[#3154A5] uppercase tracking-wider">
-                  Grand Villa &amp; Penthouse Scopes
+                  Penthouse, Duplex, Bunglow and Villas
                 </span>
                 <div className="mt-2 flex items-baseline gap-2">
-                  <span className="text-3xl font-serif font-bold text-slate-900">₹50L – ₹1Cr+</span>
+                  <span className="text-3xl font-serif font-bold text-slate-900">₹85L – ₹2.5Cr</span>
                   <span className="text-xs text-slate-500">bespoke scope</span>
                 </div>
                 <p className="text-xs text-slate-500 mt-2 font-light">
@@ -742,7 +713,7 @@ export default async function HomePage() {
       </section>
 
       {/* Real Verified Client Endorsements */}
-      <section className="py-24 bg-[#f8f7f4]">
+      <section className="py-24 bg-gradient-to-b from-white via-slate-50/60 to-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto">
             <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
@@ -839,16 +810,16 @@ export default async function HomePage() {
           </div>
 
           <div className="space-y-6">
-            <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
+            <div className="p-6 rounded-2xl bg-slate-50/70 border border-slate-200 hover:bg-white hover:shadow-sm transition-all">
               <h3 className="text-base font-serif font-semibold text-slate-900">
                 How does Blue Space Interiors guarantee a 120-day turnkey handover?
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Through our integrated Design &amp; Contracting methodology led by Mr. Sunil Pandey, we bridge the gap between design conceptualization and on-site contracting. With locked procurement timelines, designer precision, in-house technical supervision, and structured milestone scheduling across civil, MEP, millwork, and finishes, we commit to a strict 120-day turnkey key handover with zero delays.
+                Through our integrated Design &amp; Contracting methodology led by Mr. Sunil Pandey, we bridge the gap between design conceptualization and on-site contracting. With locked procurement timelines, designer precision, in-house technical supervision, and structured milestone scheduling across civil, millwork, and architectural finishes, we commit to a strict 120-day turnkey key handover with zero delays.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
+            <div className="p-6 rounded-2xl bg-slate-50/70 border border-slate-200 hover:bg-white hover:shadow-sm transition-all">
               <h3 className="text-base font-serif font-semibold text-slate-900">
                 What kind of properties do you execute interior contracting for?
               </h3>
@@ -857,7 +828,7 @@ export default async function HomePage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
+            <div className="p-6 rounded-2xl bg-slate-50/70 border border-slate-200 hover:bg-white hover:shadow-sm transition-all">
               <h3 className="text-base font-serif font-semibold text-slate-900">
                 What warranty is provided with your turnkey contracting?
               </h3>
@@ -866,16 +837,7 @@ export default async function HomePage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
-              <h3 className="text-base font-serif font-semibold text-slate-900">
-                Why choose Blue Space Interiors over national aggregator platforms?
-              </h3>
-              <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Aggregator platforms operate as sales brokers charging 30–40% commissions while outsourcing execution to unvetted third parties. Blue Space Interiors provides direct single-window Design &amp; Contracting led by Mr. Sunil Pandey with a 100% Zero Cost Escalation guarantee, fixed itemized BOQ, 5-year warranty, certified materials, and dedicated site supervision.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#fbfaf7] border border-slate-200">
+            <div className="p-6 rounded-2xl bg-slate-50/70 border border-slate-200 hover:bg-white hover:shadow-sm transition-all">
               <h3 className="text-base font-serif font-semibold text-slate-900">
                 Do you provide turnkey contracting services across PAN India locations?
               </h3>

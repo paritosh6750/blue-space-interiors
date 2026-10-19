@@ -2,9 +2,9 @@
 
 @layer base {
   :root {
-    --brand-bg-primary: #fbfaf7;
-    --brand-bg-secondary: #f4f2ec;
-    --brand-bg-tertiary: #eae7dd;
+    --brand-bg-primary: #ffffff;
+    --brand-bg-secondary: #f8fafc;
+    --brand-bg-tertiary: #f1f5f9;
     --brand-blue-900: #1b2f61;
     --brand-blue-800: #223e80;
     --brand-blue-700: #294a94;
@@ -25,10 +25,17 @@
   }
 
   body {
-    background-color: #fbfaf7;
+    background-color: #fafafc;
     color: #0f172a;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     overflow-x: hidden;
+  }
+
+  /* Keep headings clean and simple - not fancy */
+  .font-serif,
+  h1, h2, h3, h4 {
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    letter-spacing: -0.02em;
   }
 }
 
