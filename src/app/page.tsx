@@ -185,45 +185,55 @@ export default async function HomePage() {
           </div>
 
           {/* 5-Pillar Core Excellence Ribbon */}
-          <div className="mt-14 max-w-5xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl border border-blue-200 shadow-xl p-4 sm:p-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-            <div className="flex flex-col items-center text-center p-2">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-2 shadow-xs">
-                <Award className="w-5 h-5" />
+          <div className="mt-12 sm:mt-14 max-w-5xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl border border-blue-200/80 shadow-xl p-3 sm:p-5">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-4">
+              <div className="flex flex-col items-center justify-center text-center p-3 rounded-xl sm:rounded-2xl bg-slate-50/70 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-[#3154A5] mb-2 shadow-2xs">
+                  <Award className="w-4 h-4" />
+                </div>
+                <span className="font-bold text-slate-900 text-sm sm:text-base leading-tight">{yearsOfExcellence}</span>
+                <span className="text-[11px] text-slate-600 font-medium mt-0.5">of Excellence (Est. 2020)</span>
               </div>
-              <span className="font-serif font-bold text-slate-900 text-sm sm:text-base">{yearsOfExcellence}</span>
-              <span className="text-[11px] sm:text-xs text-slate-600 font-medium">of Excellence (Est. 2020)</span>
-            </div>
-            <div className="flex flex-col items-center text-center p-2">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-2 shadow-xs">
-                <Building2 className="w-5 h-5" />
+
+              <div className="flex flex-col items-center justify-center text-center p-3 rounded-xl sm:rounded-2xl bg-slate-50/70 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-[#3154A5] mb-2 shadow-2xs">
+                  <Building2 className="w-4 h-4" />
+                </div>
+                <span className="font-bold text-[#3154A5] text-sm sm:text-base leading-tight">150+ Projects</span>
+                <span className="text-[11px] text-slate-600 font-medium mt-0.5">Delivered to Date</span>
               </div>
-              <span className="font-serif font-bold text-[#3154A5] text-sm sm:text-base">150+ Projects</span>
-              <span className="text-[11px] sm:text-xs text-slate-600 font-medium">Delivered to Date</span>
-            </div>
-            <div className="flex flex-col items-center text-center p-2 col-span-2 md:col-span-1">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-2 shadow-xs">
-                <Briefcase className="w-5 h-5" />
+
+              <div className="col-span-2 lg:col-span-1 flex flex-col items-center justify-center text-center p-3 rounded-xl sm:rounded-2xl bg-slate-50/70 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-[#3154A5] mb-2 shadow-2xs">
+                  <Briefcase className="w-4 h-4" />
+                </div>
+                <span className="font-bold text-slate-900 text-xs sm:text-sm leading-tight">Design &amp; Contracting</span>
+                <span className="text-[11px] text-slate-600 font-medium mt-0.5">End-To-End Single Window</span>
               </div>
-              <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm leading-snug">Design &amp; Contracting</span>
-              <span className="text-[11px] sm:text-xs text-slate-600 font-medium">End-To-End Single Window</span>
-            </div>
-            <div className="flex flex-col items-center text-center p-2">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-2 shadow-xs">
-                <MapPin className="w-5 h-5" />
+
+              <div className="col-span-1 flex flex-col items-center justify-center text-center p-3 rounded-xl sm:rounded-2xl bg-slate-50/70 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-[#3154A5] mb-2 shadow-2xs">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <span className="font-bold text-slate-900 text-xs sm:text-sm leading-tight">PAN India Services</span>
+                <a href={`tel:${BRAND_CONFIG.phoneRaw}`} className="text-xs text-[#3154A5] font-bold hover:underline mt-0.5">
+                  {BRAND_CONFIG.phoneDisplay}
+                </a>
               </div>
-              <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm">PAN India Services</span>
-              <a href={`tel:${BRAND_CONFIG.phoneRaw}`} className="text-xs text-[#3154A5] font-bold hover:underline mt-0.5">
-                {BRAND_CONFIG.phoneDisplay}
-              </a>
-            </div>
-            <div className="flex flex-col items-center text-center p-2 col-span-2 md:col-span-1">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5] mb-2 shadow-xs">
-                <Mail className="w-5 h-5" />
+
+              <div className="col-span-1 flex flex-col items-center justify-center text-center p-3 rounded-xl sm:rounded-2xl bg-slate-50/70 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-[#3154A5] mb-2 shadow-2xs">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <span className="font-bold text-slate-900 text-xs sm:text-sm leading-tight">Direct Desk</span>
+                <a
+                  href={`mailto:${BRAND_CONFIG.email}`}
+                  className="text-[11px] text-[#3154A5] font-semibold hover:underline mt-0.5 truncate max-w-[125px] sm:max-w-none"
+                  title={BRAND_CONFIG.email}
+                >
+                  {BRAND_CONFIG.email}
+                </a>
               </div>
-              <span className="font-serif font-bold text-slate-900 text-xs sm:text-sm">Direct Desk</span>
-              <a href={`mailto:${BRAND_CONFIG.email}`} className="text-[11px] text-[#3154A5] font-semibold hover:underline mt-0.5 break-all">
-                {BRAND_CONFIG.email}
-              </a>
             </div>
           </div>
         </div>
