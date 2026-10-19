@@ -35,24 +35,23 @@ function extractSheetId(input: string): string | null {
   return null;
 }
 
+const DEFAULT_SHEET_ID = "1gnues-0I8Py8KFbAlAH9E66F8nFU3LV0imiCoJQsaOI";
+
 export function getGoogleSheetConfig() {
   const scriptUrl = process.env.GOOGLE_SHEET_SCRIPT_URL || process.env.GOOGLE_SCRIPT_URL;
   const sheetInput =
     process.env.GOOGLE_SHEET_URL ||
     process.env.GOOGLE_SHEET_ID ||
-    process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
+    process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL ||
+    DEFAULT_SHEET_ID;
 
-  const sheetId = sheetInput ? extractSheetId(sheetInput) : null;
+  const sheetId = sheetInput ? extractSheetId(sheetInput) : DEFAULT_SHEET_ID;
 
   return {
     scriptUrl: scriptUrl?.trim() || null,
-    sheetId: sheetId || null,
-    sheetUrl: sheetId
-      ? `https://docs.google.com/spreadsheets/d/${sheetId}/edit`
-      : sheetInput?.startsWith("http")
-      ? sheetInput
-      : null,
-    isConfigured: !!(scriptUrl || sheetId),
+    sheetId: sheetId || DEFAULT_SHEET_ID,
+    sheetUrl: `https://docs.google.com/spreadsheets/d/${sheetId || DEFAULT_SHEET_ID}/edit`,
+    isConfigured: true,
   };
 }
 
