@@ -236,6 +236,64 @@ export default function AdminDashboard({
     setTimeout(() => setNotification(null), 4000);
   };
 
+  const exportToCsv = useCallback(() => {
+    if (inquiries.length === 0) {
+      showNotification("error", "No inquiries to export yet.");
+      return;
+    }
+    const headers = [
+      "ID",
+      "Date",
+      "Full Name",
+      "Phone",
+      "Email",
+      "Location / City",
+      "Property Type",
+      "Configuration",
+      "Budget Range",
+      "Preferred Timeline",
+      "Client Message",
+      "Status",
+    ];
+
+    const escapeCsv = (val: string | null | undefined) => {
+      const str = String(val || "").replace(/"/g, '""');
+      return `"${str}"`;
+    };
+
+    const csvRows = [
+      headers.join(","),
+      ...inquiries.map((inq) =>
+        [
+          escapeCsv(inq.id),
+          escapeCsv(new Date(inq.createdAt).toLocaleDateString("en-IN")),
+          escapeCsv(inq.fullName),
+          escapeCsv(inq.phone),
+          escapeCsv(inq.email),
+          escapeCsv(inq.locationArea),
+          escapeCsv(inq.propertyType),
+          escapeCsv(inq.configuration),
+          escapeCsv(inq.budgetRange),
+          escapeCsv(inq.preferredTimeline),
+          escapeCsv(inq.message || ""),
+          escapeCsv(inq.status),
+        ].join(",")
+      ),
+    ];
+
+    const blob = new Blob([csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `BlueSpace_Interiors_Leads_${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    showNotification("success", "Exported all leads to CSV! Ready to import or view in Google Sheets.");
+  }, [inquiries]);
+
   const handleStatusChange = async (id: string, newStatus: string) => {
     // Optimistic update with persistence
     setInquiries((prev) => {
@@ -390,7 +448,16 @@ export default function AdminDashboard({
             </div>
           </div>
 
-          <div className="flex items-center gap-3 ml-auto">
+          <div className="flex items-center gap-2.5 ml-auto">
+            <button
+              onClick={exportToCsv}
+              className="text-xs font-semibold text-slate-700 hover:text-slate-900 flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 transition-all shadow-xs cursor-pointer"
+              title="Download all customer inquiries as a CSV spreadsheet"
+            >
+              <Download className="w-3.5 h-3.5 text-slate-500" />
+              <span>Export CSV</span>
+            </button>
+
             {googleSheetConfig?.sheetUrl && (
               <a
                 href={googleSheetConfig.sheetUrl}

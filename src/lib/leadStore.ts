@@ -1,4 +1,3 @@
-import prisma from "@/lib/prisma";
 import {
   saveToFallbackStore,
   readFallbackStore,
@@ -39,13 +38,17 @@ export interface InquiryRecord {
   updatedAt: string;
 }
 
+const DEFAULT_POSTGRES_URL =
+  "postgresql://neondb_owner:npg_j0wMJ7zucarT@ep-icy-fire-b4fgydet-pooler.c-6.us-east-2.aws.neon.tech/neondb?sslmode=require";
+
 // Check if a cloud PostgreSQL connection string is configured
 export function isPostgresConfigured(): boolean {
   const url =
     process.env.POSTGRES_URL ||
     process.env.DATABASE_URL ||
     process.env.POSTGRES_PRISMA_URL ||
-    process.env.POSTGRES_URL_NON_POOLING;
+    process.env.POSTGRES_URL_NON_POOLING ||
+    DEFAULT_POSTGRES_URL;
 
   return !!(url && (url.startsWith("postgres://") || url.startsWith("postgresql://")));
 }
@@ -55,7 +58,8 @@ function getPostgresClient(): NeonQueryFunction<false, false> | null {
     process.env.POSTGRES_URL ||
     process.env.DATABASE_URL ||
     process.env.POSTGRES_PRISMA_URL ||
-    process.env.POSTGRES_URL_NON_POOLING;
+    process.env.POSTGRES_URL_NON_POOLING ||
+    DEFAULT_POSTGRES_URL;
 
   if (url && (url.startsWith("postgres://") || url.startsWith("postgresql://"))) {
     try {
@@ -110,21 +114,7 @@ const dummyNames = new Set([
 export async function getAllInquiries(): Promise<InquiryRecord[]> {
   const map = new Map<string, InquiryRecord>();
 
-  // 1. Google Sheets Integration (reads live rows from public Google Sheet or Apps Script Web App)
-  if (isGoogleSheetConfigured()) {
-    try {
-      const sheetInquiries = await getInquiriesFromGoogleSheet();
-      for (const item of sheetInquiries) {
-        if (item && item.id) {
-          map.set(item.id, item);
-        }
-      }
-    } catch (sheetErr) {
-      console.warn("Google Sheets live fetch error:", sheetErr);
-    }
-  }
-
-  // 2. Primary / Hybrid: Fetch from Neon / Cloud PostgreSQL if configured
+  // 1. Primary: Fast authoritative fetch from Neon Cloud PostgreSQL
   const sql = getPostgresClient();
   if (sql) {
     try {
@@ -167,7 +157,7 @@ export async function getAllInquiries(): Promise<InquiryRecord[]> {
         });
       }
 
-      // If Neon returned live rows, return them directly
+      // If Neon returned records, return them directly for sub-100ms response time
       if (map.size > 0) {
         return Array.from(map.values())
           .filter((i) => !dummyNames.has(i.fullName.trim().toLowerCase()))
@@ -178,7 +168,21 @@ export async function getAllInquiries(): Promise<InquiryRecord[]> {
     }
   }
 
-  // 2. Secondary: Fetch from Cloud Store
+  // 2. Google Sheets Integration (reads live rows if configured and Neon has not returned)
+  if (isGoogleSheetConfigured()) {
+    try {
+      const sheetInquiries = await getInquiriesFromGoogleSheet();
+      for (const item of sheetInquiries) {
+        if (item && item.id && !map.has(item.id)) {
+          map.set(item.id, item);
+        }
+      }
+    } catch (sheetErr) {
+      console.warn("Google Sheets live fetch error:", sheetErr);
+    }
+  }
+
+  // 3. Secondary: Fetch from Cloud Store
   try {
     const cloudInquiries = await getCloudInquiries();
     for (const item of cloudInquiries) {
@@ -204,34 +208,6 @@ export async function getAllInquiries(): Promise<InquiryRecord[]> {
     console.warn("Cloud store read failed:", cloudErr);
   }
 
-  // 3. SQLite database
-  try {
-    const dbInquiries = await prisma.leadInquiry.findMany({
-      orderBy: { createdAt: "desc" },
-    });
-    for (const item of dbInquiries) {
-      if (!map.has(item.id)) {
-        map.set(item.id, {
-          id: item.id,
-          fullName: item.fullName,
-          email: item.email,
-          phone: item.phone,
-          propertyType: item.propertyType,
-          locationArea: item.locationArea,
-          configuration: item.configuration,
-          budgetRange: item.budgetRange,
-          preferredTimeline: item.preferredTimeline,
-          message: item.message,
-          status: item.status,
-          createdAt: item.createdAt.toISOString(),
-          updatedAt: item.updatedAt.toISOString(),
-        });
-      }
-    }
-  } catch (err) {
-    console.warn("Prisma query fallback:", err);
-  }
-
   // 4. Local fallback file
   const fallbackList = readFallbackStore();
   for (const fb of fallbackList) {
@@ -254,15 +230,7 @@ export async function getAllInquiries(): Promise<InquiryRecord[]> {
     }
   }
 
-  // Filter out dummy names
-  const dummyNames = new Set([
-    "vikramaditya deshmukh",
-    "dr. rohini sawant",
-    "rajesh singhania",
-    "test client",
-    "mr. rajesh sharma",
-  ]);
-
+  // Filter out dummy test entries
   const cleanList = Array.from(map.values())
     .filter((i) => !dummyNames.has(i.fullName.trim().toLowerCase()))
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
@@ -271,7 +239,7 @@ export async function getAllInquiries(): Promise<InquiryRecord[]> {
 }
 
 /**
- * Insert a customer submission cleanly across Universal Cloud Store, PostgreSQL, SQLite, and local file.
+ * Insert a customer submission cleanly across Universal Cloud Store, PostgreSQL, and local file.
  */
 export async function createInquiry(data: {
   fullName: string;
@@ -303,24 +271,7 @@ export async function createInquiry(data: {
     updatedAt: now,
   };
 
-  // 1. Immediately sync to Google Sheets if configured (writes directly to Google Sheet)
-  if (isGoogleSheetConfigured()) {
-    try {
-      await appendInquiryToGoogleSheet(record);
-      console.log(`[Google Sheet] Synced inquiry for ${record.fullName}`);
-    } catch (sheetErr) {
-      console.warn("Google Sheet sync error:", sheetErr);
-    }
-  }
-
-  // 2. Immediately mirror to Universal Cloud Store (synchronizes across all devices)
-  try {
-    await saveCloudInquiry(record);
-  } catch (cloudErr) {
-    console.warn("Cloud store save failed:", cloudErr);
-  }
-
-  // 2. Mirror to PostgreSQL if configured
+  // 1. Primary: Save directly to Neon PostgreSQL (Authoritative multi-device cloud database)
   const sql = getPostgresClient();
   if (sql) {
     try {
@@ -336,31 +287,19 @@ export async function createInquiry(data: {
           ${record.status}, ${record.createdAt}, ${record.updatedAt}
         );
       `;
+      console.log(`[Neon Postgres] Saved inquiry for ${record.fullName}`);
     } catch (pgErr) {
-      console.warn("Postgres insert error:", pgErr);
+      console.warn("Neon Postgres insert error:", pgErr);
     }
   }
 
-  // 3. Save to SQLite if possible
-  try {
-    await prisma.leadInquiry.create({
-      data: {
-        id: record.id,
-        fullName: record.fullName,
-        email: record.email,
-        phone: record.phone,
-        propertyType: record.propertyType,
-        locationArea: record.locationArea,
-        configuration: record.configuration,
-        budgetRange: record.budgetRange,
-        preferredTimeline: record.preferredTimeline,
-        message: record.message,
-        status: record.status,
-      },
-    });
-  } catch (dbErr) {
-    console.warn("Prisma insert fallback:", dbErr);
+  // 2. Google Sheets sync if configured
+  if (isGoogleSheetConfigured()) {
+    appendInquiryToGoogleSheet(record).catch(() => null);
   }
+
+  // 3. Background mirror to secondary cloud store (non-blocking)
+  saveCloudInquiry(record).catch(() => null);
 
   // 4. Mirror to local fallback file
   saveToFallbackStore({
@@ -375,14 +314,7 @@ export async function createInquiry(data: {
  * Permanently delete an inquiry across all storage engines.
  */
 export async function deleteInquiryById(id: string): Promise<boolean> {
-  // 1. Cloud Store
-  try {
-    await deleteCloudInquiry(id);
-  } catch (cloudErr) {
-    console.warn("Cloud store delete error:", cloudErr);
-  }
-
-  // 2. PostgreSQL
+  // 1. PostgreSQL (Primary)
   const sql = getPostgresClient();
   if (sql) {
     try {
@@ -393,14 +325,8 @@ export async function deleteInquiryById(id: string): Promise<boolean> {
     }
   }
 
-  // 3. SQLite
-  try {
-    await prisma.leadInquiry.delete({ where: { id } }).catch(() => null);
-  } catch {
-    // Ignore if not present
-  }
-
-  // 4. Local file fallback
+  // 2. Secondary mirrors (non-blocking)
+  deleteCloudInquiry(id).catch(() => null);
   deleteFromFallbackStore(id);
   return true;
 }
@@ -409,14 +335,7 @@ export async function deleteInquiryById(id: string): Promise<boolean> {
  * Update status across all storage engines.
  */
 export async function updateInquiryStatusById(id: string, newStatus: string): Promise<boolean> {
-  // 1. Cloud Store
-  try {
-    await updateCloudInquiryStatus(id, newStatus);
-  } catch (cloudErr) {
-    console.warn("Cloud store status update error:", cloudErr);
-  }
-
-  // 2. PostgreSQL
+  // 1. PostgreSQL (Primary)
   const sql = getPostgresClient();
   if (sql) {
     try {
@@ -431,17 +350,8 @@ export async function updateInquiryStatusById(id: string, newStatus: string): Pr
     }
   }
 
-  // 3. SQLite
-  try {
-    await prisma.leadInquiry.update({
-      where: { id },
-      data: { status: newStatus },
-    }).catch(() => null);
-  } catch {
-    // Ignore
-  }
-
-  // 4. Local file fallback
+  // 2. Secondary mirrors (non-blocking)
+  updateCloudInquiryStatus(id, newStatus).catch(() => null);
   updateFallbackStatus(id, newStatus);
   return true;
 }

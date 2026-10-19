@@ -21,7 +21,7 @@ export interface GoogleSheetInquiry {
   updatedAt: string;
 }
 
-const TIMEOUT_MS = 6000;
+const TIMEOUT_MS = 2500;
 
 function extractSheetId(input: string): string | null {
   if (!input) return null;
