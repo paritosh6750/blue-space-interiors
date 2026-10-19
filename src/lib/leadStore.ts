@@ -32,6 +32,16 @@ export interface InquiryRecord {
 }
 
 // Check if a cloud PostgreSQL connection string is configured
+export function isPostgresConfigured(): boolean {
+  const url =
+    process.env.POSTGRES_URL ||
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_PRISMA_URL ||
+    process.env.POSTGRES_URL_NON_POOLING;
+
+  return !!(url && (url.startsWith("postgres://") || url.startsWith("postgresql://")));
+}
+
 function getPostgresClient(): NeonQueryFunction<false, false> | null {
   const url =
     process.env.POSTGRES_URL ||
@@ -77,41 +87,22 @@ async function ensurePostgresTable(sql: NeonQueryFunction<false, false>) {
   }
 }
 
+const dummyNames = new Set([
+  "vikramaditya deshmukh",
+  "dr. rohini sawant",
+  "rajesh singhania",
+  "test client",
+  "mr. rajesh sharma",
+]);
+
 /**
  * Fetch all customer-submitted inquiries in strict chronological sequence (newest first).
- * Aggregates across Cloud Store, PostgreSQL, SQLite, and local fallback file.
- * Completely filters out any dummy/test entries.
+ * Neon Serverless PostgreSQL is the authoritative live database engine across all devices.
  */
 export async function getAllInquiries(): Promise<InquiryRecord[]> {
   const map = new Map<string, InquiryRecord>();
 
-  // 1. Fetch from Universal Cloud Store (persists across all devices & serverless lambdas)
-  try {
-    const cloudInquiries = await getCloudInquiries();
-    for (const item of cloudInquiries) {
-      if (item && item.id) {
-        map.set(item.id, {
-          id: item.id,
-          fullName: item.fullName,
-          email: item.email,
-          phone: item.phone,
-          propertyType: item.propertyType,
-          locationArea: item.locationArea,
-          configuration: item.configuration,
-          budgetRange: item.budgetRange,
-          preferredTimeline: item.preferredTimeline,
-          message: item.message || null,
-          status: item.status || "NEW",
-          createdAt: item.createdAt,
-          updatedAt: item.updatedAt,
-        });
-      }
-    }
-  } catch (cloudErr) {
-    console.warn("Cloud store read failed:", cloudErr);
-  }
-
-  // 2. Fetch from Neon / Cloud PostgreSQL if configured
+  // 1. Primary: Fetch from Neon / Cloud PostgreSQL (Authoritative multi-device database)
   const sql = getPostgresClient();
   if (sql) {
     try {
@@ -137,27 +128,58 @@ export async function getAllInquiries(): Promise<InquiryRecord[]> {
 
       for (const r of rows as unknown as Array<Record<string, unknown>>) {
         const id = String(r.id);
-        if (!map.has(id)) {
-          map.set(id, {
-            id,
-            fullName: String(r.fullName),
-            email: String(r.email),
-            phone: String(r.phone),
-            propertyType: String(r.propertyType),
-            locationArea: String(r.locationArea),
-            configuration: String(r.configuration),
-            budgetRange: String(r.budgetRange),
-            preferredTimeline: String(r.preferredTimeline),
-            message: r.message ? String(r.message) : null,
-            status: String(r.status || "NEW"),
-            createdAt: new Date(String(r.createdAt)).toISOString(),
-            updatedAt: new Date(String(r.updatedAt)).toISOString(),
-          });
-        }
+        map.set(id, {
+          id,
+          fullName: String(r.fullName),
+          email: String(r.email),
+          phone: String(r.phone),
+          propertyType: String(r.propertyType),
+          locationArea: String(r.locationArea),
+          configuration: String(r.configuration),
+          budgetRange: String(r.budgetRange),
+          preferredTimeline: String(r.preferredTimeline),
+          message: r.message ? String(r.message) : null,
+          status: String(r.status || "NEW"),
+          createdAt: new Date(String(r.createdAt)).toISOString(),
+          updatedAt: new Date(String(r.updatedAt)).toISOString(),
+        });
+      }
+
+      // If Neon returned live rows, return them directly
+      if (map.size > 0) {
+        return Array.from(map.values())
+          .filter((i) => !dummyNames.has(i.fullName.trim().toLowerCase()))
+          .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
       }
     } catch (err) {
-      console.warn("Postgres query error, falling back:", err);
+      console.warn("Neon Postgres query error, checking secondary stores:", err);
     }
+  }
+
+  // 2. Secondary: Fetch from Cloud Store
+  try {
+    const cloudInquiries = await getCloudInquiries();
+    for (const item of cloudInquiries) {
+      if (item && item.id && !map.has(item.id)) {
+        map.set(item.id, {
+          id: item.id,
+          fullName: item.fullName,
+          email: item.email,
+          phone: item.phone,
+          propertyType: item.propertyType,
+          locationArea: item.locationArea,
+          configuration: item.configuration,
+          budgetRange: item.budgetRange,
+          preferredTimeline: item.preferredTimeline,
+          message: item.message || null,
+          status: item.status || "NEW",
+          createdAt: item.createdAt,
+          updatedAt: item.updatedAt,
+        });
+      }
+    }
+  } catch (cloudErr) {
+    console.warn("Cloud store read failed:", cloudErr);
   }
 
   // 3. SQLite database

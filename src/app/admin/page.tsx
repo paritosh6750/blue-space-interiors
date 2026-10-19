@@ -1,7 +1,7 @@
 import { isAuthenticated } from "@/lib/adminAuth";
 import { redirect } from "next/navigation";
 import { getLiveMetrics } from "@/app/actions/tracker";
-import { getAllInquiries } from "@/lib/leadStore";
+import { getAllInquiries, isPostgresConfigured } from "@/lib/leadStore";
 import AdminDashboard from "@/components/admin/AdminDashboard";
 import type { Metadata } from "next";
 
@@ -24,9 +24,16 @@ export default async function AdminPortalPage() {
     redirect("/admin/login");
   }
 
-  // Fetch only authentic, customer-submitted inquiries in strict chronological sequence (newest first)
+  // Fetch authentic customer-submitted inquiries in strict chronological sequence (newest first)
   const inquiries = await getAllInquiries();
   const metrics = await getLiveMetrics();
+  const dbConnected = isPostgresConfigured();
 
-  return <AdminDashboard initialInquiries={inquiries} metrics={metrics} />;
+  return (
+    <AdminDashboard
+      initialInquiries={inquiries}
+      metrics={metrics}
+      isPostgresConfigured={dbConnected}
+    />
+  );
 }

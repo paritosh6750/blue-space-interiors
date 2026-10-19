@@ -59,6 +59,7 @@ interface AdminDashboardProps {
     totalVisits: number;
     uniqueVisits: number;
   };
+  isPostgresConfigured?: boolean;
 }
 
 const STATUS_CONFIG: Record<
@@ -107,6 +108,7 @@ const STORAGE_KEY = "bsi_inquiries_store_v1";
 export default function AdminDashboard({
   initialInquiries,
   metrics,
+  isPostgresConfigured = false,
 }: AdminDashboardProps) {
   const router = useRouter();
   
@@ -441,6 +443,19 @@ export default function AdminDashboard({
             <p className="text-xs sm:text-sm text-slate-600 mt-1 font-light">
               Live database stream of contact submissions, architectural floorplan audits, and turnkey quote requests.
             </p>
+            <div className="mt-2.5 flex flex-wrap items-center gap-2">
+              {isPostgresConfigured ? (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-semibold shadow-2xs">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Neon PostgreSQL Active • Synced Across All Devices</span>
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-800 text-xs font-medium shadow-2xs">
+                  <span className="w-2 h-2 rounded-full bg-amber-500" />
+                  <span>Cloud Storage Mode • Attach free Neon PostgreSQL in Vercel to sync across all devices</span>
+                </span>
+              )}
+            </div>
           </div>
 
           <div className="flex items-center gap-3">
