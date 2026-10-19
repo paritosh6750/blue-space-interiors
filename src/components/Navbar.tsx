@@ -26,6 +26,7 @@ export default function Navbar() {
     { name: "About Us", href: "/about" },
     { name: "Turnkey Services", href: "/turnkey-services" },
     { name: "Portfolio", href: "/portfolio" },
+    { name: "Testimonials", href: "/testimonials" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -47,7 +48,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (

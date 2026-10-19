@@ -8,8 +8,6 @@ import {
   Award,
   Building2,
   PhoneCall,
-  Star,
-  Quote,
   HelpCircle,
   Calculator,
   Check,
@@ -17,7 +15,6 @@ import {
   Mail,
   Briefcase,
   Layers,
-  User,
 } from "lucide-react";
 
 import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
@@ -110,54 +107,6 @@ export default async function HomePage() {
       },
     ],
   };
-
-  const realTestimonials = [
-    {
-      clientName: "Mr. Sanjay Sahoo",
-      clientRole: "Coal Mining Business",
-      location: "Sikshyakpada, Angul, Odisha",
-      projectScope: "12,000 Sq.Ft. Luxury Villa Project",
-      quote:
-        "Blue Space Interiors designed and executed our 12,000 sq.ft. private villa in Angul, Odisha with remarkable expertise. Executing a lavish project of this scale across state borders was seamless under Sunil Pandey's single-window contracting governance. The luxurious double-height ceilings, stone finishes, and custom joinery are world-class.",
-      rating: 5,
-    },
-    {
-      clientName: "Mr. Neeraj Medekar",
-      clientRole: "General Manager in Hitachi",
-      location: "Flat 901, Glendale, Lake Enclave, Hiranandani Estate, Thane",
-      projectScope: "2,000 Sq.Ft. Luxury Residence Fitout",
-      quote:
-        "As General Manager at Hitachi, engineering precision and committed timelines are non-negotiable for me. Blue Space Interiors designed and executed our 2,000 sq.ft. residence at Lake Enclave, Hiranandani Estate to perfection. Their luxurious and lavish finishes, locked BOQ, and zero cost escalations made the fitout completely seamless.",
-      rating: 5,
-    },
-    {
-      clientName: "Ms. Bhavana Waignkar",
-      clientRole: "IT Professional",
-      location: "Flat 2506, Oberoi Eternia, Mulund, Mumbai",
-      projectScope: "1,450 Sq.Ft. Oberoi Eternia 3 BHK Luxury Suite",
-      quote:
-        "Designing and executing our 1,450 sq.ft. 3 BHK at Oberoi Eternia Mulund was handled with utmost professionalism. As an IT professional with tight schedules, I appreciated Blue Space Interiors managing everything autonomously—from society NOCs to modular joinery. The luxurious and lavish aesthetic exceeded all our expectations.",
-      rating: 5,
-    },
-    {
-      clientName: "Mr. Anand Acharya",
-      clientRole: "Owner of Chemical Company",
-      location: "Tower A, 2604, Oberoi Enigma, Mulund, Mumbai",
-      projectScope: "2,200 Sq.Ft. 4 BHK Grand Residence",
-      quote:
-        "For our 2,200 sq.ft. 4 BHK at Oberoi Enigma Mulund, Blue Space Interiors delivered a masterclass in turnkey contracting. The lavish bookmatched marble craftsmanship, concealed air-conditioning, and custom furniture reflect top-tier designer precision. Handover was on schedule with complete quality assurance.",
-      rating: 5,
-    },
-    {
-      clientName: "Mr. Himanshu Shrivastava",
-      clientRole: "Branch Manager in HDFC Bank",
-      location: "Flat 2503, Sai Nirvana, Kalyan",
-      projectScope: "4,000 Sq.Ft. Grand Residence",
-      quote:
-        "Executing a 4,000 sq.ft. comprehensive transformation at Sai Nirvana, Kalyan requires genuine contracting muscle. Sunil Pandey and his team executed the entire scope with lavish details, robust BWP Marine Plywood, and strict financial discipline under the 120-day timeline.",
-      rating: 5,
-    },
-  ];
 
   return (
     <>
@@ -580,89 +529,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Real Verified Client Endorsements */}
-      <section className="py-24 bg-gradient-to-b from-white via-slate-50/60 to-white border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
-              Real Client Endorsements
-            </span>
-            <h2 className="mt-2 text-3xl font-serif font-bold text-slate-900">
-              Endorsed by Discerning C-Suite Executives, Business Leaders &amp; Homeowners
-            </h2>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600 font-light">
-              Real completed projects designed and executed by Blue Space Interiors in luxurious and lavish styling across India.
-            </p>
-          </div>
-
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {realTestimonials.slice(0, 3).map((t, idx) => (
-              <div
-                key={idx}
-                className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-blue-300 transition-all flex flex-col justify-between relative"
-              >
-                <div>
-                  <div className="flex items-center gap-1 text-[#3154A5] mb-4">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#3154A5]" />
-                    ))}
-                  </div>
-                  <Quote className="w-8 h-8 text-blue-200 mb-3" />
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed italic font-light">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-100">
-                  <h4 className="text-sm font-semibold text-slate-900 flex items-center gap-1.5">
-                    <User className="w-4 h-4 text-[#3154A5]" />
-                    <span>{t.clientName}</span>
-                  </h4>
-                  <p className="text-[11px] text-[#3154A5] font-semibold">{t.clientRole}</p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">{t.projectScope}</p>
-                  <p className="text-[10px] text-slate-400 mt-0.5 flex items-center gap-1">
-                    <MapPin className="w-3 h-3 text-slate-400" />
-                    {t.location}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Additional 2 Client Cards */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-            {realTestimonials.slice(3, 5).map((t, idx) => (
-              <div
-                key={idx}
-                className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-blue-300 transition-all flex flex-col justify-between relative"
-              >
-                <div>
-                  <div className="flex items-center gap-1 text-[#3154A5] mb-4">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#3154A5]" />
-                    ))}
-                  </div>
-                  <Quote className="w-8 h-8 text-blue-200 mb-3" />
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed italic font-light">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-100">
-                  <h4 className="text-sm font-semibold text-slate-900 flex items-center gap-1.5">
-                    <User className="w-4 h-4 text-[#3154A5]" />
-                    <span>{t.clientName}</span>
-                  </h4>
-                  <p className="text-[11px] text-[#3154A5] font-semibold">{t.clientRole}</p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">{t.projectScope}</p>
-                  <p className="text-[10px] text-slate-400 mt-0.5 flex items-center gap-1">
-                    <MapPin className="w-3 h-3 text-slate-400" />
-                    {t.location}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* SEO FAQ Section with Schema Markup */}
       <section className="py-24 bg-white border-t border-slate-200">
