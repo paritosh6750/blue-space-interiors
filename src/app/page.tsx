@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 
 import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
+import HeroBannerSlider from "@/components/HeroBannerSlider";
 
 export const revalidate = 0; // Fresh SSR data
 
@@ -120,119 +121,9 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-slate-50/70 to-blue-50/20">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/projects/project-1-sanjay-sahoo-angul-villa.jpg"
-            alt="Premier Interior Design & Turnkey Contracting - Blue Space Interiors PAN India"
-            className="w-full h-full object-cover opacity-10"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent" />
-        </div>
+      {/* Hero Banner Slider Section */}
+      <HeroBannerSlider yearsOfExcellence={yearsOfExcellence} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          {/* Primary Target Keyword in H1 */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-slate-900 tracking-tight leading-[1.12] max-w-5xl mx-auto">
-            Premier Interior Design &amp; <span className="brand-gradient-text">Turnkey Contracting</span> Firm
-          </h1>
-
-          <p className="mt-6 text-base sm:text-xl text-slate-700 max-w-3xl mx-auto font-light leading-relaxed">
-            Eliminate the costly divide between impractical designers and disconnected contractors. 
-            We engineer and execute complete turnkey fitouts for <strong className="text-slate-900 font-semibold">all kinds of properties</strong>—residential, 
-            commercial, corporate, and grand villas across India—with designer precision and a strict{" "}
-            <strong className="text-slate-900 font-semibold">{BRAND_CONFIG.handoverGuarantee}</strong>.
-          </p>
-
-          <div className="mt-8 flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm font-medium text-slate-700">
-            <span className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              100% Zero Cost Escalation Guarantee
-            </span>
-            <span className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm">
-              <Clock className="w-4 h-4 text-[#3154A5]" />
-              Guaranteed 120-Day Handover Protocol
-            </span>
-            <span className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm">
-              <Award className="w-4 h-4 text-[#3154A5]" />
-              5-Year Direct Structural Warranty
-            </span>
-            <span className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm">
-              <Layers className="w-4 h-4 text-[#3154A5]" />
-              Integrated Design &amp; Contracting
-            </span>
-          </div>
-
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="brand-button px-8 py-4 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase flex items-center gap-2 shadow-lg hover:scale-105 transition-transform"
-            >
-              <span>Schedule Project Consultation</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/portfolio"
-              className="px-8 py-4 rounded-xl text-xs sm:text-sm font-semibold tracking-wider text-slate-800 bg-white border border-slate-300 hover:border-[#3154A5] shadow-sm transition-all"
-            >
-              Explore Projects
-            </Link>
-          </div>
-
-          {/* 5-Pillar Core Excellence Ribbon */}
-          <div className="mt-12 sm:mt-14 max-w-5xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl border border-blue-200/80 shadow-xl p-3 sm:p-5">
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-4">
-              <div className="flex flex-col items-center justify-center text-center p-3 rounded-xl sm:rounded-2xl bg-slate-50/70 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all">
-                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-[#3154A5] mb-2 shadow-2xs">
-                  <Award className="w-4 h-4" />
-                </div>
-                <span className="font-bold text-slate-900 text-sm sm:text-base leading-tight">{yearsOfExcellence}</span>
-                <span className="text-[11px] text-slate-600 font-medium mt-0.5">of Excellence (Est. 2020)</span>
-              </div>
-
-              <div className="flex flex-col items-center justify-center text-center p-3 rounded-xl sm:rounded-2xl bg-slate-50/70 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all">
-                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-[#3154A5] mb-2 shadow-2xs">
-                  <Building2 className="w-4 h-4" />
-                </div>
-                <span className="font-bold text-[#3154A5] text-sm sm:text-base leading-tight">150+ Projects</span>
-                <span className="text-[11px] text-slate-600 font-medium mt-0.5">Delivered to Date</span>
-              </div>
-
-              <div className="col-span-2 lg:col-span-1 flex flex-col items-center justify-center text-center p-3 rounded-xl sm:rounded-2xl bg-slate-50/70 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all">
-                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-[#3154A5] mb-2 shadow-2xs">
-                  <Briefcase className="w-4 h-4" />
-                </div>
-                <span className="font-bold text-slate-900 text-xs sm:text-sm leading-tight">Design &amp; Contracting</span>
-                <span className="text-[11px] text-slate-600 font-medium mt-0.5">End-To-End Single Window</span>
-              </div>
-
-              <div className="col-span-1 flex flex-col items-center justify-center text-center p-3 rounded-xl sm:rounded-2xl bg-slate-50/70 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all">
-                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-[#3154A5] mb-2 shadow-2xs">
-                  <MapPin className="w-4 h-4" />
-                </div>
-                <span className="font-bold text-slate-900 text-xs sm:text-sm leading-tight">PAN India Services</span>
-                <a href={`tel:${BRAND_CONFIG.phoneRaw}`} className="text-xs text-[#3154A5] font-bold hover:underline mt-0.5">
-                  {BRAND_CONFIG.phoneDisplay}
-                </a>
-              </div>
-
-              <div className="col-span-1 flex flex-col items-center justify-center text-center p-3 rounded-xl sm:rounded-2xl bg-slate-50/70 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all">
-                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-[#3154A5] mb-2 shadow-2xs">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <span className="font-bold text-slate-900 text-xs sm:text-sm leading-tight">Direct Desk</span>
-                <a
-                  href={`mailto:${BRAND_CONFIG.email}`}
-                  className="text-[11px] text-[#3154A5] font-semibold hover:underline mt-0.5 truncate max-w-[125px] sm:max-w-none"
-                  title={BRAND_CONFIG.email}
-                >
-                  {BRAND_CONFIG.email}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Target SEO & Competitive Positioning */}
       <section className="py-24 bg-gradient-to-b from-white via-slate-50/70 to-white border-y border-slate-200 relative">

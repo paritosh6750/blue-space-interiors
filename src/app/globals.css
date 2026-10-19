@@ -102,3 +102,13 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #3154a5;
 }
+
+/* 3-Second Hero Banner Progress Fill */
+@keyframes bannerProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
