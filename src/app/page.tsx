@@ -132,11 +132,6 @@ export default async function HomePage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#3154A5] text-xs font-bold tracking-wider uppercase mb-8 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#3154A5]" />
-            <span>Turnkey Interior Design &amp; Contracting • PAN India Execution</span>
-          </div>
-
           {/* Primary Target Keyword in H1 */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-slate-900 tracking-tight leading-[1.12] max-w-5xl mx-auto">
             Premier Interior Design &amp; <span className="brand-gradient-text">Turnkey Contracting</span> Firm
