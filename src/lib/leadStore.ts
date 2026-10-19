@@ -13,7 +13,15 @@ import {
   deleteCloudInquiry,
 } from "@/lib/cloudStore";
 import { neon, NeonQueryFunction } from "@neondatabase/serverless";
+import {
+  getInquiriesFromGoogleSheet,
+  appendInquiryToGoogleSheet,
+  isGoogleSheetConfigured,
+  getGoogleSheetConfig,
+} from "@/lib/googleSheetStore";
 import crypto from "crypto";
+
+export { isGoogleSheetConfigured, getGoogleSheetConfig };
 
 export interface InquiryRecord {
   id: string;
@@ -102,7 +110,21 @@ const dummyNames = new Set([
 export async function getAllInquiries(): Promise<InquiryRecord[]> {
   const map = new Map<string, InquiryRecord>();
 
-  // 1. Primary: Fetch from Neon / Cloud PostgreSQL (Authoritative multi-device database)
+  // 1. Google Sheets Integration (reads live rows from public Google Sheet or Apps Script Web App)
+  if (isGoogleSheetConfigured()) {
+    try {
+      const sheetInquiries = await getInquiriesFromGoogleSheet();
+      for (const item of sheetInquiries) {
+        if (item && item.id) {
+          map.set(item.id, item);
+        }
+      }
+    } catch (sheetErr) {
+      console.warn("Google Sheets live fetch error:", sheetErr);
+    }
+  }
+
+  // 2. Primary / Hybrid: Fetch from Neon / Cloud PostgreSQL if configured
   const sql = getPostgresClient();
   if (sql) {
     try {
@@ -281,7 +303,17 @@ export async function createInquiry(data: {
     updatedAt: now,
   };
 
-  // 1. Immediately mirror to Universal Cloud Store (synchronizes across all devices)
+  // 1. Immediately sync to Google Sheets if configured (writes directly to Google Sheet)
+  if (isGoogleSheetConfigured()) {
+    try {
+      await appendInquiryToGoogleSheet(record);
+      console.log(`[Google Sheet] Synced inquiry for ${record.fullName}`);
+    } catch (sheetErr) {
+      console.warn("Google Sheet sync error:", sheetErr);
+    }
+  }
+
+  // 2. Immediately mirror to Universal Cloud Store (synchronizes across all devices)
   try {
     await saveCloudInquiry(record);
   } catch (cloudErr) {

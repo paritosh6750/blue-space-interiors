@@ -1,7 +1,11 @@
 import { isAuthenticated } from "@/lib/adminAuth";
 import { redirect } from "next/navigation";
 import { getLiveMetrics } from "@/app/actions/tracker";
-import { getAllInquiries, isPostgresConfigured } from "@/lib/leadStore";
+import {
+  getAllInquiries,
+  isPostgresConfigured,
+  getGoogleSheetConfig,
+} from "@/lib/leadStore";
 import AdminDashboard from "@/components/admin/AdminDashboard";
 import type { Metadata } from "next";
 
@@ -28,12 +32,14 @@ export default async function AdminPortalPage() {
   const inquiries = await getAllInquiries();
   const metrics = await getLiveMetrics();
   const dbConnected = isPostgresConfigured();
+  const sheetConfig = getGoogleSheetConfig();
 
   return (
     <AdminDashboard
       initialInquiries={inquiries}
       metrics={metrics}
       isPostgresConfigured={dbConnected}
+      googleSheetConfig={sheetConfig}
     />
   );
 }

@@ -60,6 +60,12 @@ interface AdminDashboardProps {
     uniqueVisits: number;
   };
   isPostgresConfigured?: boolean;
+  googleSheetConfig?: {
+    scriptUrl: string | null;
+    sheetId: string | null;
+    sheetUrl: string | null;
+    isConfigured: boolean;
+  };
 }
 
 const STATUS_CONFIG: Record<
@@ -109,6 +115,7 @@ export default function AdminDashboard({
   initialInquiries,
   metrics,
   isPostgresConfigured = false,
+  googleSheetConfig,
 }: AdminDashboardProps) {
   const router = useRouter();
   
@@ -384,6 +391,20 @@ export default function AdminDashboard({
           </div>
 
           <div className="flex items-center gap-3 ml-auto">
+            {googleSheetConfig?.sheetUrl && (
+              <a
+                href={googleSheetConfig.sheetUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 transition-all shadow-xs cursor-pointer"
+                title="Open live Google Sheet in Google Drive"
+              >
+                <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Open in Google Sheets</span>
+                <ExternalLink className="w-3 h-3 text-emerald-500" />
+              </a>
+            )}
+
             <Link
               href="/contact"
               target="_blank"
@@ -444,15 +465,22 @@ export default function AdminDashboard({
               Live database stream of contact submissions, architectural floorplan audits, and turnkey quote requests.
             </p>
             <div className="mt-2.5 flex flex-wrap items-center gap-2">
-              {isPostgresConfigured ? (
+              {googleSheetConfig?.isConfigured && (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-semibold shadow-2xs">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Neon PostgreSQL Active • Synced Across All Devices</span>
+                  <span>Google Sheets Synced • Live Across All Devices</span>
                 </span>
-              ) : (
+              )}
+              {isPostgresConfigured && (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-300 text-blue-800 text-xs font-semibold shadow-2xs">
+                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                  <span>Neon PostgreSQL Active</span>
+                </span>
+              )}
+              {!googleSheetConfig?.isConfigured && !isPostgresConfigured && (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-800 text-xs font-medium shadow-2xs">
                   <span className="w-2 h-2 rounded-full bg-amber-500" />
-                  <span>Cloud Storage Mode • Attach free Neon PostgreSQL in Vercel to sync across all devices</span>
+                  <span>Cloud Storage Mode • Add GOOGLE_SHEET_URL to view and sync directly in Google Sheets</span>
                 </span>
               )}
             </div>
