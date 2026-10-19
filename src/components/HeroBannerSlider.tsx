@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import {
   ShieldCheck,
@@ -8,14 +8,10 @@ import {
   Award,
   Layers,
   ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-  Sparkles,
   Building2,
   Briefcase,
   MapPin,
   Mail,
-  Camera,
 } from "lucide-react";
 import { BRAND_CONFIG } from "@/lib/constants";
 
@@ -23,9 +19,6 @@ export interface BannerSlide {
   id: string;
   image: string;
   alt: string;
-  label: string;
-  tagline: string;
-  scope: string;
 }
 
 export const HERO_BANNER_SLIDES: BannerSlide[] = [
@@ -33,41 +26,26 @@ export const HERO_BANNER_SLIDES: BannerSlide[] = [
     id: "modular-kitchen",
     image: "/hero-banner/hero-1-modular-kitchen.jpg",
     alt: "Luxury Modular Kitchen with Quartz Countertops and Fluted Cabinetry - Blue Space Interiors Turnkey Contracting",
-    label: "Bespoke Modular Kitchen",
-    tagline: "High-Gloss Joinery, Quartz Tops & Under-Cabinet Lighting",
-    scope: "Residential Modular Execution",
   },
   {
     id: "grand-living-room",
     image: "/hero-banner/hero-2-grand-living-room.jpg",
     alt: "Grand Living Room with Cascading Chandelier and Modern Suspended Swing - Blue Space Interiors",
-    label: "Grand Living Suite",
-    tagline: "Tiered Chandelier, Suspended Swing & Architectural Moulding",
-    scope: "Luxury Villa & Penthouse Fitout",
   },
   {
     id: "luxury-master-bedroom",
     image: "/hero-banner/hero-3-luxury-master-bedroom.jpg",
     alt: "Luxury Master Bedroom with Sage Green Wainscoting and Curved Indirect Lighting - Blue Space Interiors",
-    label: "Master Bedroom Suite",
-    tagline: "Sage Green Wainscoting, Curved Cove & Built-In Wardrobes",
-    scope: "Turnkey Master Suite Fitout",
   },
   {
     id: "aesthetic-bedroom-suite",
     image: "/hero-banner/hero-4-aesthetic-bedroom-suite.jpg",
     alt: "Aesthetic Bedroom Suite with Fluted Wood Panelling and Sheer Drapes - Blue Space Interiors",
-    label: "Fluted Wood Panelled Suite",
-    tagline: "Vertical Fluted Wood Accents, Study Nook & Sunlight Drapes",
-    scope: "Bespoke Architectural Woodwork",
   },
   {
     id: "entertainment-tv-lounge",
     image: "/hero-banner/hero-5-entertainment-tv-lounge.jpg",
     alt: "Lavish TV Entertainment Feature Wall Lounge with Acoustic Slats - Blue Space Interiors",
-    label: "Marble & Fluted TV Lounge",
-    tagline: "Bookmatched Marble Feature Wall, Acoustic Slats & Low Credenza",
-    scope: "Turnkey Lounge & Dining Execution",
   },
 ];
 
@@ -77,68 +55,28 @@ interface HeroBannerSliderProps {
 
 export default function HeroBannerSlider({ yearsOfExcellence }: HeroBannerSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const touchStartXRef = useRef<number | null>(null);
-  const touchEndXRef = useRef<number | null>(null);
   const slideCount = HERO_BANNER_SLIDES.length;
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % slideCount);
   }, [slideCount]);
 
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + slideCount) % slideCount);
-  }, [slideCount]);
-
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
   };
 
-  // Auto-slide every 3 seconds (3000ms) with horizontal transition
+  // Continuous automatic horizontal transition every 3 seconds (3000ms)
   useEffect(() => {
-    if (isPaused) return;
-
     const timer = setInterval(() => {
       nextSlide();
     }, 3000);
 
     return () => clearInterval(timer);
-  }, [isPaused, nextSlide, currentIndex]);
-
-  // Touch swipe support for mobile devices
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartXRef.current = e.targetTouches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndXRef.current = e.targetTouches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    if (touchStartXRef.current !== null && touchEndXRef.current !== null) {
-      const diff = touchStartXRef.current - touchEndXRef.current;
-      if (diff > 50) {
-        // Swiped left -> next
-        nextSlide();
-      } else if (diff < -50) {
-        // Swiped right -> prev
-        prevSlide();
-      }
-    }
-    touchStartXRef.current = null;
-    touchEndXRef.current = null;
-  };
-
-  const currentSlide = HERO_BANNER_SLIDES[currentIndex];
+  }, [nextSlide]);
 
   return (
     <section
       className="relative min-h-[92vh] flex items-center justify-center overflow-hidden select-none"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
       aria-label="Premier Interior Design and Turnkey Contracting Banner Slider"
       role="region"
     >
@@ -178,47 +116,7 @@ export default function HeroBannerSlider({ yearsOfExcellence }: HeroBannerSlider
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.75)_0%,rgba(255,255,255,0.3)_60%,transparent_100%)] z-10 pointer-events-none" />
       </div>
 
-      {/* 3. Top Banner Status Bar (Active Project Tag & Timer Bar) */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between pointer-events-none">
-        <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-blue-200/80 shadow-xs text-xs sm:text-sm text-slate-800 font-medium pointer-events-auto">
-          <Camera className="w-3.5 h-3.5 text-[#3154A5]" />
-          <span className="hidden sm:inline font-bold text-[#3154A5]">Real Project:</span>
-          <span className="font-semibold text-slate-900 truncate max-w-[200px] sm:max-w-none">{currentSlide.label}</span>
-          <span className="text-slate-400 hidden md:inline">•</span>
-          <span className="text-slate-600 hidden md:inline text-xs">{currentSlide.scope}</span>
-        </div>
-
-        {/* 3-Second Horizontal Progress Ticker */}
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-xs pointer-events-auto">
-          <span className="text-xs font-mono font-bold text-[#3154A5]">
-            0{currentIndex + 1}
-          </span>
-          <span className="text-xs font-mono text-slate-400">/</span>
-          <span className="text-xs font-mono text-slate-500">
-            0{slideCount}
-          </span>
-          <span className="text-[10px] text-slate-400 ml-1 hidden sm:inline">(3s auto)</span>
-        </div>
-      </div>
-
-      {/* 4. Left & Right Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        aria-label="Previous Project Banner Slide"
-        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full items-center justify-center bg-white/90 hover:bg-white text-slate-700 hover:text-[#3154A5] border border-slate-200/80 shadow-md hover:shadow-lg transition-all hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-sm"
-      >
-        <ChevronLeft className="w-5 h-5" />
-      </button>
-
-      <button
-        onClick={nextSlide}
-        aria-label="Next Project Banner Slide"
-        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full items-center justify-center bg-white/90 hover:bg-white text-slate-700 hover:text-[#3154A5] border border-slate-200/80 shadow-md hover:shadow-lg transition-all hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-sm"
-      >
-        <ChevronRight className="w-5 h-5" />
-      </button>
-
-      {/* 5. Main Hero Content (H1, Subhead, Guarantees, CTAs, 5-Pillar Ribbon) */}
+      {/* 3. Main Hero Content (H1, Subhead, Guarantees, CTAs, 5-Pillar Ribbon) */}
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 sm:pt-20 sm:pb-24 text-center">
         {/* Primary Target Keyword in H1 */}
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-slate-900 tracking-tight leading-[1.12] max-w-5xl mx-auto drop-shadow-xs">
@@ -322,18 +220,18 @@ export default function HeroBannerSlider({ yearsOfExcellence }: HeroBannerSlider
           </div>
         </div>
 
-        {/* 6. Horizontal Banner Navigation Dots with 3s animated progress */}
-        <div className="mt-8 flex items-center justify-center gap-2 sm:gap-3">
+        {/* 4. Horizontal Banner Indicator Dots (Clean & Minimal) */}
+        <div className="mt-8 flex items-center justify-center gap-2 sm:gap-2.5">
           {HERO_BANNER_SLIDES.map((slide, idx) => {
             const isActive = idx === currentIndex;
             return (
               <button
                 key={slide.id}
                 onClick={() => goToSlide(idx)}
-                aria-label={`Switch to banner slide ${idx + 1}: ${slide.label}`}
+                aria-label={`Switch to banner slide ${idx + 1}`}
                 className={`group relative flex items-center transition-all duration-300 cursor-pointer ${
-                  isActive ? "w-14 sm:w-20" : "w-6 sm:w-8 hover:w-10"
-                } h-2.5 sm:h-3 rounded-full overflow-hidden`}
+                  isActive ? "w-10 sm:w-14" : "w-3 sm:w-4 hover:w-6"
+                } h-1.5 sm:h-2 rounded-full overflow-hidden`}
               >
                 {/* Background bar */}
                 <span
@@ -346,9 +244,7 @@ export default function HeroBannerSlider({ yearsOfExcellence }: HeroBannerSlider
                 {isActive && (
                   <span
                     key={`bar-${currentIndex}`}
-                    className={`absolute inset-y-0 left-0 bg-[#3154A5] rounded-full ${
-                      isPaused ? "w-full" : "animate-[bannerProgress_3000ms_linear_forwards]"
-                    }`}
+                    className="absolute inset-y-0 left-0 bg-[#3154A5] rounded-full animate-[bannerProgress_3000ms_linear_forwards]"
                     style={{
                       animationDuration: "3000ms",
                       animationTimingFunction: "linear",
@@ -360,11 +256,6 @@ export default function HeroBannerSlider({ yearsOfExcellence }: HeroBannerSlider
             );
           })}
         </div>
-
-        {/* Slide navigation label for user clarity */}
-        <p className="mt-2 text-[11px] text-slate-500 font-medium">
-          Slide {currentIndex + 1} of {slideCount}: <span className="text-slate-800 font-semibold">{currentSlide.label}</span> • Changes every 3 seconds (Hover to pause)
-        </p>
       </div>
     </section>
   );
