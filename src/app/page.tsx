@@ -20,13 +20,11 @@ import {
   User,
 } from "lucide-react";
 
-import { getSafeFeaturedProjects } from "@/lib/fallbackData";
 import { BRAND_CONFIG, getYearsOfExcellence } from "@/lib/constants";
 
 export const revalidate = 0; // Fresh SSR data
 
 export default async function HomePage() {
-  const featuredProjects = await getSafeFeaturedProjects();
   const yearsOfExcellence = getYearsOfExcellence();
 
   // Schema.org JSON-LD for Turnkey Interior Design & Contracting Business
@@ -395,137 +393,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Featured Real Projects Showcase */}
-      <section className="py-24 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-              <span className="text-xs font-bold tracking-[0.25em] text-[#3154A5] uppercase">
-                Proven Handover Excellence
-              </span>
-              <h2 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-slate-900">
-                Completed Real Projects by Premier <span className="brand-gradient-text">Design &amp; Contracting</span> Firm
-              </h2>
-              <p className="mt-2 text-slate-600 text-sm max-w-xl font-light">
-                Explore real completed residences, grand private villas, and bespoke fitouts designed and executed by Blue Space Interiors in luxurious and lavish styling across India.
-              </p>
-            </div>
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#3154A5] hover:text-slate-900 transition-colors"
-            >
-              <span>Explore Projects</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
 
-          {/* Top 3 Real Projects in Sequence */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredProjects.slice(0, 3).map((project) => (
-              <div
-                key={project.id}
-                className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all group flex flex-col"
-              >
-                <div className="relative h-64 overflow-hidden bg-slate-100">
-                  <img
-                    src={project.heroImage}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-blue-200 text-[11px] font-bold text-[#3154A5] shadow-sm">
-                    {project.category}
-                  </div>
-                  <div className="absolute bottom-4 right-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full text-[11px] text-white font-mono shadow-sm">
-                    {project.sqft.toLocaleString()} Sq.Ft.
-                  </div>
-                </div>
-
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">
-                      {project.scope.toLowerCase().includes("brs")
-                        ? "Turnkey Design by BRS & Execution by Blue Space Interiors"
-                        : "Designed & Executed by Blue Space Interiors"}
-                    </span>
-                    <h3 className="text-lg font-serif font-bold text-slate-900 group-hover:text-[#3154A5] transition-colors leading-snug">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs text-[#3154A5] mt-1 font-semibold flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5" />
-                      {project.locality}
-                    </p>
-                    <p className="text-xs text-slate-600 mt-3 line-clamp-3 leading-relaxed font-light">
-                      {project.scope}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs">
-                    <span className="text-slate-500 font-medium">Style: Luxurious &amp; Lavish</span>
-                    <span className="text-emerald-700 font-semibold flex items-center gap-1">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                      120-Day Handover
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Remaining 2 Real Projects in Sequence */}
-          {featuredProjects.length > 3 && (
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-              {featuredProjects.slice(3, 5).map((project) => (
-                <div
-                  key={project.id}
-                  className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all group flex flex-col sm:flex-row"
-                >
-                  <div className="relative h-64 sm:h-auto sm:w-1/2 overflow-hidden bg-slate-100 flex-shrink-0">
-                    <img
-                      src={project.heroImage}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-blue-200 text-[11px] font-bold text-[#3154A5] shadow-sm">
-                      {project.category}
-                    </div>
-                    <div className="absolute bottom-4 right-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full text-[11px] text-white font-mono shadow-sm">
-                      {project.sqft.toLocaleString()} Sq.Ft.
-                    </div>
-                  </div>
-
-                  <div className="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">
-                        {project.scope.toLowerCase().includes("brs")
-                          ? "Turnkey Design by BRS & Execution by Blue Space Interiors"
-                          : "Designed & Executed by Blue Space Interiors"}
-                      </span>
-                      <h3 className="text-lg font-serif font-bold text-slate-900 group-hover:text-[#3154A5] transition-colors leading-snug">
-                        {project.title}
-                      </h3>
-                      <p className="text-xs text-[#3154A5] mt-1 font-semibold flex items-center gap-1">
-                        <MapPin className="w-3.5 h-3.5" />
-                        {project.locality}
-                      </p>
-                      <p className="text-xs text-slate-600 mt-3 line-clamp-3 leading-relaxed font-light">
-                        {project.scope}
-                      </p>
-                    </div>
-
-                    <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs">
-                      <span className="text-slate-500 font-medium">Style: Luxurious &amp; Lavish</span>
-                      <span className="text-emerald-700 font-semibold flex items-center gap-1">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                        120-Day Handover
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
 
       {/* Flagship Projects Section */}
       <section className="py-20 bg-white border-y border-slate-200">
