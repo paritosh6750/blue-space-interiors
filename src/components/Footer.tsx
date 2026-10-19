@@ -84,7 +84,7 @@ export default function Footer() {
           {/* Column 1: Brand Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block transition-transform hover:opacity-95 mb-1">
-              <BrandLogo variant="horizontal" size="lg" />
+              <BrandLogo variant="horizontal" size="sm" />
             </Link>
             <p className="text-slate-600 text-xs sm:text-sm mt-4 leading-relaxed pr-6 font-light">
               Premier interior design and turnkey contracting firm executing complete fitouts for residential, commercial, 
