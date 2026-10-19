@@ -23,8 +23,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Turnkey Services", href: "/turnkey-services" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/turnkey-services" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Testimonials", href: "/testimonials" },
     { name: "Contact", href: "/contact" },
@@ -41,21 +41,21 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-4">
             {/* Brand Logo */}
-            <Link href="/" className="flex items-center group transition-transform hover:opacity-95">
+            <Link href="/" className="flex items-center group transition-transform hover:opacity-95 flex-shrink-0">
               <BrandLogo variant="horizontal" size="md" />
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+            <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`text-sm tracking-wide transition-colors relative py-1 font-medium ${
+                    className={`text-[13px] xl:text-sm tracking-wide transition-colors relative py-1 font-medium whitespace-nowrap ${
                       isActive
                         ? "text-[#3154A5] font-semibold"
                         : "text-slate-700 hover:text-[#3154A5]"
@@ -71,24 +71,23 @@ export default function Navbar() {
             </nav>
 
             {/* Right Action / Contact CTA */}
-            <div className="hidden md:flex items-center gap-4">
-              <SocialLinks variant="navbar" className="hidden lg:flex border-r border-slate-200 pr-3 mr-1" />
-
+            <div className="hidden md:flex items-center gap-3 xl:gap-4 flex-shrink-0">
               <a
                 href={`tel:${BRAND_CONFIG.phoneRaw}`}
                 className="flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-[#3154A5] transition-colors"
+                title={`Call ${BRAND_CONFIG.phone}`}
               >
-                <div className="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center">
-                  <Phone className="w-3.5 h-3.5 text-[#3154A5]" />
+                <div className="w-8 h-8 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3154A5]">
+                  <Phone className="w-3.5 h-3.5" />
                 </div>
-                <span>{BRAND_CONFIG.phone}</span>
+                <span className="hidden xl:inline">{BRAND_CONFIG.phone}</span>
               </a>
 
               <Link
                 href="/contact"
-                className="brand-button px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-md"
+                className="brand-button px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm hover:shadow transition-all whitespace-nowrap"
               >
-                <span>Schedule Consultation</span>
+                <span>Consultation</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
