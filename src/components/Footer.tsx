@@ -235,10 +235,8 @@ export default function Footer() {
         </div>
 
         {/* Legal Copyright Bar */}
-        <div className="mt-12 pt-8 border-t border-slate-200 text-[11px] text-slate-500 text-center">
-          <p>
-            © {new Date().getFullYear()} {BRAND_CONFIG.name}. All Rights Reserved. Turnkey Interior Design &amp; Contracting Firm • Registered in Thane West, Maharashtra • Services PAN India.
-          </p>
+        <div className="mt-12 pt-8 border-t border-slate-200 text-xs text-slate-500 text-center">
+          <p>© {new Date().getFullYear()} {BRAND_CONFIG.name}. All Rights Reserved.</p>
         </div>
       </div>
 
